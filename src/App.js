@@ -8,7 +8,7 @@ function App() {
 
     const [order, setOrder] = useState(false);
     const [data, setData] = useState(false);
-    const [selectOrder, setSelectOrder] = useState("Loading ...");
+    const [selectOrder, setSelectOrder] = useState((<div className="bar">Loading ...</div>));
 
     const token = passItem('token');
     let userName = "";
@@ -38,7 +38,7 @@ function App() {
             }
 
             return (<div className="bar">
-                <div>Select Date:</div>
+                <div className="dropdown_label">Select Date:</div>
                 <select name="dates" id="dates" onChange={selectDate} defaultValue={null}
                         className="dropdown__selector">
                     {options}
