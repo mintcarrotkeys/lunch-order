@@ -53,3 +53,9 @@ h1 {
 .title {
   text-align: center;
 }
+
+.bar {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
