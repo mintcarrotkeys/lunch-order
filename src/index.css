@@ -72,4 +72,20 @@ h1 {
 
 .currentPage {
   border-bottom: solid 3px var(--ui);
+  padding-bottom: 0px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.nav-item {
+  min-height: 20px;
+  margin: 5px;
+  font-size: 18px;
+  padding-bottom: 3px;
 }
