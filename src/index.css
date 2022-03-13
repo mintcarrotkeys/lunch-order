@@ -71,8 +71,7 @@ h1 {
 }
 
 .currentPage {
-  border-bottom: solid 3px var(--ui);
-  padding: 5px 5px 5px 5px;
+  text-decoration: underline #00a5cf solid 3px;
 }
 
 .nav {
@@ -86,7 +85,7 @@ h1 {
 .nav-item {
   min-height: 20px;
   font-size: 18px;
-  padding: 5px 5px 8px 5px;
+  padding: 5px;
 }
 
 .page {
