@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
-import ReactDOM from 'react-dom';
 import {passItem} from "./version";
 import {fetchData, login} from "./auth";
+import Nav from "./Components/Nav";
+import Order from "./Pages/Order";
 
 
 function App() {
 
-    const [order, setOrder] = useState(false);
-    const [data, setData] = useState(false);
-    const [selectOrder, setSelectOrder] = useState((<div className="bar"><p>Loading ...</p></div>));
+    const [page, setPage] = useState(null);
+    const [dataState, setDataState] = useState(null);
 
     const token = passItem('token');
     let userName = "";
@@ -16,50 +16,43 @@ function App() {
         userName = token.name;
     }
 
-    React.useEffect(() => {
-        login().then(() => getDates()).then(res => setSelectOrder(res));
-    }, []);
-
-
-
-    function selectDate(e) {
-        let dateName = e.target.value;
+    function changePage(selected) {
+        setPage(selected);
     }
 
-    async function getDates() {
-        let orderDates = await fetchData("dates");
-        console.log(orderDates);
-        if (orderDates !== false) {
-            let options = [];
-            let i = 0;
-            while (i < orderDates.dates.length) {
-                options.push(<option value={orderDates.dates[i]}>{orderDates.dates[i]}</option>)
-                i++;
-            }
+    React.useEffect(() => {
+        login().then(res => setDataState(res));
+    }, []);
 
-            return (<div className="bar">
-                <div className="dropdown_label">Select Date:</div>
-                <select name="dates" id="dates" onChange={selectDate} defaultValue={"choose"}
-                        className="dropdown__selector">
-                    <option value={"choose"}>choose</option>
-                    {options}
-                </select>
-            </div>)
-        }
-        else {
-            return (<p>Error - couldn't fetch data</p>);
-        }
+    let showPage = "";
+    if (dataState === null) {
+        showPage = (
+            <div className="card bar">Loading ...</div>
+        );
+    }
+    else if (dataState === false) {
+        showPage = (
+            <div className="card bar">Error - could not login, reload to try again.</div>
+        );
+    }
+    else if (page === null) {
+        setPage('order');
+    }
+
+    if (page === "order") {
+        showPage = <Order />;
     }
 
     return (
         <div className="App">
-            <div className="page">
+            <div className="container">
                 <div className="card title">
                     <h1>e Lunch Order System</h1>
                     <h2>Welcome: {userName}</h2>
                 </div>
-                <div className="card">
-                    {selectOrder}
+                <Nav setPage={changePage} currentPage={page} userScope={(token!==null ? token.scope : null)} />
+                <div>
+                    {showPage}
                 </div>
             </div>
         </div>

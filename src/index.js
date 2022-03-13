@@ -6,11 +6,6 @@ import App from './App';
 import {saveItem} from "./version";
 
 
-// let sampleData = {name: "mintcarrotkeys", status: "success"};
-//
-// saveItem("token", sampleData);
-
-
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
