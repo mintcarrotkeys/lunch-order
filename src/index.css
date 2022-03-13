@@ -89,3 +89,7 @@ h1 {
   font-size: 18px;
   padding-bottom: 3px;
 }
+
+.page {
+  width: 100%;
+}

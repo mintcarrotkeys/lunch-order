@@ -23,7 +23,7 @@ export default function Nav(props) {
 
     for (const i of allowed) {
         showOptions.push(
-            <div className={"nav-button" + (i.code===props.currentPage ? " currentPage" : "")}
+            <div className={"nav-item" + (i.code===props.currentPage ? " currentPage" : "")}
                  id={i.code}
                  key={i.code}
                  onClick={handleClick}
@@ -37,10 +37,7 @@ export default function Nav(props) {
 
     return (
         <div className="nav">
-            <div className="nav-item">Order Lunch</div>
-
-
-
+            {showOptions}
         </div>
     );
 }
