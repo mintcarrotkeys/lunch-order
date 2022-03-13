@@ -44,15 +44,13 @@ function App() {
     }
 
     return (
-        <div className="App">
-            <div className="container">
-                <div className="card title">
-                    <h1>e Lunch Order System</h1>
-                    <h2>Welcome: {userName}</h2>
-                </div>
-                <Nav setPage={changePage} currentPage={page} userScope={(token!==null ? token.scope : null)} />
-                {showPage}
+        <div className="container">
+            <div className="card title">
+                <h1>e Lunch Order System</h1>
+                <h2>Welcome: {userName}</h2>
             </div>
+            <Nav setPage={changePage} currentPage={page} userScope={(token!==null ? token.scope : null)} />
+            {showPage}
         </div>
     );
 }

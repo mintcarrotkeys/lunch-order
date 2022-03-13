@@ -90,7 +90,7 @@ h1 {
 }
 
 .page {
-  width: 100%;
+  width: calc(100% - 20px);
 }
 
 .nav-item:hover {
