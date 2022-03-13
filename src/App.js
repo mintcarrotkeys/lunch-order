@@ -51,9 +51,7 @@ function App() {
                     <h2>Welcome: {userName}</h2>
                 </div>
                 <Nav setPage={changePage} currentPage={page} userScope={(token!==null ? token.scope : null)} />
-                <div>
-                    {showPage}
-                </div>
+                {showPage}
             </div>
         </div>
     );

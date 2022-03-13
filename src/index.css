@@ -72,7 +72,7 @@ h1 {
 
 .currentPage {
   border-bottom: solid 3px var(--ui);
-  padding-bottom: 0px;
+  padding: 5px 5px 5px 5px;
 }
 
 .nav {
@@ -85,11 +85,14 @@ h1 {
 
 .nav-item {
   min-height: 20px;
-  margin: 5px;
   font-size: 18px;
-  padding-bottom: 3px;
+  padding: 5px 5px 8px 5px;
 }
 
 .page {
   width: 100%;
+}
+
+.nav-item:hover {
+  background-color: #d0d0d0;
 }

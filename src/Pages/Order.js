@@ -12,6 +12,9 @@ export default function Order(props) {
     const [data, setData] = useState(false);
     const [selectOrder, setSelectOrder] = useState((<div className="bar">Loading ...</div>));
 
+    React.useEffect(() => {
+        getDates().then(res => setSelectOrder(res)).catch((e) => console.log(e));
+        }, []);
 
     function selectDate(e) {
         let dateName = e.target.value;
