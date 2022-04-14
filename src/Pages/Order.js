@@ -8,8 +8,7 @@ import {fetchData} from "../auth";
 
 export default function Order(props) {
 
-    const [order, setOrder] = useState(false);
-    const [data, setData] = useState(false);
+    const [orderState, setOrderState] = useState(null);
     const [selectOrder, setSelectOrder] = useState((<div className="bar">Loading ...</div>));
 
     React.useEffect(() => {
@@ -17,8 +16,13 @@ export default function Order(props) {
         }, []);
 
     function selectDate(e) {
-        let dateName = e.target.value;
-
+        let orderName = e.target.value;
+        if (orderName === "choose") {
+            setOrderState(null);
+        }
+        else {
+            getOrder(orderName).then(res => setOrderState(res));
+        }
     }
 
     async function getDates() {
@@ -46,11 +50,46 @@ export default function Order(props) {
         }
     }
 
+    async function getOrder(name) {
+        setOrderState("loading");
+        fetchData("getUserOrder", {orderName: name}).then(res => {
+            if (res) {
+                return res;
+            }
+        });
+    }
+
+    let orderDetails;
+    if (orderState === null) {
+        orderDetails = "";
+    }
+    else if (orderState === false) {
+        orderDetails = (<div className="card">Error, couldn't fetch data, reload to try again.</div>);
+    }
+    else if (orderState === "loading") {
+        orderDetails = (<div className="card">Loading ...</div>);
+    }
+    else if (orderState.hasOwnProperty("haveOrdered")) {
+        if (orderState.haveOrdered) {
+            orderDetails = (
+                <div className="card">
+                    <h2>Your Order</h2>
+                    <p>You placed the order at: </p>
+                    <p>{orderState.order.time}</p>
+                    {orderItems}
+                    {/*TODO: here*/}
+                    <h2>Total Cost: </h2>
+                </div>
+            );
+        }
+    }
+
 
     return (
         <div className="page">
             <div className="card">
                 {selectOrder}
+                {orderDetails}
             </div>
         </div>
     );

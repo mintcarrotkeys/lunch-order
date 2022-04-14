@@ -42,7 +42,7 @@ h1 {
 }
 
 .card {
-  padding: 5px;
+  padding: 10px 5px;
   background-color: white;
   border-radius: 5px;
   border: none;
@@ -52,8 +52,8 @@ h1 {
   margin: 10px 0;
 }
 
-.h2 {
-  font-size: 15px;
+h2 {
+  font-size: 20px;
 }
 
 .title {
@@ -90,6 +90,10 @@ h1 {
 
 .page {
   width: calc(100% - 20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .nav-item:hover {

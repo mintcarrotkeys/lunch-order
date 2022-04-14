@@ -56,6 +56,10 @@ export async function requestCode() {
 }
 
 export async function requestToken() {
+    const params = new URLSearchParams(window.location.href.toString().split("?")[1]);
+    const code = params.get('code');
+    const returnedState = params.get('state');
+    window.history.replaceState({}, "", "/");
     const redirect = siteURL;
     const appId = useAppId;
     const codeVerifier = localStorage.getItem('handle_verifier');
@@ -63,13 +67,9 @@ export async function requestToken() {
     if (codeVerifier == null) {
         return false;
     }
-    const params = new URLSearchParams(window.location.href.toString().split("?")[1]);
-    window.history.replaceState({}, "", "/");
     if (params.has('code') === false) {
         return false;
     }
-    const code = params.get('code');
-    const returnedState = params.get('state');
     if (returnedState !== state) {
         return false;
     }
@@ -151,7 +151,7 @@ export async function login() {
     requestCode();
 }
 
-export async function fetchData(ask) {
+export async function fetchData(ask, params=null) {
 
     let elosTokens = passItem('token');
     if (elosTokens === null) {
@@ -163,10 +163,13 @@ export async function fetchData(ask) {
 
     console.log("hi");
     let res = false;
-    await fetch(requestUrl, {headers: new Headers({'Authorization': token})}).then(r => res=r).catch(e => console.log(e));
+    await fetch(requestUrl, {body: JSON.stringify(params), headers: new Headers({'Authorization': token})}).then(r => res=r).catch(e => console.log(e));
 
     if (!res.ok) {
-        return false;
+        await fetch(requestUrl, {body: JSON.stringify(params), headers: new Headers({'Authorization': token})}).then(r => res=r).catch(e => console.log(e));
+        if (!res.ok) {
+            return false;
+        }
     }
     else {
         return res.json();
