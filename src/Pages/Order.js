@@ -76,7 +76,7 @@ export default function Order(props) {
                     <h2>Your Order</h2>
                     <p>You placed the order at: </p>
                     <p>{orderState.order.time}</p>
-                    {orderItems}
+                    {/*{orderItems}*/}
                     {/*TODO: here*/}
                     <h2>Total Cost: </h2>
                 </div>
