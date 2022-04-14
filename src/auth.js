@@ -163,10 +163,10 @@ export async function fetchData(ask, params=null) {
 
     console.log("hi");
     let res = false;
-    await fetch(requestUrl, {body: JSON.stringify(params), headers: new Headers({'Authorization': token})}).then(r => res=r).catch(e => console.log(e));
+    await fetch(requestUrl, {method: "POST", body: JSON.stringify(params), headers: new Headers({'Authorization': token})}).then(r => res=r).catch(e => console.log(e));
 
     if (!res.ok) {
-        await fetch(requestUrl, {body: JSON.stringify(params), headers: new Headers({'Authorization': token})}).then(r => res=r).catch(e => console.log(e));
+        await fetch(requestUrl, {method: "POST", body: JSON.stringify(params), headers: new Headers({'Authorization': token})}).then(r => res=r).catch(e => console.log(e));
         if (!res.ok) {
             return false;
         }
