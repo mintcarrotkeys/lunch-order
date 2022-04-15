@@ -117,7 +117,8 @@ h6 {
 }
 
 .ticket-row {
-  padding: 5px;
+  margin: 5px;
+  width: calc(100% - 5px);
 
 }
 
@@ -125,6 +126,7 @@ h6 {
   border: dashed 5px #00a5cf;
   border-radius: 10px;
   height: 100px;
+  width: calc(100% - 20px);
   display: flex;
   align-items: center;
   justify-content: center;
