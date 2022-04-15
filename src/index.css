@@ -41,6 +41,14 @@ h1 {
   font-weight: 300;
 }
 
+h2 {
+  font-size: 20px;
+}
+
+h6 {
+  font-size: 13px;
+}
+
 .card {
   padding: 10px 5px;
   background-color: white;
@@ -50,10 +58,6 @@ h1 {
   width: calc(100% - 10px);
   max-width: 500px;
   margin: 10px 0;
-}
-
-h2 {
-  font-size: 20px;
 }
 
 .title {
@@ -67,7 +71,11 @@ h2 {
 }
 
 .dropdown_label {
-  margin-right: 5px;
+  margin-right: 20px;
+}
+
+.dropdown__selector {
+  font: inherit;
 }
 
 .currentPage {
@@ -98,4 +106,11 @@ h2 {
 
 .nav-item:hover {
   background-color: #d0d0d0;
+}
+
+.ticket-row {
+  padding: 5px;
+  border-top: solid 1px #d0d0d0;
+  border-bottom: solid 1px #d0d0d0;
+
 }

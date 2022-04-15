@@ -76,9 +76,8 @@ export default function Order(props) {
     }
     else if (orderState.hasOwnProperty("haveOrdered")) {
         if (orderState.haveOrdered) {
-            console.log("xzz");
             orderDetails = (
-                <div className="card">
+                <div className="bar">
                     <h2>Your Order</h2>
                     <p>You placed the order at: </p>
                     <p>{orderState.order.time}</p>
@@ -89,7 +88,13 @@ export default function Order(props) {
             );
         }
         else {
-            console.log("zzz");
+            orderDetails = (
+                <div>
+                    <h2>Add items</h2>
+                    <h6>You have not placed an order yet</h6>
+                    <Selection />
+                </div>
+            );
         }
     }
 
@@ -98,6 +103,8 @@ export default function Order(props) {
         <div className="page">
             <div className="card">
                 {selectOrder}
+            </div>
+            <div className="card">
                 {orderDetails}
             </div>
         </div>
