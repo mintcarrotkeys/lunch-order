@@ -116,7 +116,7 @@ export default function Selection(props) {
             setErrorMessage(<Banner message={"Please choose a side for this item"} type={"warning"} />);
         }
         if (valid) {
-            setCart([...cart, ...newItem]);
+            setCart([...cart, newItem]);
             setNewItem(false);
         }
     }
