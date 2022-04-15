@@ -21,7 +21,7 @@ export default function Order(props) {
             setOrderState(null);
         }
         else {
-            getOrder(orderId).then(res => setOrderState(res));
+            getOrder(orderId);
         }
     }
 
@@ -59,9 +59,8 @@ export default function Order(props) {
     async function getOrder(name) {
         setOrderState("loading");
         fetchData("myOrder", {orderId: name}).then(res => {
-            if (res) {
-                return res;
-            }
+            console.log(res);
+            setOrderState(res);
         });
     }
 
