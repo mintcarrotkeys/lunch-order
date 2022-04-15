@@ -77,6 +77,7 @@ export default function Order(props) {
     }
     else if (orderState.hasOwnProperty("haveOrdered")) {
         if (orderState.haveOrdered) {
+            console.log("xzz");
             orderDetails = (
                 <div className="card">
                     <h2>Your Order</h2>
