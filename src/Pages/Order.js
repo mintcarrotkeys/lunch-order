@@ -65,7 +65,7 @@ export default function Order(props) {
         });
     }
 
-    let orderDetails;
+    let orderDetails = "";
     if (orderState === null) {
         orderDetails = "";
     }
@@ -84,9 +84,12 @@ export default function Order(props) {
                     <p>{orderState.order.time}</p>
                     {/*{orderItems}*/}
                     {/*TODO: here*/}
-                    <h2>Total Cost: </h2>
+                    <h3>Total Cost: </h3>
                 </div>
             );
+        }
+        else {
+            console.log("zzz");
         }
     }
 

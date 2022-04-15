@@ -47,7 +47,7 @@ function App() {
         <div className="container">
             <div className="card title">
                 <h1>e Lunch Order System</h1>
-                <h2>Welcome: {userName}</h2>
+                <h2><span style={{fontWeight: 300}}>Welcome:</span> {userName}</h2>
             </div>
             <Nav setPage={changePage} currentPage={page} userScope={(token!==null ? token.scope : null)} />
             {showPage}

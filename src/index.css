@@ -6,7 +6,7 @@
 
 body {
   margin: 0;
-  font-family: "Noto Sans", Roboto, "Fira Sans", "Segoe UI", Arial, sans-serif;
+  font-family: "Noto Sans", Barlow, Roboto, -apple-system, BlinkMacSystemFont, Arial, "Segoe UI", "Ubuntu", sans-serif;
   font-weight: 400;
   font-size: 15px;
 
@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 h1 {
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .card {
