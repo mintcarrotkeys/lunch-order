@@ -121,7 +121,7 @@ export default function Selection(props) {
         }
     }
 
-    let cartDisplay = "";
+    let cartDisplay = [];
     for (const item of cart) {
         cartDisplay.push(
             <div className="ticket-row">
