@@ -78,7 +78,7 @@ export default function Order(props) {
     else if (orderState.hasOwnProperty("haveOrdered")) {
         if (orderState.haveOrdered) {
             orderDetails = (
-                <div className="bar">
+                <div className="card">
                     <h2>Your Order</h2>
                     <p>You placed the order at: </p>
                     <p>{orderState.order.time}</p>
@@ -90,7 +90,7 @@ export default function Order(props) {
         }
         else {
             orderDetails = (
-                <div>
+                <div className="card">
                     <h2>Add items</h2>
                     <h6>You have not placed an order yet</h6>
                     <Selection />
@@ -105,9 +105,7 @@ export default function Order(props) {
             <div className="card">
                 {selectOrder}
             </div>
-            <div className="card">
-                {orderDetails}
-            </div>
+            {orderDetails}
         </div>
     );
 }

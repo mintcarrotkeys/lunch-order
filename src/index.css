@@ -21,9 +21,9 @@ body {
 .container {
   background-color: #eeeeee;
   color: black;
-  width: calc(100% - 20px);
+  width: calc(100% - 10px);
   min-height: 100vh;
-  padding: 10px;
+  padding: 5px;
 
   display: flex;
   flex-direction: column;
@@ -97,7 +97,7 @@ h6 {
 }
 
 .page {
-  width: calc(100% - 20px);
+  width: calc(100% - 10px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -108,9 +108,24 @@ h6 {
   background-color: #d0d0d0;
 }
 
+.ticket {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .ticket-row {
   padding: 5px;
-  border-top: solid 1px #d0d0d0;
-  border-bottom: solid 1px #d0d0d0;
 
+}
+
+.add-item {
+  border: dashed 5px #00a5cf;
+  border-radius: 10px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00a5cf;
 }
