@@ -90,11 +90,7 @@ export default function Order(props) {
         }
         else {
             orderDetails = (
-                <div className="card">
-                    <h2>Add items</h2>
-                    <h6>You have not placed an order yet</h6>
-                    <Selection />
-                </div>
+                <Selection />
             );
         }
     }
