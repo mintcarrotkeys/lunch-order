@@ -16,34 +16,37 @@ export default function Order(props) {
         }, []);
 
     function selectDate(e) {
-        let orderName = e.target.value;
-        if (orderName === "choose") {
+        let orderId = e.target.value;
+        if (orderId === "") {
             setOrderState(null);
         }
         else {
-            getOrder(orderName).then(res => setOrderState(res));
+            getOrder(orderId).then(res => setOrderState(res));
         }
     }
 
     async function getDates() {
-        let orderDates = await fetchData("dates");
-        console.log(orderDates);
-        if (orderDates !== false) {
+        let getList = await fetchData("listOrders");
+        console.log(getList);
+        if (getList !== false) {
+            let orderList = getList.orders;
             let options = [];
             let i = 0;
-            while (i < orderDates.dates.length) {
-                options.push(<option value={orderDates.dates[i]}>{orderDates.dates[i]}</option>)
+            while (i < orderList.length) {
+                options.push(<option value={orderList[i].orderId}>{orderList[i].name}</option>)
                 i++;
             }
 
-            return (<div className="bar">
+            return (
+                <div className="bar">
                 <div className="dropdown_label">Select Date:</div>
                 <select name="dates" id="dates" onChange={selectDate} defaultValue={"choose"}
                         className="dropdown__selector">
-                    <option value={"choose"}>choose</option>
+                    <option value={""}>choose</option>
                     {options}
                 </select>
-            </div>)
+                </div>
+            )
         }
         else {
             return (<p>Error - couldn't fetch data</p>);
@@ -52,7 +55,7 @@ export default function Order(props) {
 
     async function getOrder(name) {
         setOrderState("loading");
-        fetchData("getUserOrder", {orderName: name}).then(res => {
+        fetchData("myOrder", {orderId: name}).then(res => {
             if (res) {
                 return res;
             }
