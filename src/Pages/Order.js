@@ -29,7 +29,10 @@ export default function Order(props) {
         let getList = await fetchData("listOrders");
         console.log(getList);
         if (getList !== false) {
-            let orderList = getList.orders;
+            let orderList = [];
+            for (const key in getList) {
+                orderList.push({orderId: key, name: getList[key].name});
+            }
             let options = [];
             let i = 0;
             while (i < orderList.length) {

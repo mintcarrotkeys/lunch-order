@@ -2,9 +2,19 @@
   "short_name": "Lunch Order",
   "name": "Lunch Order",
   "icons": [
+    {
+      "src": "favicon-elos-240.png",
+      "sizes": "240x240",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon-elos-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#b8e2f3",
+  "background_color": "#b8e2f3"
 }
