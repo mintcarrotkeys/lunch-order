@@ -34,7 +34,7 @@ export default function Selection(props) {
     }
 
     let options = [];
-    for (const key of menu) {
+    for (const key in menu) {
         options.push(<option value={key}>{menu[key].name}</option>);
     }
 
@@ -122,7 +122,7 @@ export default function Selection(props) {
     }
 
     let cartDisplay = "";
-    for (const item in cart) {
+    for (const item of cart) {
         cartDisplay.push(
             <div className="ticket-row">
                 <h4 className="cart-name">
