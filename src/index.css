@@ -301,16 +301,25 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #000000b2;
 }
 .notice-panel {
   max-width: 500px;
   margin: 30px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 0;
+  border-radius: 10px;
 }
 .notice-top {
-  height: 30px;
+  height: 20px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 .notice-close {
   height: 20px;
@@ -322,4 +331,11 @@ p {
 .notice-close:hover, .notice-close:active {
   border-color: transparent;
   outline: solid 1px #555555;
+}
+.notice-body {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 10px;
+  text-align: center;
 }

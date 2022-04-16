@@ -175,7 +175,7 @@ export default function Selection(props) {
         totalCost = totalCost.toFixed(2);
         submitOrder = (
             <div className="bar">
-                <h3 className="total-price">{totalCost}</h3>
+                <h3 className="total-price">{"$" + totalCost}</h3>
                 <Button text={"Place order"} type={"green"} action={placeOrder} />
             </div>
         )
@@ -193,13 +193,13 @@ export default function Selection(props) {
             totalCost += menu[item.itemId].price;
         }
         let orderInfo = (
-            <div className="bar">
+            <div className="notice-body">
                 <h3 style={{marginBottom: "10px"}}>Confirm Order</h3>
                 <p>Order for:</p>
                 <h3>{props.orderId}</h3>
                 {cartItems}
                 <p>Total cost:</p>
-                <h3>{totalCost.toFixed(2)}</h3>
+                <h3>{"$" + totalCost.toFixed(2)}</h3>
                 <p>{cart.length.toString() + " " + (cartItems.length === 1 ? "item" : "items")}</p>
             </div>
         );
