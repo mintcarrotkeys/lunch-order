@@ -10,7 +10,7 @@ import Selection from "../Components/Selection";
 export default function Order(props) {
 
     const [orderState, setOrderState] = useState(null);
-    const [selectOrder, setSelectOrder] = useState((<div className="bar">Loading ...</div>));
+    const [selectOrder, setSelectOrder] = useState((<h4>Loading ...</h4>));
 
     React.useEffect(() => {
         getDates().then(res => setSelectOrder(res)).catch((e) => console.log(e));
@@ -70,10 +70,10 @@ export default function Order(props) {
         orderDetails = "";
     }
     else if (orderState === false) {
-        orderDetails = (<div className="card">Error, couldn't fetch data, reload to try again.</div>);
+        orderDetails = (<div className="card"><p>Error, couldn't fetch data, reload to try again.</p></div>);
     }
     else if (orderState === "loading") {
-        orderDetails = (<div className="card"><p>Loading ...</p></div>);
+        orderDetails = (<div className="card"><h4>Loading ...</h4></div>);
     }
     else if (orderState.hasOwnProperty("haveOrdered")) {
         if (orderState.haveOrdered) {

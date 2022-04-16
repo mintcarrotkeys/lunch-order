@@ -18,7 +18,7 @@ export default function Selection(props) {
     if (menu === null) {
         return (
             <div className="card">
-                <p>Loading ...</p>
+                <h4>Loading ...</h4>
             </div>
         );
     }
