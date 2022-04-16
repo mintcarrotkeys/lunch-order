@@ -11,6 +11,7 @@ export default function Order(props) {
 
     const [orderState, setOrderState] = useState(null);
     const [selectOrder, setSelectOrder] = useState((<h4>Loading ...</h4>));
+    const [orderId, setOrderId] = useState(false);
 
     React.useEffect(() => {
         getDates().then(res => setSelectOrder(res)).catch((e) => console.log(e));
@@ -60,6 +61,7 @@ export default function Order(props) {
         setOrderState("loading");
         fetchData("myOrder", {orderId: name}).then(res => {
             setOrderState(res);
+            setOrderId(name);
         });
     }
 
@@ -88,7 +90,7 @@ export default function Order(props) {
         }
         else {
             orderDetails = (
-                <Selection />
+                <Selection orderId={orderId} />
             );
         }
     }

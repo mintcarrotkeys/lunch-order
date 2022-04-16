@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {fetchData} from "../auth";
 import Banner from "./Banner";
 import Button from "./Button";
+import Notice from "./Notice";
 
 
 export default function Selection(props) {
@@ -10,6 +11,7 @@ export default function Selection(props) {
     const [newItem, setNewItem] = useState(false);
     const [menu, setMenu] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
+    const [finaliseOrder, setFinaliseOrder] = useState(false);
 
     React.useEffect(() => {
         fetchData("menu").then(res => setMenu(res)).catch((e) => console.log(e));
@@ -164,6 +166,64 @@ export default function Selection(props) {
         setCart(newCart);
     }
 
+    let submitOrder = "";
+    if (cart.length > 0 && newItem === false && finaliseOrder === false) {
+        let totalCost = 0;
+        for (const item of cart) {
+            totalCost += menu[item.itemId].price;
+        }
+        totalCost = totalCost.toFixed(2);
+        submitOrder = (
+            <div className="bar">
+                <h3 className="total-price">{totalCost}</h3>
+                <Button text={"Place order"} type={"green"} id={"place-order"} action={placeOrder} />
+            </div>
+        )
+    }
+
+    function placeOrder(id) {
+        let cartItems = [];
+        let totalCost = 0;
+        for (const item of cart) {
+            cartItems.push(<h6>{menu[item.itemId].name}</h6>);
+            totalCost += menu[item.itemId].price;
+        }
+        let orderInfo = (
+            <div className="bar">
+                <h3 style={{marginBottom: "10px"}}>Confirm Order</h3>
+                <p>Order for:</p>
+                <h3>{props.orderId}</h3>
+                {cartItems}
+                <p>Total cost:</p>
+                <h3>{totalCost.toFixed(2)}</h3>
+                <p>{cart.length.toString() + " " + (cartItems.length === 1 ? "item" : "items")}</p>
+            </div>
+        );
+        submitOrder = (
+            <Notice text={orderInfo} close={cancelConfirm} button1Action={confirmOrder}
+                    button1={{text: "Place order", type: "green", id: "place-order-2"}}
+            />
+            /**
+             * title
+             * text
+             * close
+             *
+             * button1  {
+             *      text=""
+             *      type=grey/blue/green/red/yellow
+             *      action=func()
+             *      id=
+             *
+             *
+             *
+             * **/
+        )
+    }
+
+    function cancelConfirm(id) {
+
+    }
+
     let output = (
         <div className="card">
             <h2>Add items</h2>
@@ -171,6 +231,7 @@ export default function Selection(props) {
             <div className="ticket">
                 {cartDisplay}
                 {addItem}
+                {submitOrder}
             </div>
         </div>
     );

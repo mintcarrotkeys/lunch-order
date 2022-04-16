@@ -45,12 +45,18 @@ h2 {
   font-size: 20px;
 }
 
+h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
 h4 {
   font-size: 15px;
 }
 
 h6 {
   font-size: 13px;
+  font-weight: 500;
 }
 
 div {
@@ -154,7 +160,7 @@ p {
 
 .ticket-row {
   margin: 5px;
-  width: calc(100% - 5px);
+  width: calc(100% - 10px);
 
 }
 
@@ -172,7 +178,6 @@ p {
 }
 
 .add-item-config {
-  padding: 5px;
   width: calc(100% - 10px);
   display: flex;
   flex-direction: column;
@@ -206,6 +211,7 @@ p {
 .item-notes {
   min-height: 40px;
   font-size: 13px;
+  resize: none;
 }
 
 .item-buttons {
@@ -275,5 +281,45 @@ p {
 }
 .cart-delete:hover, .cart-delete:active {
   border-color: white;
+  outline: solid 1px #555555;
+}
+
+.notice-outer {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.notice-inner {
+  overflow-y: scroll;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.notice-panel {
+  max-width: 500px;
+  margin: 30px;
+}
+.notice-top {
+  height: 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.notice-close {
+  height: 20px;
+  width: 20px;
+  color: #555555;
+  border-radius: 5px;
+  border: solid 2px #555555;
+}
+.notice-close:hover, .notice-close:active {
+  border-color: transparent;
   outline: solid 1px #555555;
 }
