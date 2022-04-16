@@ -163,7 +163,6 @@ export async function fetchData(ask, params=null) {
     let token = elosTokens.token;
     let requestUrl = serverURL + "?ask=" + ask;
 
-    console.log("hi");
     let res = false;
     await fetch(requestUrl, {method: "POST", body: JSON.stringify(params), headers: new Headers({'Authorization': token})}).then(r => res=r).catch(e => console.log(e));
 

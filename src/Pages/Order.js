@@ -28,7 +28,6 @@ export default function Order(props) {
 
     async function getDates() {
         let getList = await fetchData("listOrders");
-        console.log(getList);
         if (getList !== false) {
             let orderList = [];
             for (const key in getList) {
@@ -60,7 +59,6 @@ export default function Order(props) {
     async function getOrder(name) {
         setOrderState("loading");
         fetchData("myOrder", {orderId: name}).then(res => {
-            console.log(res);
             setOrderState(res);
         });
     }

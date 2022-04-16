@@ -103,8 +103,6 @@ export default function Selection(props) {
     }
     function setItemNotes(e) {
         setNewItem({...newItem, ...{note: e.target.value}});
-        console.log(e.target.value);
-        console.log(newItem);
     }
     function setItemSide(e) {
         setNewItem({...newItem, ...{side: e.target.value}});
@@ -125,7 +123,7 @@ export default function Selection(props) {
         let formatNewItem = {...newItem};
         //TODO
         console.log(newItem);
-        formatNewItem.note.replaceAll("\n", "-");
+        formatNewItem.note = formatNewItem.note.replaceAll("\n", " ");
         console.log(formatNewItem);
         setCart([...cart, formatNewItem]);
         setNewItem(false);
