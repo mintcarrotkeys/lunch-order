@@ -80,10 +80,10 @@ export default function Selection(props) {
                 </div>
                 </div>
                 {sidesBox}
-                <input type="text" id="item-notes" name="item-notes" key={newItem.itemId}
-                       className="input-text item-notes" maxLength={200}
+                <textarea type="text" id="item-notes" name="item-notes" key={newItem.itemId}
+                       className="input-text item-notes" maxLength={150}
                        placeholder="add special requirements here" spellCheck={true} autoCorrect={"on"}
-                       onChange={setItemNotes}
+                       onChange={setItemNotes} wrap="soft" rows={4}
                 />
                 {errorMessage}
                 <div className="item-buttons">
@@ -112,20 +112,17 @@ export default function Selection(props) {
         setErrorMessage("");
     }
     function itemSubmit(e) {
-        let valid = true;
         if (newItem.itemId === "") {
-            valid = false;
             setErrorMessage(<Banner message={"Please choose an item"} type={"warning"} />);
+            return;
         }
-        if (menu[newItem.itemId].sides.length > 0 && newItem.side == "") {
-            valid = false;
+        else if (menu[newItem.itemId].sides.length > 0 && newItem.side == "") {
             setErrorMessage(<Banner message={"Please choose a side for this item"} type={"warning"} />);
+            return;
         }
-        if (valid) {
-            setCart([...cart, newItem]);
-            setNewItem(false);
-            setErrorMessage("");
-        }
+        setCart([...cart, newItem]);
+        setNewItem(false);
+        setErrorMessage("");
     }
 
     let cartDisplay = [];

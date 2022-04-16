@@ -149,6 +149,8 @@ export async function login() {
     }
 
     requestCode();
+
+    return "redirect";
 }
 
 export async function fetchData(ask, params=null) {

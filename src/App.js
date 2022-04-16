@@ -35,6 +35,11 @@ function App() {
             <div className="card bar">Error - could not login, reload to try again.</div>
         );
     }
+    else if (dataState === "redirect") {
+        showPage = (
+            <div className="card bar">Redirecting to login ...</div>
+        );
+    }
     else if (page === null) {
         setPage('order');
     }
