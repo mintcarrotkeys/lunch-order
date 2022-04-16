@@ -100,6 +100,8 @@ export default function Order(props) {
             );
         }
         else {
+            console.log(selectOrder);
+            console.log(orderId);
             orderDetails = (
                 <Selection orderId={selectOrder[orderId].name} />
             );
