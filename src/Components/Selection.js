@@ -89,8 +89,8 @@ export default function Selection(props) {
                 />
                 {errorMessage}
                 <div className="item-buttons">
-                    <Button text="Cancel" type="grey" action={itemCancel} id={"cancelItem"} />
-                    <Button text="Add item to order" type="green" action={itemSubmit} id={"submitItem"} />
+                    <Button text="Cancel" type="grey" action={itemCancel} />
+                    <Button text="Add item to order" type="green" action={itemSubmit} />
                 </div>
             </div>
         )
@@ -109,11 +109,11 @@ export default function Selection(props) {
     function setItemSide(e) {
         setNewItem({...newItem, ...{side: e.target.value}});
     }
-    function itemCancel(e){
+    function itemCancel(){
         setNewItem(false);
         setErrorMessage("");
     }
-    function itemSubmit(e) {
+    function itemSubmit() {
         if (newItem.itemId === "") {
             setErrorMessage(<Banner message={"Please choose an item"} type={"warning"} />);
             return;
@@ -176,12 +176,16 @@ export default function Selection(props) {
         submitOrder = (
             <div className="bar">
                 <h3 className="total-price">{totalCost}</h3>
-                <Button text={"Place order"} type={"green"} id={"place-order"} action={placeOrder} />
+                <Button text={"Place order"} type={"green"} action={placeOrder} />
             </div>
         )
     }
 
-    function placeOrder(id) {
+    function placeOrder() {
+        setFinaliseOrder("yes");
+    }
+
+    if (finaliseOrder === "yes") {
         let cartItems = [];
         let totalCost = 0;
         for (const item of cart) {
@@ -201,26 +205,15 @@ export default function Selection(props) {
         );
         submitOrder = (
             <Notice text={orderInfo} close={cancelConfirm} button1Action={confirmOrder}
-                    button1={{text: "Place order", type: "green", id: "place-order-2"}}
+                    button1={{text: "Place order", type: "green"}}
             />
-            /**
-             * title
-             * text
-             * close
-             *
-             * button1  {
-             *      text=""
-             *      type=grey/blue/green/red/yellow
-             *      action=func()
-             *      id=
-             *
-             *
-             *
-             * **/
         )
     }
 
-    function cancelConfirm(id) {
+    function cancelConfirm() {
+        setFinaliseOrder(false);
+    }
+    function confirmOrder() {
 
     }
 

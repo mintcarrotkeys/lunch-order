@@ -10,7 +10,7 @@ export default function Button(props) {
      * **/
 
     function handleClick() {
-        props.action(props.id);
+        props.action();
     }
 
     let boxStyle = {};

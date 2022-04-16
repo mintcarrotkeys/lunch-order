@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from "./Button";
 
 export default function Notice(props) {
     /**
@@ -48,7 +49,7 @@ export default function Notice(props) {
                     </div>
                 </div>
                 {props.text}
-
+                <Button text={props.button1.text} type={props.button1.type} action={props.button1Action} />
             </div>
         </div>
         </div>
