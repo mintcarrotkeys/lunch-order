@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {fetchData} from "../auth";
 import Banner from "./Banner";
+import Button from "./Button";
 
 
 export default function Selection(props) {
@@ -85,8 +86,8 @@ export default function Selection(props) {
                 />
                 {errorMessage}
                 <div className="item-buttons">
-                    <div className="button button-cancel" onClick={itemCancel}>Cancel</div>
-                    <div className="button button-submit" onClick={itemSubmit}>Add to order</div>
+                    <Button text="Cancel" type="grey" action={itemCancel} id={"cancelItem"} />
+                    <Button text="Add to order" type="green" action={itemSubmit} id={"submitItem"} />
                 </div>
             </div>
         )
