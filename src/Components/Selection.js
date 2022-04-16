@@ -43,7 +43,7 @@ export default function Selection(props) {
     if (newItem === false) {
         addItem = (
             <div className="ticket-row">
-                <div className="add-item" onClick={startAddItem}>
+                <div className="add-item-start" onClick={startAddItem}>
                     <svg width="50px" height="50px" fill="currentColor" viewBox="0 0 16 16">
                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                     </svg>
@@ -55,7 +55,7 @@ export default function Selection(props) {
         let sidesBox = "";
         let sides = [];
         if (newItem.itemId !== "" && menu[newItem.itemId].sides.length > 0) {
-            for (const side in menu[newItem.itemId].sides) {
+            for (const side of menu[newItem.itemId].sides) {
                 sides.push(<option value={side}>{side}</option>);
             }
             sidesBox = (
@@ -67,7 +67,7 @@ export default function Selection(props) {
             );
         }
         addItem = (
-            <div className="ticket-row">
+            <div className="ticket-row add-item-config">
                 <select name="item-name" id="item-name" onChange={setItemName} defaultValue={"choose item"}
                         className="dropdown__selector">
                     <option value={""}>choose item</option>
@@ -78,7 +78,7 @@ export default function Selection(props) {
                 </div>
                 {sidesBox}
                 <div className="item-notes">
-                    <input type="text" id="item-notes" name="item-notes" maxLength={200}
+                    <input type="text" id="item-notes" name="item-notes" className="input-text" maxLength={200}
                            placeholder="add special requirements here" spellCheck={true} autoCorrect={"on"}
                            onChange={setItemNotes}
                     />
@@ -94,6 +94,7 @@ export default function Selection(props) {
 
     function setItemName(e) {
         setNewItem({itemId: e.target.value, note: "", side: ""});
+        setErrorMessage("");
     }
     function setItemNotes(e) {
         setNewItem({...newItem, ...{note: e.target.value}});
@@ -118,6 +119,7 @@ export default function Selection(props) {
         if (valid) {
             setCart([...cart, newItem]);
             setNewItem(false);
+            setErrorMessage("");
         }
     }
 

@@ -8,7 +8,7 @@ body {
   margin: 0;
   font-family: "Noto Sans", Barlow, Roboto, -apple-system, BlinkMacSystemFont, Arial, "Segoe UI", "Ubuntu", sans-serif;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 13px;
 
   margin: 0;
   padding: 0;
@@ -45,12 +45,16 @@ h2 {
   font-size: 20px;
 }
 
+h4 {
+  font-size: 15px;
+}
+
 h6 {
   font-size: 13px;
 }
 
 .card {
-  padding: 10px 5px;
+  padding: 5px;
   background-color: white;
   border-radius: 5px;
   border: none;
@@ -77,6 +81,27 @@ h6 {
 
 .dropdown__selector {
   font: inherit;
+  background-color: white;
+  border: solid 2px #555;
+  border-radius: 10px;
+  text-align: center;
+  margin: 3px 5px;
+}
+
+.dropdown__selector:active {
+  border-color: #00a5cf;
+}
+
+.input-text {
+  font: inherit;
+  background-color: white;
+  border: solid 2px #555;
+  border-radius: 10px;
+  text-align: center;
+  margin: 3px 5px;
+}
+.input-text:active {
+  border-color: #00a5cf;
 }
 
 .currentPage {
@@ -122,7 +147,7 @@ h6 {
 
 }
 
-.add-item {
+.add-item-start {
   border: dashed 5px #00a5cf;
   border-radius: 10px;
   height: 100px;
@@ -133,4 +158,36 @@ h6 {
   color: #00a5cf;
 
   margin: 0 10px;
+}
+
+.add-item-config {
+  padding: 5px;
+  width: calc(100% - 10px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: stretch;
+}
+
+.item-name {
+  width: 300px;
+  flex: 2 1 300px;
+}
+.item-price {
+  height: fit-content;
+  margin: 5px;
+  flex: 1 1 55px;
+}
+
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  margin: 5px auto;
+  width: fit-content;
+  border-radius: 20px;
+}
+
+.banner__text {
+  margin: 0 5px;
 }
