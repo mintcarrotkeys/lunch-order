@@ -57,6 +57,10 @@ div {
   font-size: 15px;
 }
 
+p {
+  font-size: 13px;
+}
+
 .card {
   padding: 5px;
   background-color: white;
@@ -232,4 +236,36 @@ div {
 
 .banner__text {
   margin: 0 5px;
+}
+
+.cart-row {
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: center;
+}
+
+.cart-left {
+  flex: 2 1 300px;
+}
+
+.cart-name {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.cart-price {
+  flex: 0 0 fit-content;
+  min-width: 55px;
+}
+
+.cart-delete {
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+  background-color: #555555;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
 }
