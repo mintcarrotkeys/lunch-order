@@ -60,7 +60,7 @@ export default function Selection(props) {
                 sides.push(<option value={side}>{side}</option>);
             }
             sidesBox = (
-                <select name="item-sides" id="item-sides" onChange={setItemSide} defaultValue={"choose side"}
+                <select name="item-sides" id="item-sides" key={newItem.itemId} onChange={setItemSide} defaultValue={"choose side"}
                         className="dropdown__selector item-sides">
                     <option value={""}>choose side</option>
                     {sides}
@@ -70,7 +70,7 @@ export default function Selection(props) {
         addItem = (
             <div className="ticket-row add-item-config">
                 <div className="item-topBox">
-                <select name="item-name" id="item-name" onChange={setItemName} defaultValue={"choose item"}
+                <select name="item-name" id="item-name" key={newItem.itemId} onChange={setItemName} defaultValue={"choose item"}
                         className="dropdown__selector item-name">
                     <option value={""}>choose item</option>
                     {options}
@@ -80,7 +80,8 @@ export default function Selection(props) {
                 </div>
                 </div>
                 {sidesBox}
-                <input type="text" id="item-notes" name="item-notes" className="input-text item-notes" maxLength={200}
+                <input type="text" id="item-notes" name="item-notes" key={newItem.itemId}
+                       className="input-text item-notes" maxLength={200}
                        placeholder="add special requirements here" spellCheck={true} autoCorrect={"on"}
                        onChange={setItemNotes}
                 />
@@ -94,8 +95,11 @@ export default function Selection(props) {
     }
 
     function setItemName(e) {
-        setNewItem({itemId: e.target.value, note: "", side: ""});
+        if (e.target.value !== newItem.itemId) {
+            setNewItem({itemId: e.target.value, note: "", side: ""});
+        }
         setErrorMessage("");
+
     }
     function setItemNotes(e) {
         setNewItem({...newItem, ...{note: e.target.value}});

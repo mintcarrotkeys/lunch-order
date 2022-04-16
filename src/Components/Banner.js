@@ -23,7 +23,7 @@ export default function Banner(props) {
     const output = (
         <div className="banner" style={{color: textCol, backgroundColor: colour}}>
             {icon}
-            <div className="banner__text">{props.message}</div>
+            <p className="banner__text">{props.message}</p>
         </div>
     );
 
