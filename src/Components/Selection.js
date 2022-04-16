@@ -118,7 +118,7 @@ export default function Selection(props) {
             setErrorMessage(<Banner message={"Please choose an item"} type={"warning"} />);
             return;
         }
-        else if (menu[newItem.itemId].sides.length > 0 && newItem.side == "") {
+        else if (menu[newItem.itemId].sides.length > 0 && newItem.side === "") {
             setErrorMessage(<Banner message={"Please choose a side for this item"} type={"warning"} />);
             return;
         }
