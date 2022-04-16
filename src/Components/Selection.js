@@ -160,7 +160,7 @@ export default function Selection(props) {
     let output = (
         <div className="card">
             <h2>Add items</h2>
-            <h6>You have not placed an order yet</h6>
+            <p>You have not placed an order yet</p>
             <div className="ticket">
                 {cartDisplay}
                 {addItem}
