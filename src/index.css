@@ -219,7 +219,7 @@ p {
   border-radius: 10px;
   outline: solid 0;
 }
-.button:hover {
+.button:hover, .button:active {
   outline-width: 1px;
   border-color: white !important;
 }
@@ -257,16 +257,23 @@ p {
 .cart-price {
   flex: 0 0 fit-content;
   min-width: 55px;
+  margin-bottom: 10px;
 }
 
 .cart-delete {
-  width: 36px;
-  height: 36px;
   border-radius: 18px;
   background-color: #555555;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 10px;
+  margin: 0 5px;
+  height: 34px;
+  flex: 0 1 28px;
+  padding: 0 3px;
+  border: #555 solid 2px;
+}
+.cart-delete:hover, .cart-delete:active {
+  border-color: white;
+  outline: solid 1px #555555;
 }

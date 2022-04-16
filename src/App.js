@@ -27,17 +27,17 @@ function App() {
     let showPage = "";
     if (dataState === null) {
         showPage = (
-            <div className="card bar">Loading ...</div>
+            <div className="card"><h4>Loading ...</h4></div>
         );
     }
     else if (dataState === false) {
         showPage = (
-            <div className="card bar">Error - could not login, reload to try again.</div>
+            <div className="card"><p>Error - could not login, reload to try again.</p></div>
         );
     }
     else if (dataState === "redirect") {
         showPage = (
-            <div className="card bar">Redirecting to login ...</div>
+            <div className="card"><h4>Redirecting to login ...</h4></div>
         );
     }
     else if (page === null) {

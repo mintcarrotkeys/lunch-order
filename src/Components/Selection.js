@@ -120,7 +120,10 @@ export default function Selection(props) {
             setErrorMessage(<Banner message={"Please choose a side for this item"} type={"warning"} />);
             return;
         }
-        setCart([...cart, newItem]);
+        const formatNewItem = {...newItem};
+        //TODO
+        formatNewItem.note.replace("\n", "-");
+        setCart([...cart, formatNewItem]);
         setNewItem(false);
         setErrorMessage("");
     }
