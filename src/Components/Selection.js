@@ -70,7 +70,7 @@ export default function Selection(props) {
         addItem = (
             <div className="ticket-row add-item-config">
                 <div className="item-topBox">
-                <select name="item-name" id="item-name" key={newItem.itemId} onChange={setItemName} defaultValue={"choose item"}
+                <select name="item-name" id="item-name" key={newItem.itemId} onChange={setItemName} defaultValue={newItem.itemId}
                         className="dropdown__selector item-name">
                     <option value={""}>choose item</option>
                     {options}
