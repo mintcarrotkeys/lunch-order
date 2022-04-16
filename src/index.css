@@ -177,6 +177,7 @@ div {
 .item-name {
   width: 300px;
   flex: 2 1 300px;
+  min-width: 50%;
 }
 .item-price {
   height: fit-content;
