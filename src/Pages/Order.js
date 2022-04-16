@@ -24,6 +24,7 @@ export default function Order(props) {
         }
         else {
             getOrder(orderId);
+            setOrderId(orderId);
         }
     }
 
@@ -72,7 +73,6 @@ export default function Order(props) {
         setOrderState("loading");
         fetchData("myOrder", {orderId: name}).then(res => {
             setOrderState(res);
-            setOrderId(name);
         });
     }
 
