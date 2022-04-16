@@ -205,7 +205,7 @@ export default function Selection(props) {
         );
         submitOrder = (
             <Notice text={orderInfo} close={cancelConfirm} button1Action={confirmOrder}
-                    button1={{text: "Place order", type: "green"}}
+                    button1={{text: "Place order", type: "green"}} type={"grey"}
             />
         )
     }
@@ -214,7 +214,7 @@ export default function Selection(props) {
         setFinaliseOrder(false);
     }
     function confirmOrder() {
-
+        console.log(cart);
     }
 
     let output = (

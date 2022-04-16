@@ -10,11 +10,11 @@ import Selection from "../Components/Selection";
 export default function Order(props) {
 
     const [orderState, setOrderState] = useState(null);
-    const [selectOrder, setSelectOrder] = useState((<h4>Loading ...</h4>));
+    const [selectOrder, setSelectOrder] = useState(null);
     const [orderId, setOrderId] = useState(false);
 
     React.useEffect(() => {
-        getDates().then(res => setSelectOrder(res)).catch((e) => console.log(e));
+        getDates().catch((e) => console.log(e));
         }, []);
 
     function selectDate(e) {
@@ -30,31 +30,42 @@ export default function Order(props) {
     async function getDates() {
         let getList = await fetchData("listOrders");
         if (getList !== false) {
-            let orderList = [];
-            for (const key in getList) {
-                orderList.push({orderId: key, name: getList[key].name});
-            }
-            let options = [];
-            let i = 0;
-            while (i < orderList.length) {
-                options.push(<option value={orderList[i].orderId}>{orderList[i].name}</option>)
-                i++;
-            }
+            setSelectOrder(getList);
+        }
+        else {
+            setSelectOrder(false);
+        }
+    }
 
-            return (
-                <div className="bar">
+    let selectOrderBar = "";
+    if (selectOrder === null) {
+        selectOrderBar = (<h4>Loading ...</h4>);
+    }
+    else if (selectOrder === false) {
+        selectOrderBar = (<p>Error - couldn't fetch data</p>);
+    }
+    else {
+        let orderList = [];
+        for (const key in selectOrder) {
+            orderList.push({orderId: key, name: selectOrder[key].name});
+        }
+        let options = [];
+        let i = 0;
+        while (i < orderList.length) {
+            options.push(<option value={orderList[i].orderId}>{orderList[i].name}</option>)
+            i++;
+        }
+
+        selectOrderBar = (
+            <div className="bar">
                 <div className="dropdown_label">Select Date:</div>
                 <select name="dates" id="dates" onChange={selectDate} defaultValue={"choose"}
                         className="dropdown__selector">
                     <option value={""}>choose</option>
                     {options}
                 </select>
-                </div>
-            )
-        }
-        else {
-            return (<p>Error - couldn't fetch data</p>);
-        }
+            </div>
+        )
     }
 
     async function getOrder(name) {
@@ -90,7 +101,7 @@ export default function Order(props) {
         }
         else {
             orderDetails = (
-                <Selection orderId={orderId} />
+                <Selection orderId={selectOrder[orderId].name} />
             );
         }
     }
@@ -99,7 +110,7 @@ export default function Order(props) {
     return (
         <div className="page">
             <div className="card">
-                {selectOrder}
+                {selectOrderBar}
             </div>
             {orderDetails}
         </div>

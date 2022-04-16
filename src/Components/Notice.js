@@ -7,6 +7,7 @@ export default function Notice(props) {
      * text
      * close
      * id
+     * type
      *
      * button1  {
      *      text=""
@@ -20,7 +21,7 @@ export default function Notice(props) {
         col = "#198754";
     }
     else if (props.type === "grey") {
-        col = "#d0d0d0";
+        col = "#eeeeee";
     }
     else if (props.type === "red") {
         col = "#dc3545";
