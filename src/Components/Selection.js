@@ -61,7 +61,7 @@ export default function Selection(props) {
             }
             sidesBox = (
                 <select name="item-sides" id="item-sides" onChange={setItemSide} defaultValue={"choose side"}
-                        className="dropdown__selector">
+                        className="dropdown__selector item-sides">
                     <option value={""}>choose side</option>
                     {sides}
                 </select>
@@ -80,7 +80,7 @@ export default function Selection(props) {
                 </div>
                 </div>
                 {sidesBox}
-                <input type="text" id="item-notes" name="item-notes" className="input-text" maxLength={200}
+                <input type="text" id="item-notes" name="item-notes" className="input-text item-notes" maxLength={200}
                        placeholder="add special requirements here" spellCheck={true} autoCorrect={"on"}
                        onChange={setItemNotes}
                 />

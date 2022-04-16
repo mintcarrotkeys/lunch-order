@@ -90,7 +90,7 @@ div {
   border: solid 2px #555;
   border-radius: 10px;
   text-align: center;
-  margin: 3px 5px;
+  margin: 5px;
   font-size: 15px;
 }
 
@@ -104,7 +104,7 @@ div {
   border: solid 2px #555;
   border-radius: 10px;
   text-align: center;
-  margin: 3px 5px;
+  margin: 5px;
 }
 .input-text:focus {
   border-color: #00a5cf;
@@ -173,14 +173,12 @@ div {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
 }
 
 .item-topBox {
   display: flex;
   flex-direction: row;
   justify-content: stretch;
-  align-items: center;
 }
 
 .item-name {
@@ -196,6 +194,7 @@ div {
 }
 
 .item-sides {
+  padding: 3px;
 
 }
 
@@ -206,17 +205,18 @@ div {
 
 .item-buttons {
   display: flex;
+  justify-content: center;
 }
 .button {
   border: solid 2px;
   padding: 5px;
-  margin: 3px 10px;
+  margin: 5px 10px;
   border-radius: 10px;
   outline: solid 0;
 }
 .button:hover {
   outline-width: 1px;
-  border-color: white;
+  border-color: white !important;
 }
 
 .banner {

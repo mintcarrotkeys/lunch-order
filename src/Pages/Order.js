@@ -73,7 +73,7 @@ export default function Order(props) {
         orderDetails = (<div className="card">Error, couldn't fetch data, reload to try again.</div>);
     }
     else if (orderState === "loading") {
-        orderDetails = (<div className="card">Loading ...</div>);
+        orderDetails = (<div className="card"><p>Loading ...</p></div>);
     }
     else if (orderState.hasOwnProperty("haveOrdered")) {
         if (orderState.haveOrdered) {
