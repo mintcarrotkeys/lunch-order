@@ -94,7 +94,7 @@ div {
   font-size: 15px;
 }
 
-.dropdown__selector:active {
+.dropdown__selector:focus {
   border-color: #00a5cf;
 }
 
@@ -106,7 +106,7 @@ div {
   text-align: center;
   margin: 3px 5px;
 }
-.input-text:active {
+.input-text:focus {
   border-color: #00a5cf;
 }
 
@@ -170,8 +170,13 @@ div {
   padding: 5px;
   width: calc(100% - 10px);
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: stretch;
+}
+
+.item-topBox {
+  display: flex;
+  flex-direction: row;
 }
 
 .item-name {
@@ -183,6 +188,21 @@ div {
   height: fit-content;
   margin: 5px;
   flex: 1 1 55px;
+}
+
+.item-sides {
+
+}
+
+.item-notes {
+
+}
+
+.item-buttons {
+  display: flex;
+}
+.button {
+
 }
 
 .banner {

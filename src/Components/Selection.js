@@ -68,6 +68,7 @@ export default function Selection(props) {
         }
         addItem = (
             <div className="ticket-row add-item-config">
+                <div className="item-topBox">
                 <select name="item-name" id="item-name" onChange={setItemName} defaultValue={"choose item"}
                         className="dropdown__selector item-name">
                     <option value={""}>choose item</option>
@@ -76,13 +77,12 @@ export default function Selection(props) {
                 <div className="item-price">
                     {(newItem.itemId !== "" ? ("$" + menu[newItem.itemId].price.toFixed(2)) : " ")}
                 </div>
-                {sidesBox}
-                <div className="item-notes">
-                    <input type="text" id="item-notes" name="item-notes" className="input-text" maxLength={200}
-                           placeholder="add special requirements here" spellCheck={true} autoCorrect={"on"}
-                           onChange={setItemNotes}
-                    />
                 </div>
+                {sidesBox}
+                <input type="text" id="item-notes" name="item-notes" className="input-text" maxLength={200}
+                       placeholder="add special requirements here" spellCheck={true} autoCorrect={"on"}
+                       onChange={setItemNotes}
+                />
                 {errorMessage}
                 <div className="item-buttons">
                     <div className="button button-cancel" onClick={itemCancel}>Cancel</div>
