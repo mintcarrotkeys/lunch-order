@@ -219,7 +219,7 @@ export default function Selection(props) {
             </div>
         );
         submitOrder = (
-            <Notice text={text} close={null} noOffButton={true} type={"yellow"} />
+            <Notice text={text} close={null} noOffButton={true} button1={null} type={"yellow"} />
         );
     }
     else if (finaliseOrder === "done") {
@@ -231,7 +231,7 @@ export default function Selection(props) {
             </div>
         );
         submitOrder = (
-            <Notice text={successText} close={orderFinished} type={"green"} />
+            <Notice text={successText} close={orderFinished} button1={null} type={"green"} />
         );
     }
     else if (finaliseOrder === "fail") {
@@ -247,8 +247,13 @@ export default function Selection(props) {
             </div>
         );
         submitOrder = (
-            <Notice text={text} close={cancelConfirm} type={"red"} />
+            <Notice text={text} close={cancelConfirm}  type={"red"}
+                    button1={{text: "Reload page", type: "grey"}} button1Action={reloadPage} />
         );
+    }
+
+    function reloadPage() {
+        window.location.reload();
     }
 
     function orderFinished() {

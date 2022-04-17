@@ -306,7 +306,7 @@ p {
 }
 .notice-panel {
   max-width: 500px;
-  width: calc(70% - 60px);
+  width: calc(100% - 60px);
   margin: 30px;
   display: flex;
   flex-direction: column;
