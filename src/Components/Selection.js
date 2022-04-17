@@ -280,14 +280,25 @@ export default function Selection(props) {
         let transactId = randomString(16);
         let response = await fetchData("placeOrder",
             {"orderId": props.orderId, "items": cart, "transactId": transactId});
-        if (!response.ok) {
+        if (response.orderStatus === 'ok') {
+            return true;
+        }
+        else if (response.orderStatus === "alreadyOrdered" && response.transactId === transactId) {
+            return true;
+        }
+        else {
             response = await fetchData("placeOrder",
                 {"orderId": props.orderId, "items": cart, "transactId": transactId});
-            if (!response.ok) {
+            if (response.orderStatus === 'ok') {
+                return true;
+            }
+            else if (response.orderStatus === "alreadyOrdered" && response.transactId === transactId) {
+                return true;
+            }
+            else {
                 return false;
             }
         }
-        return true;
     }
 
     let output = (
