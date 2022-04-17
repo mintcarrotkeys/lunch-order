@@ -98,11 +98,11 @@ export default function Order(props) {
             const orderInfo = orderState.order;
             const time = new Date(orderInfo.timestamp);
             let formattedTime = (
-                time.getDate().toString() + "/"
-                + (1 + time.getMonth()).toString() + "/"
+                (time.getDate() < 10 ? "0" : "") + time.getDate().toString() + "/"
+                + (time.getMonth() < 9 ? "0" : "") + (1 + time.getMonth()).toString() + "/"
                 + time.getFullYear().toString() + " "
-                + time.getHours().toString() + ":"
-                + time.getMinutes().toString()
+                +  (time.getHours() < 10 ? "0" : "") + time.getHours().toString() + ":"
+                +  (time.getMinutes() < 10 ? "0" : "") + time.getMinutes().toString()
             );
 
             let changeDue = "";
