@@ -10,28 +10,10 @@ export default function Selection(props) {
 
     const [cart, setCart] = useState([]);
     const [newItem, setNewItem] = useState(false);
-    const [menu, setMenu] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
     const [finaliseOrder, setFinaliseOrder] = useState(false);
 
-    React.useEffect(() => {
-        fetchData("menu").then(res => setMenu(res)).catch((e) => console.log(e));
-    }, []);
-
-    if (menu === null) {
-        return (
-            <div className="card">
-                <h4>Loading ...</h4>
-            </div>
-        );
-    }
-    else if (menu === false) {
-        return (
-            <div className="card">
-                <p>Error - couldn't fetch menu. Please reload to try again.</p>
-            </div>
-        );
-    }
+    const menu = props.menu;
 
     function startAddItem() {
         setNewItem({itemId: "", note: "", side: ""});

@@ -71,9 +71,16 @@ export default function Order(props) {
 
     async function getOrder(name) {
         setOrderState("loading");
-        fetchData("myOrder", {orderId: name}).then(res => {
-            setOrderState(res);
-        });
+        const res = await fetchData("myOrder", {orderId: name});
+        if (res !== false) {
+            const menu = await fetchData("menu");
+            if (menu !== false) {
+                setOrderState({...res, 'menu': menu});
+                return true;
+            }
+        }
+        setOrderState(false);
+        return false;
     }
 
     let orderDetails = "";
@@ -116,6 +123,28 @@ export default function Order(props) {
                     </h4>
                 )
             }
+            let cartDisplay = [];
+            let i = 0;
+            for (const item of orderInfo.items) {
+                cartDisplay.push(
+                    <div className="ticket-row cart-row" key={i}>
+                        <div className="cart-left">
+                            <h4 className="cart-name">
+                                {orderState.menu[item.itemId].name}
+                            </h4>
+                            <p className="cart-notes">
+                                {item.side}
+                                {item.side !== "" && item.note !== "" ? ", " : ""}
+                                {item.note}
+                            </p>
+                        </div>
+                        <h4 className="cart-price">
+                            {"$" + item.price.toFixed(2)}
+                        </h4>
+                    </div>
+                )
+                i++;
+            }
 
             orderDetails = (
                 <div className="card">
@@ -126,6 +155,8 @@ export default function Order(props) {
                     <h4>Paid: <b>{"$" + orderInfo.paid.toFixed(2)}</b></h4>
                     {changeGiven}
                     {changeDue}
+                    <h4><b>Items</b></h4>
+                    {cartDisplay}
                 </div>
             );
         }
@@ -133,7 +164,7 @@ export default function Order(props) {
             console.log(selectOrder);
             console.log(orderId);
             orderDetails = (
-                <Selection orderName={selectOrder[orderId].name} orderId={orderId} />
+                <Selection orderName={selectOrder[orderId].name} orderId={orderId} menu={orderState.menu} />
             );
         }
     }
