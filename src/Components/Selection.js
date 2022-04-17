@@ -213,7 +213,7 @@ export default function Selection(props) {
     }
     else if (finaliseOrder === "sending") {
         let text = (
-            <div className="bar">
+            <div className="notice-body">
                 <h2>Processing order ...</h2>
                 <h2>Don't close this page.</h2>
             </div>
@@ -224,7 +224,7 @@ export default function Selection(props) {
     }
     else if (finaliseOrder === "done") {
         let successText = (
-            <div className="bar">
+            <div className="notice-body">
                 <h2>Success! <br /> Order Placed.</h2>
                 <p>The order may take up to a minute to appear in this app.</p>
                 <p>To change or delete your order, contact someone responsible for managing lunch orders.</p>
@@ -236,7 +236,7 @@ export default function Selection(props) {
     }
     else if (finaliseOrder === "fail") {
         let text = (
-            <div className="bar">
+            <div className="notice-body">
                 <h2>Error: the order could not be placed.</h2>
                 <h3>Reload page to try again.</h3>
                 <br />
