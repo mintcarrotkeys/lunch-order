@@ -129,9 +129,9 @@ export default function Order(props) {
                 cartDisplay.push(
                     <div className="ticket-row cart-row" key={i}>
                         <div className="cart-left">
-                            <h4 className="cart-name">
+                            <h5>
                                 {orderState.menu[item.itemId].name}
-                            </h4>
+                            </h5>
                             <p className="cart-notes">
                                 {item.side}
                                 {item.side !== "" && item.note !== "" ? ", " : ""}
@@ -155,7 +155,8 @@ export default function Order(props) {
                     <h4>Paid: <b>{"$" + orderInfo.paid.toFixed(2)}</b></h4>
                     {changeGiven}
                     {changeDue}
-                    <h4><b>Items</b></h4>
+                    <br />
+                    <h2>Items</h2>
                     {cartDisplay}
                 </div>
             );
