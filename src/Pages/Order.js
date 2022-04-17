@@ -158,6 +158,8 @@ export default function Order(props) {
                     <br />
                     <h2>Items</h2>
                     {cartDisplay}
+                    <br />
+                    <p>To change or cancel your order, contact the person managing lunch orders.</p>
                 </div>
             );
         }
