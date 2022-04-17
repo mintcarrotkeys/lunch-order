@@ -185,6 +185,7 @@ export default function Selection(props) {
     function placeOrder() {
         setFinaliseOrder("yes");
     }
+    console.log(finaliseOrder);
 
     if (finaliseOrder === "yes") {
         let cartItems = [];
@@ -217,7 +218,9 @@ export default function Selection(props) {
                 <h2>Don't close this page.</h2>
             </div>
         );
-        <Notice text={text} close={null} noOffButton={true} type={"yellow"} />
+        submitOrder = (
+            <Notice text={text} close={null} noOffButton={true} type={"yellow"} />
+        );
     }
     else if (finaliseOrder === "done") {
         let successText = (
@@ -226,8 +229,10 @@ export default function Selection(props) {
                 <p>The order may take up to a minute to appear in this app.</p>
                 <p>To change or delete your order, contact someone responsible for managing lunch orders.</p>
             </div>
-            );
-        <Notice text={successText} close={orderFinished} type={"green"} />
+        );
+        submitOrder = (
+            <Notice text={successText} close={orderFinished} type={"green"} />
+        );
     }
     else if (finaliseOrder === "fail") {
         let text = (
@@ -241,7 +246,9 @@ export default function Selection(props) {
                 <p>- Server error or overload.</p>
             </div>
         );
-        <Notice text={text} close={cancelConfirm} type={"red"} />
+        submitOrder = (
+            <Notice text={text} close={cancelConfirm} type={"red"} />
+        );
     }
 
     function orderFinished() {
@@ -253,6 +260,7 @@ export default function Selection(props) {
     }
     function confirmOrder() {
         console.log(cart);
+        setFinaliseOrder("sending");
         sendOrder().then(res => {
             if (res) {
                 setFinaliseOrder("done");
@@ -261,7 +269,6 @@ export default function Selection(props) {
                 setFinaliseOrder("fail");
             }
         }).catch(e => console.log(e));
-        setFinaliseOrder("sending");
     }
 
     async function sendOrder() {
