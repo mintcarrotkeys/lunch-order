@@ -88,14 +88,44 @@ export default function Order(props) {
     }
     else if (orderState.hasOwnProperty("haveOrdered")) {
         if (orderState.haveOrdered) {
+            const orderInfo = orderState.order;
+            const time = new Date(orderInfo.timestamp);
+            let formattedTime = (
+                time.getDate().toString() + "/"
+                + (1 + time.getMonth()).toString() + "/"
+                + time.getFullYear().toString() + " "
+                + time.getHours().toString() + ":"
+                + time.getMinutes().toString()
+            );
+
+            let changeDue = "";
+            let changeGiven = "";
+            if (orderInfo.paid >= orderInfo.price) {
+                changeGiven = (
+                    <h4>
+                        Change Given:
+                        <b>{"$" + orderInfo.change.toFixed(2)}</b>
+                    </h4>
+                );
+                changeDue = (
+                    <h4>
+                        Change Due:
+                        <b>
+                            {"$" + (orderInfo.paid - orderInfo.price - orderInfo.change).toFixed(2)}
+                        </b>
+                    </h4>
+                )
+            }
+
             orderDetails = (
                 <div className="card">
                     <h2>Your Order</h2>
-                    <p>You placed the order at: </p>
-                    <p>{orderState.order.time}</p>
-                    {/*{orderItems}*/}
-                    {/*TODO: here*/}
-                    <h3>Total Cost: </h3>
+                    <p>You placed the order on: </p>
+                    <h6>{formattedTime}</h6>
+                    <h4>Total Cost: <b>{"$" + orderInfo.price.toFixed(2)}</b></h4>
+                    <h4>Paid: <b>{"$" + orderInfo.paid.toFixed(2)}</b></h4>
+                    {changeGiven}
+                    {changeDue}
                 </div>
             );
         }

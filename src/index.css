@@ -67,6 +67,10 @@ p {
   font-size: 13px;
 }
 
+b {
+  font-weight: 500;
+}
+
 .card {
   padding: 5px;
   background-color: white;

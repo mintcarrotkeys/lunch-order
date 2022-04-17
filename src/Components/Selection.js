@@ -215,7 +215,7 @@ export default function Selection(props) {
         let text = (
             <div className="notice-body">
                 <h2>Processing order ...</h2>
-                <h2>Don't close this page.</h2>
+                <h3>Don't close this page.</h3>
             </div>
         );
         submitOrder = (
@@ -242,7 +242,7 @@ export default function Selection(props) {
                 <br />
                 <h6>This may have been caused by:</h6>
                 <p>- No internet connection.</p>
-                <p>- Expired login token - reload page to login again.</p>
+                <p>- Expired login token: reload page to login again.</p>
                 <p>- Server error or overload.</p>
             </div>
         );
