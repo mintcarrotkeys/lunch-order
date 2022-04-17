@@ -159,6 +159,10 @@ export async function fetchData(ask, params=null) {
     if (elosTokens === null) {
         return false;
     }
+    else if (elosTokens.validity < (Date.now() + 60*1000)) {
+
+        return "redirect";
+    }
 
     let token = elosTokens.token;
     let requestUrl = serverURL + "?ask=" + ask;
@@ -175,4 +179,15 @@ export async function fetchData(ask, params=null) {
     else {
         return res.json();
     }
+}
+
+export function randomString(length) {
+    let randomNumbers = new Uint32Array(length);
+    let output = "";
+    const allowedChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~";
+    crypto.getRandomValues(randomNumbers);
+    for (const i of randomNumbers) {
+        output += allowedChars.charAt((i % 66));
+    }
+    return output;
 }

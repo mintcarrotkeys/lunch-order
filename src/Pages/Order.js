@@ -103,7 +103,7 @@ export default function Order(props) {
             console.log(selectOrder);
             console.log(orderId);
             orderDetails = (
-                <Selection orderId={selectOrder[orderId].name} />
+                <Selection orderName={selectOrder[orderId].name} orderId={orderId} />
             );
         }
     }

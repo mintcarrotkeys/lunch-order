@@ -306,6 +306,7 @@ p {
 }
 .notice-panel {
   max-width: 500px;
+  width: calc(70% - 60px);
   margin: 30px;
   display: flex;
   flex-direction: column;
@@ -329,9 +330,13 @@ p {
   color: #222222;
   border-radius: 5px;
   border: solid 2px #222222;
+  outline: solid 0 transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .notice-close:hover, .notice-close:active {
-  border-color: white;
+  border-color: transparent !important;
   outline: solid 1px #222222;
 }
 .notice-body {

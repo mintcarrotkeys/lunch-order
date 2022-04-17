@@ -3,6 +3,7 @@ import {fetchData} from "../auth";
 import Banner from "./Banner";
 import Button from "./Button";
 import Notice from "./Notice";
+import {randomString} from "../auth";
 
 
 export default function Selection(props) {
@@ -43,7 +44,7 @@ export default function Selection(props) {
 
 
     let addItem = "";
-    if (newItem === false) {
+    if (newItem === false && cart.length < 50) {
         addItem = (
             <div className="ticket-row">
                 <div className="add-item-start" onClick={startAddItem}>
@@ -196,7 +197,7 @@ export default function Selection(props) {
             <div className="notice-body">
                 <h3 style={{marginBottom: "10px"}}>Confirm Order</h3>
                 <p>Order for:</p>
-                <h3>{props.orderId}</h3>
+                <h3>{props.orderName}</h3>
                 {cartItems}
                 <p>Total cost:</p>
                 <h3>{"$" + totalCost.toFixed(2)}</h3>
@@ -209,12 +210,72 @@ export default function Selection(props) {
             />
         )
     }
+    else if (finaliseOrder === "sending") {
+        let text = (
+            <div className="bar">
+                <h2>Processing order ...</h2>
+                <h2>Don't close this page.</h2>
+            </div>
+        );
+        <Notice text={text} close={null} noOffButton={true} type={"yellow"} />
+    }
+    else if (finaliseOrder === "done") {
+        let successText = (
+            <div className="bar">
+                <h2>Success! <br /> Order Placed.</h2>
+                <p>The order may take up to a minute to appear in this app.</p>
+                <p>To change or delete your order, contact someone responsible for managing lunch orders.</p>
+            </div>
+            );
+        <Notice text={successText} close={orderFinished} type={"green"} />
+    }
+    else if (finaliseOrder === "fail") {
+        let text = (
+            <div className="bar">
+                <h2>Error: the order could not be placed.</h2>
+                <h3>Reload page to try again.</h3>
+                <br />
+                <h6>This may have been caused by:</h6>
+                <p>- No internet connection.</p>
+                <p>- Expired login token - reload page to login again.</p>
+                <p>- Server error or overload.</p>
+            </div>
+        );
+        <Notice text={text} close={cancelConfirm} type={"red"} />
+    }
+
+    function orderFinished() {
+        window.location.reload();
+    }
 
     function cancelConfirm() {
         setFinaliseOrder(false);
     }
     function confirmOrder() {
         console.log(cart);
+        sendOrder().then(res => {
+            if (res) {
+                setFinaliseOrder("done");
+            }
+            else {
+                setFinaliseOrder("fail");
+            }
+        }).catch(e => console.log(e));
+        setFinaliseOrder("sending");
+    }
+
+    async function sendOrder() {
+        let transactId = randomString(16);
+        let response = await fetchData("placeOrder",
+            {"orderId": props.orderId, "items": cart, "transactId": transactId});
+        if (!response.ok) {
+            response = await fetchData("placeOrder",
+                {"orderId": props.orderId, "items": cart, "transactId": transactId});
+            if (!response.ok) {
+                return false;
+            }
+        }
+        return true;
     }
 
     let output = (
