@@ -47,7 +47,7 @@ export default function Order(props) {
     }
     else {
         let orderList = [];
-        for (const key of selectOrder) {
+        for (const key in selectOrder) {
             orderList.push({orderId: key, name: selectOrder[key].name});
         }
         let options = [];
@@ -125,7 +125,7 @@ export default function Order(props) {
             }
             let cartDisplay = [];
             let i = 0;
-            for (const item in orderInfo.items) {
+            for (const item of orderInfo.items) {
                 cartDisplay.push(
                     <div className="ticket-row cart-row" key={i}>
                         <div className="cart-left">

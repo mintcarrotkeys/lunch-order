@@ -38,7 +38,7 @@ export default function See(props) {
         let orderList = [];
         console.log(selectOrder)
 
-        for (const key of selectOrder) {
+        for (const key in selectOrder) {
             orderList.push({orderId: key, name: selectOrder[key].name});
         }
         let options = [];
