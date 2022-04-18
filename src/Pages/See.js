@@ -100,7 +100,7 @@ export default function See(props) {
         ];
 
         let orderList = [];
-        for (const key in orderState.orders) {
+        for (const key of orderState.orders) {
             let order = orderState.orders[key];
             orderList.push(
                 <OrderDisplay data={order} key={order.userId} updateVal={updateVal} menu={orderState.menu} />
@@ -151,7 +151,7 @@ export default function See(props) {
     }
 
     const output = (
-        <div style={{width: "100%"}}>
+        <div style={{width: '100%', display: 'flex', flexDirection: 'column'}}>
             <div className="card">
                 {selectOrderBar}
             </div>
