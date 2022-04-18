@@ -143,10 +143,9 @@ export default function See(props) {
         }
         fetchData(ask, {value: value, orderId: orderId, userId: userId}).then(res => {
             if (res) {
-                setOrderState({
-                    ...orderState,
-                    ...{order: {...orderState.order, userId: {...orderState.order[userId], [key]: value}}}
-                })
+                let data = {...orderState};
+                data.orders[userId][key] = value;
+                setOrderState(data);
             }
             else {
                 console.log("error with setting payment stuff.")
