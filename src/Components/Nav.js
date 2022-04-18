@@ -27,7 +27,7 @@ export default function Nav(props) {
 
     for (const i of allowed) {
         showOptions.push(
-            <div className={"nav-item" + (i.code===props.currentPage ? " currentPage" : "")}
+            <div className={"nav-item" + (i.code===props.currentPage ? " nav-current" : " nav-notCurrent")}
                  id={i.code}
                  key={i.code}
                  onClick={handleClick}

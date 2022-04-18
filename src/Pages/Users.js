@@ -31,6 +31,9 @@ export default function Users(props) {
         let users = [];
         for (const user in fetch) {
             let info = fetch.user;
+            console.log(user)
+            console.log(fetch);
+            console.log(info);
             users.push(
                 <div className="user-list-row">
                     <h5>{info.name}</h5>
