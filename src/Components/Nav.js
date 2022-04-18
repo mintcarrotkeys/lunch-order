@@ -4,28 +4,19 @@ import React, {useState} from 'react';
 
 export default function Nav(props) {
 
+    /***
+     * setPage=func()
+     * allowed={name: ,code:}
+     * currentPage
+     * **/
+
     let showOptions = [];
-    let allowed;
 
     function handleClick(e) {
         props.setPage(e.target.id);
     }
 
-    if (props.userScope === 'user') {
-        allowed = [{name:"Order Lunch", code:"order"}];
-    }
-    else if (props.userScope === "admin") {
-        allowed = [
-            {name:"Order Lunch", code:"order"},
-            {name:"Manage Users", code:"users"},
-            {name:"See Orders", code:"see"}
-        ];
-    }
-    else {
-        allowed = [];
-    }
-
-    for (const i of allowed) {
+    for (const i of props.allowed) {
         showOptions.push(
             <div className={"nav-item" + (i.code===props.currentPage ? " nav-current" : " nav-notCurrent")}
                  id={i.code}

@@ -56,13 +56,26 @@ function App() {
         showPage = <See />;
     }
 
+    let allowedPages = [];
+    let userScope = token.scope;
+    if (userScope === 'user') {
+        allowedPages = [{name:"Order Lunch", code:"order"}];
+    }
+    else if (userScope === "admin") {
+        allowedPages = [
+            {name:"Order Lunch", code:"order"},
+            {name:"Manage Users", code:"users"},
+            {name:"See Orders", code:"see"}
+        ];
+    }
+
     return (
         <div className="container">
             <div className="card title">
                 <h1>e Lunch Order System</h1>
                 <h2><span style={{fontWeight: 300}}>Welcome:</span> {userName}</h2>
             </div>
-            <Nav setPage={changePage} currentPage={page} userScope={(token!==null ? token.scope : null)} />
+            <Nav setPage={changePage} currentPage={page} allowed={allowedPages} />
             {showPage}
         </div>
     );
