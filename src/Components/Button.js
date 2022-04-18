@@ -5,7 +5,6 @@ export default function Button(props) {
      * text=""
      * type=grey/blue/green/red/yellow
      * action=func()
-     * id=
      *
      * **/
 

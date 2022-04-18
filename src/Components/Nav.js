@@ -15,7 +15,11 @@ export default function Nav(props) {
         allowed = [{name:"Order Lunch", code:"order"}];
     }
     else if (props.userScope === "admin") {
-        allowed = [];
+        allowed = [
+            {name:"Order Lunch", code:"order"},
+            {name:"Manage Users", code:"users"},
+            {name:"See Orders", code:"see"}
+        ];
     }
     else {
         allowed = [];

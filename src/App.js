@@ -3,6 +3,8 @@ import {passItem} from "./version";
 import {fetchData, login} from "./auth";
 import Nav from "./Components/Nav";
 import Order from "./Pages/Order";
+import Users from "./Pages/Users";
+import See from "./Pages/See";
 
 
 function App() {
@@ -46,6 +48,12 @@ function App() {
 
     if (page === "order") {
         showPage = <Order />;
+    }
+    else if (page === "users") {
+        showPage = <Users />;
+    }
+    else if (page === "see") {
+        showPage = <See />;
     }
 
     return (

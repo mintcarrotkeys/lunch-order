@@ -98,11 +98,11 @@ export default function Selection(props) {
     }
     function itemSubmit() {
         if (newItem.itemId === "") {
-            setErrorMessage(<Banner message={"Please choose an item"} type={"warning"} />);
+            setErrorMessage(<Banner message={"Please choose an item"} type={"red"} />);
             return;
         }
         else if (menu[newItem.itemId].sides.length > 0 && newItem.side === "") {
-            setErrorMessage(<Banner message={"Please choose a side for this item"} type={"warning"} />);
+            setErrorMessage(<Banner message={"Please choose a side for this item"} type={"red"} />);
             return;
         }
         let formatNewItem = {...newItem};
