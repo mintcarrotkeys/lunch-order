@@ -33,7 +33,7 @@ export default function Users(props) {
             let info = fetch[user];
             users.push(
                 <div className="user-list-row">
-                    <h5>{info.name}</h5>
+                    <h5 className="user-list-name">{info.name}</h5>
                     <Badge type={(info.scope==="admin" ? 'yellow' : 'grey')}
                            text={(info.scope==="admin" ? 'admin' : 'user')}
                     />

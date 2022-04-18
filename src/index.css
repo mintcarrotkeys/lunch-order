@@ -111,6 +111,7 @@ b {
   text-align: center;
   margin: 5px;
   font-size: 15px;
+  padding: 3px;
 }
 
 .dropdown__selector:focus {
@@ -124,6 +125,7 @@ b {
   border-radius: 10px;
   text-align: center;
   margin: 5px;
+  padding: 3px;
 }
 .input-text:focus {
   border-color: #00a5cf;
@@ -373,12 +375,12 @@ b {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 10px;
+  margin: 3px;
 }
 
 .badge-box {
   border: 0;
-  border-radius: 5px;
+  border-radius: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -399,4 +401,8 @@ b {
 
 .user-add-name {
   flex: 1 0 100px;
+}
+
+.user-list-name {
+  margin: 4px 5px 6px 5px;
 }
