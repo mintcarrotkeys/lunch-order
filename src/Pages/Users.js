@@ -29,13 +29,12 @@ export default function Users(props) {
     }
     else if (fetch) {
         let users = [];
-        for (const user in fetch) {
-            let info = fetch[user];
+        for (const user of fetch.users) {
             users.push(
-                <div className="user-list-row" id={info.name} key={info.name} >
-                    <h5 className="user-list-name">{info.name}</h5>
-                    <Badge type={(info.scope==="admin" ? 'yellow' : 'grey')}
-                           text={(info.scope==="admin" ? 'admin' : 'user')}
+                <div className="user-list-row" id={user.name} key={user.name} >
+                    <h5 className="user-list-name">{user.name}</h5>
+                    <Badge type={(user.scope==="admin" ? 'yellow' : 'grey')}
+                           text={(user.scope==="admin" ? 'admin' : 'user')}
                     />
                 </div>
             );
@@ -55,6 +54,7 @@ export default function Users(props) {
                                className="user-add-name input-text"
                                id="add user name"
                                name="add user name"
+                               placeholder="user name"
                                onChange={(e) => {
                                    setNewUser({...newUser, name: e.target.value})
                                }}
@@ -76,6 +76,7 @@ export default function Users(props) {
                            className="user-add-id input-text"
                            id="add user id"
                            name="add user id"
+                           placeholder="student id number"
                            onChange={(e) => {
                                setNewUser({...newUser, id: e.target.value})
                            }}
