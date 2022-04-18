@@ -253,6 +253,18 @@ b {
   border-color: white !important;
 }
 
+.button-thin {
+  border: solid 2px;
+  padding: 3px 5px;
+  margin: 0;
+  border-radius: 10px;
+  outline: solid 0;
+}
+.button-thin:hover, .button-thin:active {
+  outline-width: 1px;
+  border-color: white !important;
+}
+
 .banner {
   display: flex;
   justify-content: center;

@@ -115,7 +115,9 @@ export default function See(props) {
         if (page === "orders") {
             pageContent = (
                 <div className="stack">
-                    <h2 className="card orderDisplay-box">Users who placed orders</h2>
+                    <div className="card orderDisplay-box">
+                        <h2>Users who placed orders</h2>
+                    </div>
                     {orderList}
                 </div>
             );

@@ -54,7 +54,7 @@ export default function Users(props) {
                                className="user-add-name input-text"
                                id="add user name"
                                name="add user name"
-                               placeholder="user name"
+                               placeholder="username"
                                onChange={(e) => {
                                    setNewUser({...newUser, name: e.target.value})
                                }}
