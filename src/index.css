@@ -97,6 +97,13 @@ b {
   align-items: center;
 }
 
+.stack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .dropdown_label {
   margin-right: 20px;
   font-size: 15px;

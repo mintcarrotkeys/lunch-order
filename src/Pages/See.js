@@ -114,7 +114,7 @@ export default function See(props) {
         let pageContent = "";
         if (page === "orders") {
             pageContent = (
-                <div>
+                <div className="stack">
                     <h2>Users who placed orders</h2>
                     {orderList}
                 </div>
@@ -155,7 +155,7 @@ export default function See(props) {
     }
 
     const output = (
-        <div style={{width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <div className="stack">
             <div className="card">
                 {selectOrderBar}
             </div>
