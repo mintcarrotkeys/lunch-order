@@ -134,7 +134,7 @@ b {
   text-decoration: underline #00a5cf solid 3px;
 }
 .nav-notCurrent {
-  text-decoration: underline #555555 solid 3px;
+  text-decoration: underline #b0b0b0 solid 3px;
 }
 .nav-notCurrent:hover {
   text-decoration: underline #00a5cf solid 3px;
