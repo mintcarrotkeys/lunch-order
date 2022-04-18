@@ -140,7 +140,7 @@ export default function OrderDisplay(props) {
         }
     }
     function confirmChange(e) {
-        props.updateVal(data.userId, "changed", change);
+        props.updateVal(data.userId, "change", change);
     }
 
 

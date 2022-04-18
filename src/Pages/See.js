@@ -138,7 +138,7 @@ export default function See(props) {
         if (key === 'paid') {
             ask = "setPay"
         }
-        else if (key === 'changed') {
+        else if (key === 'change') {
             ask = "setChange"
         }
         fetchData(ask, {value: value, orderId: orderId, userId: userId}).then(res => {
