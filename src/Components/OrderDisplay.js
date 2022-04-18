@@ -99,7 +99,7 @@ export default function OrderDisplay(props) {
                     {tags}
                     {amount}
                 </div>
-                <div className="orderDisplay-pay top-border">
+                <div className="orderDisplay-cost top-border">
                     <div>Order Cost: {"$" + data.cost.toFixed(2)}</div>
                 </div>
                 <div className="orderDisplay-pay">
