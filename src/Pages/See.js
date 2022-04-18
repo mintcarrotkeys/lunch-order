@@ -122,7 +122,7 @@ export default function See(props) {
         }
 
         orderDetails = (
-            <div>
+            <div className="stack">
                 <Nav setPage={changePage} currentPage={page} allowed={allowedPages} />
                 {pageContent}
             </div>

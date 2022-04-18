@@ -63,8 +63,8 @@ export default function OrderDisplay(props) {
                 </div>
                 <div className="orderDisplay-pay">
                     <div>Paid: $</div>
-                    <input name="paid" id="paid" onClick={handlePay}
-                        type="number" step={"0.01"}
+                    <input name="paid" id="paid" onChange={handlePay}
+                        type="number" step={"0.01"} size={8}
                         className="input-text" defaultValue={paid}
                     />
                     {(paid===data.paid ? "" : <Button type={'green'} text={'paid'} action={confirmPay} />)}
