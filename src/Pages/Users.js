@@ -30,11 +30,12 @@ export default function Users(props) {
     else if (fetch) {
         let users = [];
         for (const user in fetch) {
+            let info = fetch.user;
             users.push(
                 <div className="user-list-row">
-                    <h5>{user.name}</h5>
-                    <Badge type={(user.scope==="admin" ? 'yellow' : 'grey')}
-                           text={(user.scope==="admin" ? 'admin' : 'user')}
+                    <h5>{info.name}</h5>
+                    <Badge type={(info.scope==="admin" ? 'yellow' : 'grey')}
+                           text={(info.scope==="admin" ? 'admin' : 'user')}
                     />
                 </div>
             );
@@ -42,21 +43,23 @@ export default function Users(props) {
         userList = (
             <div>
                 <div className="user-list">
+                    <h2>users</h2>
                     {users}
                 </div>
                 <div className="user-add-box">
+                    <h2>add user</h2>
                     <div className="user-add-top">
                         <input type="text"
                                maxLength={30}
                                minLength={1}
-                               className="user-add-name"
+                               className="user-add-name input-text"
                                id="add user name"
                                name="add user name"
                                onChange={(e) => {
                                    setNewUser({...newUser, name: e.target.value})
                                }}
                         />
-                        <select className="user-add-scope"
+                        <select className="user-add-scope dropdown__selector"
                                 onChange={(e) => {
                                     setNewUser({...newUser, scope: e.target.value})
                                 }}
@@ -70,7 +73,7 @@ export default function Users(props) {
                     <input type="text"
                            maxLength={30}
                            minLength={1}
-                           className="user-add-id"
+                           className="user-add-id input-text"
                            id="add user id"
                            name="add user id"
                            onChange={(e) => {

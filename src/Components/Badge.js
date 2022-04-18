@@ -37,6 +37,8 @@ export default function Badge(props) {
         }
     }
 
+    css.margin = "2px 5px 4px 5px";
+
     const output = (
         <div className="badge-box" style={css}>
             <h6>{props.text}</h6>
