@@ -26,8 +26,8 @@ export default function Badge(props) {
     }
     else if (type === 'blue') {
         css = {
-            backgroundColor: "#00a5cf",
-            color: "black"
+            backgroundColor: "#12699f",
+            color: "white"
         }
     }
     else if (type === 'red') {

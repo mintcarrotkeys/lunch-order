@@ -47,10 +47,10 @@ export default function Button(props) {
     }
     else if (props.type === "blue") {
         boxStyle = {
-            backgroundColor: "#00a5cf",
-            borderColor: "#00a5cf",
-            outlineColor: "#00a5cf",
-            color: "black"
+            backgroundColor: "#12699f",
+            borderColor: "#12699f",
+            outlineColor: "#12699f",
+            color: "white"
         }
     }
 

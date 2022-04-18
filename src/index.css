@@ -407,3 +407,17 @@ b {
 .user-list-name {
   margin: 2px 5px 5px 5px;
 }
+
+.orderDisplay-top {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  justify-content: left;
+  align-items: center;
+}
+.orderDisplay-pay {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}

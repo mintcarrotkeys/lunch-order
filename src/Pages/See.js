@@ -100,9 +100,10 @@ export default function See(props) {
         ];
 
         let orderList = [];
-        for (const order of orderState.orders) {
+        for (const key in orderState.orders) {
+            let order = orderState.orders[key];
             orderList.push(
-                <OrderDisplay data={order} key={order.userId} />
+                <OrderDisplay data={order} key={order.userId} updateVal={updateVal} menu={orderState.menu} />
             )
         }
 
@@ -128,12 +129,33 @@ export default function See(props) {
         setPage(selected)
     }
 
+    function updateVal(userId, key, value) {
+        let ask = "";
+        if (key === 'paid') {
+            ask = "setPay"
+        }
+        else if (key === 'changed') {
+            ask = "setChange"
+        }
+        fetchData(ask, {value: value, orderId: orderId, userId: userId}).then(res => {
+            if (res) {
+                setOrderState({
+                    ...orderState,
+                    ...{order: {...orderState.order, userId: {...orderState.order[userId], [key]: value}}}
+                })
+            }
+            else {
+                console.log("error with setting payment stuff.")
+            }
+        })
+    }
+
     const output = (
-        <div>
+        <div style={{width: "100%"}}>
             <div className="card">
                 {selectOrderBar}
-                {orderDetails}
             </div>
+            {orderDetails}
         </div>
     );
 

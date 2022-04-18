@@ -37,10 +37,10 @@ export default function Notice(props) {
         closeButton.outlineColor = "#fff";
     }
     else if (props.type === "blue") {
-        col = "#00a5cf";
-        closeButton.borderColor = "#222";
-        closeButton.color = "#222";
-        closeButton.outlineColor = "#222";
+        col = "#12699f";
+        closeButton.borderColor = "#fff";
+        closeButton.color = "#fff";
+        closeButton.outlineColor = "#fff";
     }
     else if (props.type === "yellow") {
         col = "#ffc107";
