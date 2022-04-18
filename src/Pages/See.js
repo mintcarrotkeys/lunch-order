@@ -36,7 +36,9 @@ export default function See(props) {
     }
     else {
         let orderList = [];
-        for (const key in selectOrder) {
+        console.log(selectOrder)
+
+        for (const key of selectOrder) {
             orderList.push({orderId: key, name: selectOrder[key].name});
         }
         let options = [];
@@ -151,7 +153,7 @@ export default function See(props) {
     }
 
     const output = (
-        <div style={{width: '100%', display: 'flex', flexDirection: 'column'}}>
+        <div style={{width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
             <div className="card">
                 {selectOrderBar}
             </div>
