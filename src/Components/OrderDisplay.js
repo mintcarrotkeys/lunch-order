@@ -44,7 +44,7 @@ export default function OrderDisplay(props) {
     let output = "";
     if (expand === false) {
         output = (
-            <div className="card">
+            <div className="card orderDisplay-box">
                 <div className="orderDisplay-top" onClick={handleClick}>
                     <h5>{data.name}</h5>
                     {tags}
@@ -55,7 +55,7 @@ export default function OrderDisplay(props) {
     }
     else {
         output = (
-            <div className="card" style={{margin: '5px', padding: '2px 5px'}}>
+            <div className="card orderDisplay-box" >
                 <div className="orderDisplay-top" onClick={handleClick}>
                     <h5>{data.name}</h5>
                     {tags}
