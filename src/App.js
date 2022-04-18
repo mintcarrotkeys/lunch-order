@@ -57,16 +57,18 @@ function App() {
     }
 
     let allowedPages = [];
-    let userScope = token.scope;
-    if (userScope === 'user') {
-        allowedPages = [{name:"Order Lunch", code:"order"}];
-    }
-    else if (userScope === "admin") {
-        allowedPages = [
-            {name:"Order Lunch", code:"order"},
-            {name:"Manage Users", code:"users"},
-            {name:"See Orders", code:"see"}
-        ];
+    if (token !== null) {
+        let userScope = token.scope;
+        if (userScope === 'user') {
+            allowedPages = [{name: "Order Lunch", code: "order"}];
+        }
+        else if (userScope === "admin") {
+            allowedPages = [
+                {name: "Order Lunch", code: "order"},
+                {name: "Manage Users", code: "users"},
+                {name: "See Orders", code: "see"}
+            ];
+        }
     }
 
     return (
