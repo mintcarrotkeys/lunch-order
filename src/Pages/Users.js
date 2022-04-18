@@ -90,7 +90,7 @@ export default function Users(props) {
     function addUser() {
         let input = newUser;
         if (input.id !== "" && input.name !== "" && input.scope !== '') {
-            setError(<Banner message={'Adding user ... '} type={'red'} />);
+            setError(<Banner message={'Adding user ... '} type={'yellow'} />);
             sendAddUser();
         }
         else {
