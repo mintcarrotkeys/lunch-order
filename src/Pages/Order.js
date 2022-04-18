@@ -53,7 +53,7 @@ export default function Order(props) {
         let options = [];
         let i = 0;
         while (i < orderList.length) {
-            options.push(<option value={orderList[i].orderId}>{orderList[i].name}</option>)
+            options.push(<option key={i} value={orderList[i].orderId}>{orderList[i].name}</option>)
             i++;
         }
 

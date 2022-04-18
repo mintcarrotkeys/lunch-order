@@ -32,7 +32,7 @@ export default function Users(props) {
         for (const user in fetch) {
             let info = fetch[user];
             users.push(
-                <div className="user-list-row">
+                <div className="user-list-row" id={info.name} key={info.name} >
                     <h5 className="user-list-name">{info.name}</h5>
                     <Badge type={(info.scope==="admin" ? 'yellow' : 'grey')}
                            text={(info.scope==="admin" ? 'admin' : 'user')}

@@ -41,7 +41,7 @@ export default function Badge(props) {
 
     const output = (
         <div className="badge-box" style={css}>
-            <p>{props.text}</p>
+            <p style={{margin: 0}}>{props.text}</p>
         </div>
 
 

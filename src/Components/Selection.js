@@ -21,7 +21,7 @@ export default function Selection(props) {
 
     let options = [];
     for (const key in menu) {
-        options.push(<option value={key}>{menu[key].name}</option>);
+        options.push(<option key={key} value={key}>{menu[key].name}</option>);
     }
 
 
@@ -42,7 +42,7 @@ export default function Selection(props) {
         let sides = [];
         if (newItem.itemId !== "" && menu[newItem.itemId].sides.length > 0) {
             for (const side of menu[newItem.itemId].sides) {
-                sides.push(<option value={side}>{side}</option>);
+                sides.push(<option key={side} value={side}>{side}</option>);
             }
             sidesBox = (
                 <select name="item-sides" id="item-sides" key={newItem.itemId} onChange={setItemSide} defaultValue={"choose side"}
@@ -172,9 +172,11 @@ export default function Selection(props) {
     if (finaliseOrder === "yes") {
         let cartItems = [];
         let totalCost = 0;
+        let i = 0;
         for (const item of cart) {
-            cartItems.push(<h6>{menu[item.itemId].name}</h6>);
+            cartItems.push(<h6 key={i}>{menu[item.itemId].name}</h6>);
             totalCost += menu[item.itemId].price;
+            i++;
         }
         let orderInfo = (
             <div className="notice-body">
