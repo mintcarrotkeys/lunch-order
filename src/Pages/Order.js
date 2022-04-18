@@ -110,14 +110,12 @@ export default function Order(props) {
             if (orderInfo.paid >= orderInfo.cost) {
                 changeGiven = (
                     <h4>
-                        Change Given:
-                        <b>{"$" + orderInfo.change.toFixed(2)}</b>
+                        Change Given: <b>{"$" + orderInfo.change.toFixed(2)}</b>
                     </h4>
                 );
                 changeDue = (
                     <h4>
-                        Change Due:
-                        <b>
+                        Change Due: <b>
                             {"$" + (orderInfo.paid - orderInfo.cost - orderInfo.change).toFixed(2)}
                         </b>
                     </h4>

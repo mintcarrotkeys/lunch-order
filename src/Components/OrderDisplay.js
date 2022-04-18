@@ -50,7 +50,7 @@ export default function OrderDisplay(props) {
             <Badge type={'blue'} text={'change'} />
         );
         amount = (
-            <h5>{"$" + (data.paid - data.cost).toFixed(2)}</h5>
+            <h5>{"$" + (data.paid - data.cost - data.change).toFixed(2)}</h5>
         )
     }
 
@@ -100,7 +100,7 @@ export default function OrderDisplay(props) {
                     {amount}
                 </div>
                 <div className="orderDisplay-pay top-border">
-                    <h6>Order Cost: {data.cost}</h6>
+                    <div>Order Cost: {"$" + data.cost.toFixed(2)}</div>
                 </div>
                 <div className="orderDisplay-pay">
                     <div>Paid: $</div>
