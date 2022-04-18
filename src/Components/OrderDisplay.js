@@ -99,6 +99,9 @@ export default function OrderDisplay(props) {
                     {tags}
                     {amount}
                 </div>
+                <div className="orderDisplay-pay top-border">
+                    <h6>Order Cost: {data.cost}</h6>
+                </div>
                 <div className="orderDisplay-pay">
                     <div>Paid: $</div>
                     <input name="paid" id="paid" onChange={handlePay}
@@ -115,7 +118,7 @@ export default function OrderDisplay(props) {
                     />
                     {(change===data.change ? "" : <Button type={'blue'} text={'changed'} action={confirmChange} />)}
                 </div>
-                <div className="orderDisplay-items">
+                <div className="orderDisplay-items top-border">
                     {cart}
                 </div>
             </div>

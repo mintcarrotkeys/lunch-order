@@ -428,18 +428,22 @@ b {
   justify-content: flex-start;
   align-items: center;
   padding: 0px 10px;
+}
+
+.top-border {
   border-top: solid 1px #d0d0d0;
 }
 
 .card.orderDisplay-box {
-  margin: 5px 10px;
+  margin: 3px 10px;
   padding: 0px;
 }
 
 .orderDisplay-pay-input {
   flex: 1 1 100px;
+  width: 100px;
 }
 
 .orderDisplay-items {
-  border-top: solid 1px #d0d0d0;
+
 }
