@@ -22,7 +22,7 @@ body {
   color: black;
   width: calc(100% - 10px);
   min-height: 100vh;
-  padding: 5px;
+  padding: 5px 5px 65px 5px;
 
   display: flex;
   flex-direction: column;

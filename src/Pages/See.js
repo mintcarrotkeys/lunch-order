@@ -145,8 +145,8 @@ export default function See(props) {
                     }
                     else {
                         itemTree[uniqueTag] = {
-                            orders: [user], id: item.itemId, side: item.side,
-                            note: item.note, cost: menu[item.itemId].cost, name: menu[item.id].name };
+                            orders: [user], itemId: item.itemId, side: item.side,
+                            note: item.note, cost: menu[item.itemId].cost, name: menu[item.itemId].name };
                     }
                     itemCount += 1;
                     if (menu[item.itemId].combo) {
