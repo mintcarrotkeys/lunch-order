@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Badge from "./Badge";
-import Button from "./Button";
+import ThinButton from "./ThinButton";
 
 
 
@@ -54,6 +54,14 @@ export default function OrderDisplay(props) {
         )
     }
 
+    const time = new Date(data.timestamp);
+    let formattedTime = (
+        (time.getDate() < 10 ? "0" : "") + time.getDate().toString() + "/"
+        + (time.getMonth() < 9 ? "0" : "") + (1 + time.getMonth()).toString() + "/"
+        + time.getFullYear().toString() + " "
+        +  (time.getHours() < 10 ? "0" : "") + time.getHours().toString() + ":"
+        +  (time.getMinutes() < 10 ? "0" : "") + time.getMinutes().toString()
+    );
 
     let output = "";
     if (expand === false) {
@@ -72,7 +80,7 @@ export default function OrderDisplay(props) {
         let i = 0;
         for (const item of data.items) {
             cart.push(
-                <div className="cart-row" key={i}>
+                <div className="cart-row orderDisplay-item" key={i}>
                     <div className="cart-left">
                         <h6>
                             {props.menu[item.itemId].name}
@@ -108,7 +116,7 @@ export default function OrderDisplay(props) {
                         type="number" step={"0.01"}
                         className="input-text orderDisplay-pay-input" defaultValue={paid}
                     />
-                    {(paid===data.paid ? "" : <Button type={'green'} text={'paid'} action={confirmPay} />)}
+                    {(paid===data.paid ? "" : <ThinButton type={'green'} text={'paid'} action={confirmPay} />)}
                 </div>
                 <div className="orderDisplay-pay">
                     <div>Change given: $</div>
@@ -116,10 +124,13 @@ export default function OrderDisplay(props) {
                            type="number" step={"0.01"}
                            className="input-text orderDisplay-pay-input" defaultValue={change}
                     />
-                    {(change===data.change ? "" : <Button type={'blue'} text={'changed'} action={confirmChange} />)}
+                    {(change===data.change ? "" : <ThinButton type={'blue'} text={'changed'} action={confirmChange} />)}
                 </div>
-                <div className="orderDisplay-items top-border">
+                <div className="top-border">
                     {cart}
+                </div>
+                <div className="top-border">
+                    <p>Order placed: {formattedTime}</p>
                 </div>
             </div>
         )

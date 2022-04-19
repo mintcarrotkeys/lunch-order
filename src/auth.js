@@ -160,8 +160,7 @@ export async function fetchData(ask, params=null) {
         return false;
     }
     else if (elosTokens.validity < (Date.now() + 60*1000)) {
-
-        return "redirect";
+        requestCode().then(() => {return false}).catch(e => console.log(e));
     }
 
     let token = elosTokens.token;

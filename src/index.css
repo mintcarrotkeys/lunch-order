@@ -45,8 +45,7 @@ h2 {
 }
 
 h3 {
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 18px;
 }
 
 h4 {
@@ -298,7 +297,7 @@ b {
 .cart-price {
   flex: 0 0 fit-content;
   min-width: 55px;
-  margin-bottom: 8px;
+  text-align: right;
 }
 
 .cart-delete {
@@ -446,9 +445,8 @@ b {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  padding: 0px 10px;
-  min-height: 45px;
-
+  padding: 0;
+  margin: 5px 10px;
 }
 
 .top-border {
@@ -461,10 +459,24 @@ b {
 }
 
 .orderDisplay-pay-input {
-  flex: 1 1 100px;
+  flex: 0 1 100px;
   width: 100px;
+  margin: 0px 5px;
 }
 
-.orderDisplay-items {
+.orderDisplay-item {
+  margin: 0 10px;
+}
 
+.numberBox {
+  background-color: #eeeeee;
+  font-size: 15px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  padding: 0;
+  margin: 0 5px;
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 240 240" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
-    <g transform="matrix(6.12323e-17,1,-1,6.12323e-17,240,-2.93915e-15)">
-        <path d="M240,48C240,21.508 218.492,0 192,0L48,0C21.508,0 0,21.508 0,48L0,192C0,218.492 21.508,240 48,240L192,240C218.492,240 240,218.492 240,192L240,48Z" style="fill:rgb(19,83,108);"/>
+    <g transform="matrix(6.12323e-17,-1,1,6.12323e-17,0,240)">
+        <path d="M240,48C240,21.508 218.492,0 192,0L48,0C21.508,0 0,21.508 0,48L0,192C0,218.492 21.508,240 48,240L192,240C218.492,240 240,218.492 240,192L240,48Z" style="fill:url(#_Linear1);"/>
     </g>
     <g transform="matrix(1.16667,0,0,1.16667,-20,-22.5)">
         <g transform="matrix(1.8,0,0,0.625,-42,38.75)">
@@ -12,17 +12,17 @@
             <rect x="60" y="90" width="10" height="60" style="fill:white;stroke:white;stroke-width:2.26px;"/>
         </g>
         <g>
-            <g transform="matrix(0.5,0,0,1,50,0)">
-                <rect x="60" y="90" width="10" height="60" style="fill:rgb(146,199,72);stroke:rgb(146,199,72);stroke-width:4.52px;"/>
+            <g transform="matrix(0.500001,0,0,1,50.0001,2.84217e-14)">
+                <rect x="60" y="90" width="10" height="60" style="fill:rgb(151,203,77);stroke:rgb(151,203,77);stroke-width:4.52px;"/>
             </g>
-            <g transform="matrix(0.5,0,0,1,75,0)">
-                <rect x="60" y="90" width="10" height="60" style="fill:rgb(104,186,190);stroke:rgb(104,186,190);stroke-width:4.52px;"/>
+            <g transform="matrix(0.500001,0,0,1,75.0002,2.84217e-14)">
+                <rect x="60" y="90" width="10" height="60" style="fill:rgb(87,187,193);stroke:rgb(87,187,193);stroke-width:4.52px;"/>
             </g>
-            <g transform="matrix(0.5,0,0,1,100,0)">
-                <rect x="60" y="90" width="10" height="60" style="fill:rgb(239,201,79);stroke:rgb(239,201,79);stroke-width:4.52px;"/>
+            <g transform="matrix(0.500001,0,0,1,100,2.84217e-14)">
+                <rect x="60" y="90" width="10" height="60" style="fill:rgb(244,195,37);stroke:rgb(244,195,37);stroke-width:4.52px;"/>
             </g>
-            <g transform="matrix(0.5,0,0,1,125,0)">
-                <rect x="60" y="90" width="10" height="60" style="fill:rgb(238,170,183);stroke:rgb(238,170,183);stroke-width:4.52px;"/>
+            <g transform="matrix(0.500001,0,0,1,125,2.84217e-14)">
+                <rect x="60" y="90" width="10" height="60" style="fill:rgb(240,168,182);stroke:rgb(240,168,182);stroke-width:4.52px;"/>
             </g>
         </g>
         <g transform="matrix(2,0,0,1,60,0)">
@@ -32,4 +32,7 @@
             <rect x="30" y="160" width="180" height="10" style="fill:white;stroke:white;stroke-width:4.52px;"/>
         </g>
     </g>
+    <defs>
+        <linearGradient id="_Linear1" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(240,0,0,240,0,120)"><stop offset="0" style="stop-color:rgb(26,100,144);stop-opacity:1"/><stop offset="1" style="stop-color:rgb(0,163,204);stop-opacity:1"/></linearGradient>
+    </defs>
 </svg>

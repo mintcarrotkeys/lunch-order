@@ -158,7 +158,7 @@ export default function Selection(props) {
         totalCost = totalCost.toFixed(2);
         submitOrder = (
             <div className="bar">
-                <h3 className="total-price">{"$" + totalCost}</h3>
+                <h2 className="total-price"><b>{"$" + totalCost}</b></h2>
                 <Button text={"Place order"} type={"green"} action={placeOrder} />
             </div>
         )
@@ -180,12 +180,12 @@ export default function Selection(props) {
         }
         let orderInfo = (
             <div className="notice-body">
-                <h3 style={{marginBottom: "10px"}}>Confirm Order</h3>
+                <h2 style={{marginBottom: "10px"}}><b>Confirm Order</b></h2>
                 <p>Order for:</p>
-                <h3>{props.orderName}</h3>
+                <h2><b>{props.orderName}</b></h2>
                 {cartItems}
                 <p>Total cost:</p>
-                <h3>{"$" + totalCost.toFixed(2)}</h3>
+                <h2><b>{"$" + totalCost.toFixed(2)}</b></h2>
                 <p>{cart.length.toString() + " " + (cartItems.length === 1 ? "item" : "items")}</p>
             </div>
         );
@@ -199,7 +199,7 @@ export default function Selection(props) {
         let text = (
             <div className="notice-body">
                 <h2>Processing order ...</h2>
-                <h3>Don't close this page.</h3>
+                <h2><b>Don't close this page.</b></h2>
             </div>
         );
         submitOrder = (
@@ -222,7 +222,7 @@ export default function Selection(props) {
         let text = (
             <div className="notice-body">
                 <h2>Error: the order could not be placed.</h2>
-                <h3>Reload page to try again.</h3>
+                <h2><b>Reload page to try again.</b></h2>
                 <br />
                 <h6>This may have been caused by:</h6>
                 <p>- No internet connection.</p>

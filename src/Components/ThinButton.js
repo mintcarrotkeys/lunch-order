@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Button(props) {
+export default function ThinButton(props) {
     /***
      * text=""
      * type=grey/blue/green/red/yellow

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {fetchData} from "../auth";
 import Nav from "../Components/Nav";
 import OrderDisplay from "../Components/OrderDisplay";
+import ItemDisplay from "../Components/ItemDisplay";
 
 
 
@@ -101,24 +102,84 @@ export default function See(props) {
         ];
 
         let orderList = [];
-        console.log(orderState.orders)
-        console.log(orderState)
         for (const key in orderState.orders) {
-            console.log(key);
             let order = orderState.orders[key];
             orderList.push(
                 <OrderDisplay data={order} key={order.userId} updateVal={updateVal} menu={orderState.menu} />
             )
         }
 
+        let noOrder = [];
+        for (const user of orderState.noOrder) {
+            noOrder.push(user.name);
+        }
+
         let pageContent = "";
         if (page === "orders") {
             pageContent = (
                 <div className="stack">
-                    <div className="card orderDisplay-box">
-                        <h2>Users who placed orders</h2>
+                    <div className="card" style={{margin: "10px 10px 3px 10px", padding: "0px"}}>
+                        <h3>Users who placed orders</h3>
                     </div>
                     {orderList}
+                    <div className="card" style={{margin: "10px 10px 3px 10px", padding: "0px"}}>
+                        <h3>Users who did not place an order</h3>
+                        <h4>{noOrder.join(', ')}</h4>
+                    </div>
+                </div>
+            );
+        }
+        else if (page === "items") {
+            let itemCount = 0;
+            let totalCost = 0;
+            let comboCount = 0;
+            let menu = orderState.menu;
+            let itemTree = {};
+            for (const key in orderState.orders) {
+                let order = orderState.orders[key];
+                let user = order.name;
+                for (const item of order.items) {
+                    let uniqueTag = item.itemId + ":" + item.side + ":" + item.note;
+                    if (itemTree.hasOwnProperty(uniqueTag)) {
+                        itemTree[uniqueTag].orders.push(user);
+                    }
+                    else {
+                        itemTree[uniqueTag] = {
+                            orders: [user], id: item.itemId, side: item.side,
+                            note: item.note, cost: menu[item.itemId].cost, name: menu[item.id].name };
+                    }
+                    itemCount += 1;
+                    if (menu[item.itemId].combo) {
+                        comboCount += 1;
+                    }
+                    totalCost += menu[item.itemId].cost;
+                }
+            }
+            let itemList = [];
+            for (const key in itemTree) {
+                let item = itemTree[key];
+                itemList.push(
+                    <ItemDisplay data={item} />
+                )
+            }
+
+            pageContent = (
+                <div className="stack">
+                    <div className="card">
+                        <h3>
+                            number of items:
+                            <span style={{fontWeight: 500, fontSize: "20px"}}>{itemCount}</span>
+                        </h3>
+                        <h3>
+                            Pay store:
+                            <span style={{fontWeight: 500, fontSize: "20px"}}>{totalCost}</span>
+                        </h3>
+                        <h3>
+                            No. combos:
+                            <span style={{fontWeight: 500, fontSize: "20px"}}>{comboCount}</span>
+                        </h3>
+                    </div>
+                    {itemList}
                 </div>
             );
         }
