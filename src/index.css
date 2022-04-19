@@ -470,7 +470,7 @@ b {
 
 .numberBox {
   background-color: #eeeeee;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 500;
   display: flex;
   flex-direction: row;
@@ -479,4 +479,6 @@ b {
   border-radius: 5px;
   padding: 0;
   margin: 0 5px;
+  width: 30px;
+  height: 30px;
 }

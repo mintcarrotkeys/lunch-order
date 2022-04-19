@@ -38,14 +38,15 @@ export default function ItemDisplay(props) {
     else {
         output = (
             <div className="card orderDisplay-box">
-                <div className="numberBox">{item.orders.length}</div>
-                <h5>{item.name}</h5>
-                <h4 className="cart-notes">
-                    {item.side}
-                    {item.side !== "" && item.note !== "" ? ", " : ""}
-                    {item.note}
-                </h4>
-                <h4>{"$" + item.cost.toFixed(2)}</h4>
+                <div className="orderDisplay-top" onClick={handleClick}>
+                    <div className="numberBox">{item.orders.length}</div>
+                    <h5>{item.name}</h5>
+                    <h4 className="cart-notes">
+                        {item.side}
+                        {item.side !== "" && item.note !== "" ? ", " : ""}
+                        {item.note}
+                    </h4>
+                </div>
             </div>
         );
     }
