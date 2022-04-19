@@ -478,7 +478,7 @@ b {
   align-items: center;
   border-radius: 5px;
   padding: 0;
-  margin: 0 5px;
-  width: 30px;
-  height: 30px;
+  margin: 0;
+  width: 25px;
+  height: 25px;
 }

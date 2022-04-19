@@ -26,11 +26,15 @@ export default function ItemDisplay(props) {
                         {item.note}
                     </h4>
                 </div>
-                <div className="orderDisplay-pay">
-                    <h4>{"Store price: $" + item.cost.toFixed(2)}</h4>
+                <div className="top-border">
+                    <div className="orderDisplay-item">
+                        <h4>{"Store price: $" + item.cost.toFixed(2)}</h4>
+                    </div>
                 </div>
-                <div className="top-border orderDisplay-item">
-                    {item.orders.join(", ")}
+                <div className="top-border">
+                    <div className="orderDisplay-item">
+                        {item.orders.join(", ")}
+                    </div>
                 </div>
             </div>
         );

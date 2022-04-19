@@ -168,15 +168,15 @@ export default function See(props) {
                     <div className="card">
                         <h3>
                             number of items:
-                            <span style={{fontWeight: 500, fontSize: "20px"}}>{itemCount}</span>
+                            <span style={{fontWeight: 500, fontSize: "20px"}}>{" " + itemCount}</span>
                         </h3>
                         <h3>
                             Pay store:
-                            <span style={{fontWeight: 500, fontSize: "20px"}}>{totalCost}</span>
+                            <span style={{fontWeight: 500, fontSize: "20px"}}>{" $" + totalCost.toFixed(2)}</span>
                         </h3>
                         <h3>
-                            No. combos:
-                            <span style={{fontWeight: 500, fontSize: "20px"}}>{comboCount}</span>
+                            number of combos:
+                            <span style={{fontWeight: 500, fontSize: "20px"}}>{" " + comboCount}</span>
                         </h3>
                     </div>
                     {itemList}
