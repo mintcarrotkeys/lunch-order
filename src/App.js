@@ -74,7 +74,10 @@ function App() {
             showPage = <See/>;
         }
         pageBox = (
-            <Nav setPage={changePage} allowed={allowedPages} currentPage={page} />
+            <div className="stack">
+                <Nav setPage={changePage} allowed={allowedPages} currentPage={page} />
+                {showPage}
+            </div>
         )
     }
 
