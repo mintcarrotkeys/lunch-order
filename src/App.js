@@ -64,7 +64,7 @@ function App() {
         let showPage = "";
         if (page === "order") {
             showPage = (
-                <Order/>
+                <Order admin={false} />
             );
         }
         else if (page === "users") {

@@ -5,6 +5,7 @@ export default function ThinButton(props) {
      * text=""
      * type=grey/blue/green/red/yellow
      * action=func()
+     * visible
      *
      * **/
 
@@ -54,8 +55,13 @@ export default function ThinButton(props) {
         }
     }
 
+    let buttonStyle = {
+        ...boxStyle,
+        visibility: (props.visible ? 'visible' : 'hidden')
+    }
+
     const output = (
-        <div className="button-thin" onClick={handleClick} style={boxStyle}>
+        <div className="button-thin grid-item" onClick={handleClick} style={buttonStyle}>
             {props.text}
         </div>
     )

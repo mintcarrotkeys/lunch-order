@@ -12,6 +12,7 @@ export default function Order(props) {
     const [orderState, setOrderState] = useState(null);
     const [selectOrder, setSelectOrder] = useState(null);
     const [orderId, setOrderId] = useState(false);
+    const [adminOrderUserId, setAdminOrderUserId] = useState(false);
 
     React.useEffect(() => {
         getDates().catch((e) => console.log(e));
@@ -71,12 +72,25 @@ export default function Order(props) {
 
     async function getOrder(name) {
         setOrderState("loading");
-        const res = await fetchData("myOrder", {orderId: name});
-        if (res !== false) {
-            const menu = await fetchData("menu");
-            if (menu !== false) {
-                setOrderState({...res, 'menu': menu});
-                return true;
+        if (props.admin === false) {
+            const res = await fetchData("myOrder", {orderId: name});
+            if (res !== false) {
+                const menu = await fetchData("menu");
+                if (menu !== false) {
+                    setOrderState({...res, 'menu': menu});
+                    return true;
+                }
+            }
+        }
+        else {
+            const res = await fetchData("seeAdminOrder", {orderId: name, userId: props.userId});
+            if (res !== false) {
+                const menu = await fetchData("menu");
+                if (menu !== false) {
+                    setAdminOrderUserId(props.userId);
+                    setOrderState({...res, 'menu': menu});
+                    return true;
+                }
             }
         }
         setOrderState(false);
@@ -165,7 +179,9 @@ export default function Order(props) {
             console.log(selectOrder);
             console.log(orderId);
             orderDetails = (
-                <Selection orderName={selectOrder[orderId].name} orderId={orderId} menu={orderState.menu} />
+                <Selection orderName={selectOrder[orderId].name} orderId={orderId}
+                           menu={orderState.menu} admin={props.admin} userId={adminOrderUserId}
+                />
             );
         }
     }

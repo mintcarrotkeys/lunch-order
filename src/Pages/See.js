@@ -3,6 +3,7 @@ import {fetchData} from "../auth";
 import Nav from "../Components/Nav";
 import OrderDisplay from "../Components/OrderDisplay";
 import ItemDisplay from "../Components/ItemDisplay";
+import Order from "./Order";
 
 
 
@@ -12,6 +13,7 @@ export default function See(props) {
     const [selectOrder, setSelectOrder] = useState(null);
     const [orderId, setOrderId] = useState(false);
     const [page, setPage] = useState(null);
+    const [addOrderUser, setAddOrderUser] = useState(null);
 
 
     React.useEffect(() => {
@@ -126,6 +128,7 @@ export default function See(props) {
                     {orderList}
                     <div className="card" style={{margin: "10px 10px 3px 10px", padding: "0px"}}>
                         <h3>Users who did not place an order</h3>
+                        <p>Confirm with these users to check if they wanted to place a lunch order.</p>
                         <h4>{noOrder.join(', ')}</h4>
                     </div>
                 </div>
@@ -185,6 +188,32 @@ export default function See(props) {
                 </div>
             );
         }
+        else if (page === 'add') {
+            let noOrderUsers = [];
+            for (const user of orderState.noOrder) {
+                noOrderUsers.push(
+                    <option value={user.userId}>{user.name}</option>
+                )
+            }
+
+            pageContent = (
+                <div className="stack">
+                    <div className="card">
+                        <h4>You may add an order on behalf of a user.</h4>
+                        <div className="bar">
+                            <h4 className="dropdown_label">Select user: </h4>
+                            <select name="user" id="user" onChange={selectUser} defaultValue={"choose"}
+                                    className="dropdown__selector">
+                                <option value={""}>choose</option>
+                                {noOrderUsers}
+                            </select>
+                        </div>
+                    </div>
+
+                    {(addOrderUser!==null ? <Order admin={true} userId={addOrderUser} /> : "")}
+                </div>
+            )
+        }
 
         orderDetails = (
             <div className="stack">
@@ -228,6 +257,16 @@ export default function See(props) {
                     console.log("error with setting payment stuff.")
                 }
             })
+        }
+    }
+
+    function selectUser(e) {
+
+        if (e.target.value === "") {
+            setAddOrderUser(null);
+        }
+        else {
+            setAddOrderUser(e.target.value);
         }
     }
 

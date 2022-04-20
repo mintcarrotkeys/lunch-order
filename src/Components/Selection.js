@@ -262,16 +262,8 @@ export default function Selection(props) {
 
     async function sendOrder() {
         let transactId = randomString(16);
-        let response = await fetchData("placeOrder",
-            {"orderId": props.orderId, "items": cart, "transactId": transactId});
-        if (response.orderStatus === 'ok') {
-            return true;
-        }
-        else if (response.orderStatus === "alreadyOrdered" && response.transactId === transactId) {
-            return true;
-        }
-        else {
-            response = await fetchData("placeOrder",
+        if (props.admin === false) {
+            let response = await fetchData("placeOrder",
                 {"orderId": props.orderId, "items": cart, "transactId": transactId});
             if (response.orderStatus === 'ok') {
                 return true;
@@ -280,7 +272,38 @@ export default function Selection(props) {
                 return true;
             }
             else {
-                return false;
+                response = await fetchData("placeOrder",
+                    {"orderId": props.orderId, "items": cart, "transactId": transactId});
+                if (response.orderStatus === 'ok') {
+                    return true;
+                }
+                else if (response.orderStatus === "alreadyOrdered" && response.transactId === transactId) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+        else {
+            let response = await fetchData("placeAdminOrder",
+                {"orderId": props.orderId, userId: props.userId, "items": cart, "transactId": transactId});
+            if (response.orderStatus === 'ok') {
+                return true;
+            }
+            else if (response.orderStatus === "alreadyOrdered" && response.transactId === transactId) {
+                return true;
+            }
+            else {
+                response = await fetchData("placeAdminOrder",
+                    {"orderId": props.orderId, userId: props.userId, "items": cart, "transactId": transactId});
+                if (response.orderStatus === 'ok') {
+                    return true;
+                } else if (response.orderStatus === "alreadyOrdered" && response.transactId === transactId) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
         }
     }

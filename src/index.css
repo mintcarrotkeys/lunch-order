@@ -500,8 +500,14 @@ b {
   flex: 0 0 25px;
 }
 
+.grid-box {
+  justify-content: center;
+  align-items: center;
+
+}
 .grid-item {
   height: fit-content;
+  margin: 2px 3px;
 }
 .grid-item-a {
   grid-area: a;
@@ -520,4 +526,8 @@ b {
 }
 .grid-item-h {
   grid-area: h;
+}
+
+.text-align-right {
+  text-align: right;
 }
