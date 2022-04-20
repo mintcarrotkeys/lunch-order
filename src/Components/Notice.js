@@ -3,10 +3,8 @@ import Button from "./Button";
 
 export default function Notice(props) {
     /**
-     * title
      * text
      * close
-     * id
      * type
      *
      * button1  {
@@ -50,7 +48,7 @@ export default function Notice(props) {
     }
 
     function handleClose() {
-        props.close(props.id);
+        props.close();
     }
 
     let button1 = "";

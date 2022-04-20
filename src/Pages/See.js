@@ -106,7 +106,8 @@ export default function See(props) {
         for (const key in orderState.orders) {
             let order = orderState.orders[key];
             orderList.push(
-                <OrderDisplay data={order} key={order.userId} updateVal={updateVal} menu={orderState.menu} />
+                <OrderDisplay data={order} key={order.userId} updateVal={updateVal}
+                              menu={orderState.menu} orderName={selectOrder[orderId].name} />
             )
         }
 

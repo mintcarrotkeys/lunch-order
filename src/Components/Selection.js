@@ -182,10 +182,10 @@ export default function Selection(props) {
             <div className="notice-body">
                 <h2 style={{marginBottom: "10px"}}><b>Confirm Order</b></h2>
                 <p>Order for:</p>
-                <h2><b>{props.orderName}</b></h2>
+                <h3><b>{props.orderName}</b></h3>
                 {cartItems}
                 <p>Total cost:</p>
-                <h2><b>{"$" + totalCost.toFixed(2)}</b></h2>
+                <h3><b>{"$" + totalCost.toFixed(2)}</b></h3>
                 <p>{cart.length.toString() + " " + (cartItems.length === 1 ? "item" : "items")}</p>
             </div>
         );

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Badge from "./Badge";
 import ThinButton from "./ThinButton";
+import Notice from "./Notice";
 
 
 
@@ -9,6 +10,7 @@ export default function OrderDisplay(props) {
     const [expand, setExpand] = useState(false);
     const [paid, setPaid] = useState(props.data.paid);
     const [change, setChange] = useState(props.data.change);
+    const [remove, setRemove] = useState(false);
 
     let data = props.data;
 
@@ -99,6 +101,15 @@ export default function OrderDisplay(props) {
             i++;
         }
 
+        const deleteNotice = (
+            <div className="stack">
+                <h2>Confirm delete</h2>
+                <h4>Are you sure the user:</h4>
+                <h3>{data.name}</h3>
+                <h4>wish to <b>delete</b> their order for:</h4>
+                <h3>{props.orderName}</h3>
+            </div>
+        )
 
         output = (
             <div className="card orderDisplay-box" >
@@ -108,32 +119,29 @@ export default function OrderDisplay(props) {
                     {amount}
                 </div>
                 <div className="orderDisplay-cost top-border">
-                    <div>Order Cost: {"$" + data.cost.toFixed(2)}</div>
-                </div>
-                <div className="orderDisplay-pay">
+                    <div className="orderDisplay-box">Order Cost: {"$" + data.cost.toFixed(2)}</div>
                     <div>Paid: $</div>
                     <input name="paid" id="paid" onChange={handlePay}
                         type="number" step={"0.01"}
                         className="input-text orderDisplay-pay-input" defaultValue={paid}
                     />
-                    {(paid===data.paid ? "" : <ThinButton type={'green'} text={'paid'} action={confirmPay} />)}
-                </div>
-                <div className="orderDisplay-pay">
+                    <ThinButton type={'green'} text={'paid'} action={confirmPay} style={(paid===data.paid ? {} : {visibility: 'hidden'})} />
                     <div>Change given: $</div>
                     <input name="change" id="change" onChange={handleChange}
                            type="number" step={"0.01"}
                            className="input-text orderDisplay-pay-input" defaultValue={change}
                     />
-                    {(change===data.change ? "" : <ThinButton type={'blue'} text={'changed'} action={confirmChange} />)}
+                    <ThinButton type={'blue'} text={'changed'} action={confirmChange} style={(change===data.change ? {} : {visibility: 'hidden'})} />
+                    <p>Order placed: {formattedTime}</p>
+                    <ThinButton type={'red'} text={'delete'} action={deleteOrder} />
                 </div>
-                <div className="top-border">
+                <div className="top-border" onClick={handleClick}>
                     {cart}
                 </div>
-                <div className="top-border">
-                    <p>Order placed: {formattedTime}</p>
-                </div>
+                {(remove ? <Notice text={deleteNotice} close={cancelDelete} type={"yellow"}
+                                   button1={{text: "Delete Order", type: "red"}} button1Action={confirmDelete} /> : "")}
             </div>
-        )
+        );
     }
 
     function handlePay(e) {
@@ -153,7 +161,15 @@ export default function OrderDisplay(props) {
     function confirmChange(e) {
         props.updateVal(data.userId, "change", change);
     }
-
+    function deleteOrder(e) {
+        setRemove(true);
+    }
+    function cancelDelete() {
+        setRemove(false);
+    }
+    function confirmDelete() {
+        props.updateVal(data.userId, "delete", true);
+    }
 
     return output;
 }

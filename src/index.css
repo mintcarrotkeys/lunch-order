@@ -448,11 +448,12 @@ b {
   padding: 2px 5px;
 }
 .orderDisplay-cost {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 3px 10px 0px 10px;
+  display: grid;
+  padding: 5px 10px;
+  grid-template: "a a a"
+                 "b c d"
+                 "e f g"
+                 "h h i";
 }
 .orderDisplay-pay {
   display: flex;
@@ -468,14 +469,12 @@ b {
 }
 
 .card.orderDisplay-box {
-  margin: 3px 10px;
-  padding: 0px;
+  margin: 2px 0;
 }
 
 .orderDisplay-pay-input {
-  flex: 0 1 100px;
   width: 100px;
-  margin: 0px 5px;
+  margin: 2px 5px;
 }
 
 .orderDisplay-item {
