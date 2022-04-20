@@ -33,7 +33,7 @@ export default function ItemDisplay(props) {
                 </div>
                 <div className="top-border">
                     <div className="orderDisplay-item">
-                        {item.orders.join(", ")}
+                        <h4>{item.orders.join(", ")}</h4>
                     </div>
                 </div>
             </div>

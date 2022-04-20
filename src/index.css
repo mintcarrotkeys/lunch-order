@@ -117,10 +117,12 @@ b {
   margin: 5px;
   font-size: 15px;
   padding: 3px;
+  color: black;
 }
 
 .dropdown__selector:focus {
   border-color: #00a5cf;
+  outline: transparent;
 }
 
 .input-text {
@@ -139,12 +141,24 @@ b {
 
 .nav-current {
   text-decoration: underline #00a5cf solid 3px;
+  -webkit-text-decoration-style: solid;
+  -webkit-text-decoration-line: underline;
+  -webkit-text-decoration-color: #00a5cf;
+  text-decoration-thickness: 3px;
 }
 .nav-notCurrent {
   text-decoration: underline #b0b0b0 solid 3px;
+  -webkit-text-decoration-style: solid;
+  -webkit-text-decoration-line: underline;
+  -webkit-text-decoration-color: #b0b0b0;
+  text-decoration-thickness: 3px;
 }
 .nav-notCurrent:hover {
   text-decoration: underline #00a5cf solid 3px;
+  -webkit-text-decoration-style: solid;
+  -webkit-text-decoration-line: underline;
+  -webkit-text-decoration-color: #00a5cf;
+  text-decoration-thickness: 3px;
 }
 
 .nav {
@@ -481,4 +495,5 @@ b {
   margin: 0;
   width: 25px;
   height: 25px;
+  flex: 0 0 25px;
 }

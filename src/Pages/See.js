@@ -98,7 +98,8 @@ export default function See(props) {
     else {
         let allowedPages = [
             {name:"Collect Money", code:"orders"},
-            {name:"Items", code:"items"}
+            {name:"Items", code:"items"},
+            {name:"Add order", code:"add"}
         ];
 
         let orderList = [];

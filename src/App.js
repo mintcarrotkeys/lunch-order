@@ -9,7 +9,7 @@ import See from "./Pages/See";
 
 function App() {
 
-    const [page, setPage] = useState(null);
+    const [page, setPage] = useState("order");
     const [dataState, setDataState] = useState(null);
 
     const token = passItem('token');
@@ -26,36 +26,6 @@ function App() {
         login().then(res => setDataState(res));
     }, []);
 
-    let showPage = "";
-    if (dataState === null) {
-        showPage = (
-            <div className="card"><h4>Loading ...</h4></div>
-        );
-    }
-    else if (dataState === false) {
-        showPage = (
-            <div className="card"><p>Error - could not login, reload to try again.</p></div>
-        );
-    }
-    else if (dataState === "redirect") {
-        showPage = (
-            <div className="card"><h4>Redirecting to login ...</h4></div>
-        );
-    }
-    else if (page === null) {
-        setPage('order');
-    }
-
-    if (page === "order") {
-        showPage = <Order />;
-    }
-    else if (page === "users") {
-        showPage = <Users />;
-    }
-    else if (page === "see") {
-        showPage = <See />;
-    }
-
     let allowedPages = [];
     if (token !== null) {
         let userScope = token.scope;
@@ -71,14 +41,50 @@ function App() {
         }
     }
 
+    let pageBox = "";
+    if (dataState === null) {
+        pageBox = (
+            <div className="card"><h4>Loading ...</h4></div>
+        );
+    }
+    else if (dataState === false) {
+        pageBox = (
+            <div className="card"><p>Error - could not login, reload to try again.</p></div>
+        );
+    }
+    else if (dataState === "redirect") {
+        pageBox = (
+            <div className="card"><h4>Redirecting to login ...</h4></div>
+        );
+    }
+    else if (page === null) {
+        setPage('order');
+    }
+    else if (dataState) {
+        let showPage = "";
+        if (page === "order") {
+            showPage = (
+                <Order/>
+            );
+        }
+        else if (page === "users") {
+            showPage = <Users/>;
+        }
+        else if (page === "see") {
+            showPage = <See/>;
+        }
+        pageBox = (
+            <Nav setPage={changePage} allowed={allowedPages} currentPage={page} />
+        )
+    }
+
     return (
         <div className="container">
             <div className="card title">
                 <h1>e Lunch Order System</h1>
                 <h2><span style={{fontWeight: 300}}>Welcome:</span> {userName}</h2>
             </div>
-            <Nav setPage={changePage} currentPage={page} allowed={allowedPages} />
-            {showPage}
+            {pageBox}
         </div>
     );
 }
