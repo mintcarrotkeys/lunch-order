@@ -202,19 +202,21 @@ export default function Order(props) {
                     </div>
                 );
             }
-            orderDetails = (
-                <div className="stack">
-                    <div className="card">
-                        <div className="bar">
-                            <h4>This order needs to be placed by:</h4>
-                            <h5>{formattedTime}</h5>
+            else {
+                orderDetails = (
+                    <div className="stack">
+                        <div className="card">
+                            <div className="bar">
+                                <h4>This order needs to be placed by:</h4>
+                                <h5>{formattedTime}</h5>
+                            </div>
                         </div>
+                        <Selection orderName={selectOrder[orderId].name} orderId={orderId}
+                                   menu={orderState.menu} admin={props.admin} userId={adminOrderUserId}
+                        />
                     </div>
-                    <Selection orderName={selectOrder[orderId].name} orderId={orderId}
-                               menu={orderState.menu} admin={props.admin} userId={adminOrderUserId}
-                    />
-                </div>
-            );
+                );
+            }
         }
     }
 

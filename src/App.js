@@ -5,6 +5,7 @@ import Nav from "./Components/Nav";
 import Order from "./Pages/Order";
 import Users from "./Pages/Users";
 import See from "./Pages/See";
+import Dates from "./Pages/Dates";
 
 
 function App() {
@@ -36,7 +37,8 @@ function App() {
             allowedPages = [
                 {name: "Order Lunch", code: "order"},
                 {name: "Manage Users", code: "users"},
-                {name: "See Orders", code: "see"}
+                {name: "See Orders", code: "see"},
+                {name: "Order Dates", code: "dates"}
             ];
         }
     }
@@ -68,10 +70,13 @@ function App() {
             );
         }
         else if (page === "users") {
-            showPage = <Users/>;
+            showPage = <Users />;
         }
         else if (page === "see") {
-            showPage = <See/>;
+            showPage = <See />;
+        }
+        else if (page === "dates") {
+            showPage = <Dates />
         }
         pageBox = (
             <div className="stack">
