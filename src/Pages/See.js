@@ -109,8 +109,8 @@ export default function See(props) {
             sortOrders.push(orderState.orders[key]);
         }
         function comp(a, b) {
-            if (a.name > b.name) {return -1}
-            else if (a.name < b.name) {return 1}
+            if (a.name < b.name) {return -1}
+            else if (a.name > b.name) {return 1}
             else {return 0}
         }
         sortOrders.sort(comp);
@@ -209,6 +209,7 @@ export default function See(props) {
                 <div className="stack">
                     <div className="card">
                         <h4>You may add an order on behalf of a user.</h4>
+                        <p>Note that you can continue to do this after an order's deadline has passed.</p>
                         <div className="bar">
                             <h4 className="dropdown_label">Select user: </h4>
                             <select name="user" id="user" onChange={selectUser} defaultValue={"choose"}

@@ -181,28 +181,8 @@ export default function Order(props) {
                 </div>
             );
         }
-        else if (Date.now() > selectOrder[orderId].deadline) {
-            const time = new Date(selectOrder[orderId].deadline);
-            let formattedTime = (
-                (time.getDate() < 10 ? "0" : "") + time.getDate().toString() + "/"
-                + (time.getMonth() < 9 ? "0" : "") + (1 + time.getMonth()).toString() + "/"
-                + time.getFullYear().toString() + " "
-                +  (time.getHours() < 10 ? "0" : "") + time.getHours().toString() + ":"
-                +  (time.getMinutes() < 10 ? "0" : "") + time.getMinutes().toString()
-            );
-            orderDetails = (
-                <div className="stack">
-                    <h4>Sorry, you cannot place an order as the order deadline has passed.</h4>
-                    <h4>Orders had to be submitted by {formattedTime}.</h4>
-                    <h4>
-                        Contact directly a person managing lunch orders.
-                        They will place an order for you and ensure it is not missed.
-                    </h4>
-                </div>
-            );
-        }
         else {
-            const time = new Date(selectOrder[orderId].deadline);
+            const time = new Date(selectOrder[orderId].dueDate);
             let formattedTime = (
                 (time.getDate() < 10 ? "0" : "") + time.getDate().toString() + "/"
                 + (time.getMonth() < 9 ? "0" : "") + (1 + time.getMonth()).toString() + "/"
@@ -210,6 +190,18 @@ export default function Order(props) {
                 +  (time.getHours() < 10 ? "0" : "") + time.getHours().toString() + ":"
                 +  (time.getMinutes() < 10 ? "0" : "") + time.getMinutes().toString()
             );
+            if (Date.now() > selectOrder[orderId].dueDate && props.admin === false) {
+                orderDetails = (
+                    <div className="stack">
+                        <h4>Sorry, you cannot place an order as the order deadline has passed.</h4>
+                        <h4>Orders had to be submitted by {formattedTime}.</h4>
+                        <h4>
+                            Contact directly a person managing lunch orders.
+                            They will place an order for you and ensure it is not missed.
+                        </h4>
+                    </div>
+                );
+            }
             orderDetails = (
                 <div className="stack">
                     <div className="card">
