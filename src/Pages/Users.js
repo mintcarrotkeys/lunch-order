@@ -29,7 +29,14 @@ export default function Users(props) {
     }
     else if (fetch) {
         let users = [];
-        for (const user of fetch.users) {
+        let sortUsers = [...fetch.users];
+        function comp(a, b) {
+            if (a.name > b.name) {return -1}
+            else if (a.name < b.name) {return 1}
+            else {return 0}
+        }
+        sortUsers.sort(comp);
+        for (const user of sortUsers) {
             users.push(
                 <div className="user-list-row" id={user.name} key={user.name} >
                     <h5 className="user-list-name">{user.name}</h5>

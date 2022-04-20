@@ -125,15 +125,15 @@ export default function OrderDisplay(props) {
                         type="number" step={"0.01"}
                         className="grid-item grid-item-c input-text orderDisplay-pay-input" defaultValue={paid}
                     />
-                    <ThinButton type={'green'} text={'paid'} action={confirmPay} visible={!paid===data.paid} />
+                    <ThinButton type={'green'} text={'paid'} action={confirmPay} visible={paid !== data.paid} />
                     <div className="grid-item grid-item-e text-align-right">Change given: $</div>
                     <input name="change" id="change" onChange={handleChange}
                            type="number" step={"0.01"}
                            className="grid-item grid-item-f input-text orderDisplay-pay-input" defaultValue={change}
                     />
-                    <ThinButton type={'blue'} text={'changed'} action={confirmChange} visible={!change===data.change} />
+                    <ThinButton type={'blue'} text={'changed'} action={confirmChange} visible={change !== data.change} />
                     <p className="grid-item grid-item-h">Order placed: {formattedTime}</p>
-                    <ThinButton type={'red'} text={'delete'} action={deleteOrder} />
+                    <ThinButton type={'red'} text={'delete'} action={deleteOrder} visible={true} />
                 </div>
                 <div className="top-border" onClick={handleClick}>
                     {cart}

@@ -49,8 +49,14 @@ export default function Order(props) {
     else {
         let orderList = [];
         for (const key in selectOrder) {
-            orderList.push({orderId: key, name: selectOrder[key].name});
+            orderList.push({orderId: key, name: selectOrder[key].name, deadline: selectOrder[key].dueDate});
         }
+        function comp(a, b) {
+            if (a.deadline > b.deadline) {return -1}
+            else if (a.deadline < b.deadline) {return 1}
+            else {return 0}
+        }
+        orderList.sort(comp);
         let options = [];
         let i = 0;
         while (i < orderList.length) {
@@ -175,13 +181,47 @@ export default function Order(props) {
                 </div>
             );
         }
-        else {
-            console.log(selectOrder);
-            console.log(orderId);
+        else if (Date.now() > selectOrder[orderId].deadline) {
+            const time = new Date(selectOrder[orderId].deadline);
+            let formattedTime = (
+                (time.getDate() < 10 ? "0" : "") + time.getDate().toString() + "/"
+                + (time.getMonth() < 9 ? "0" : "") + (1 + time.getMonth()).toString() + "/"
+                + time.getFullYear().toString() + " "
+                +  (time.getHours() < 10 ? "0" : "") + time.getHours().toString() + ":"
+                +  (time.getMinutes() < 10 ? "0" : "") + time.getMinutes().toString()
+            );
             orderDetails = (
-                <Selection orderName={selectOrder[orderId].name} orderId={orderId}
-                           menu={orderState.menu} admin={props.admin} userId={adminOrderUserId}
-                />
+                <div className="stack">
+                    <h4>Sorry, you cannot place an order as the order deadline has passed.</h4>
+                    <h4>Orders had to be submitted by {formattedTime}.</h4>
+                    <h4>
+                        Contact directly a person managing lunch orders.
+                        They will place an order for you and ensure it is not missed.
+                    </h4>
+                </div>
+            );
+        }
+        else {
+            const time = new Date(selectOrder[orderId].deadline);
+            let formattedTime = (
+                (time.getDate() < 10 ? "0" : "") + time.getDate().toString() + "/"
+                + (time.getMonth() < 9 ? "0" : "") + (1 + time.getMonth()).toString() + "/"
+                + time.getFullYear().toString() + " "
+                +  (time.getHours() < 10 ? "0" : "") + time.getHours().toString() + ":"
+                +  (time.getMinutes() < 10 ? "0" : "") + time.getMinutes().toString()
+            );
+            orderDetails = (
+                <div className="stack">
+                    <div className="card">
+                        <div className="bar">
+                            <h4>This order needs to be placed by:</h4>
+                            <h5>{formattedTime}</h5>
+                        </div>
+                    </div>
+                    <Selection orderName={selectOrder[orderId].name} orderId={orderId}
+                               menu={orderState.menu} admin={props.admin} userId={adminOrderUserId}
+                    />
+                </div>
             );
         }
     }

@@ -104,9 +104,18 @@ export default function See(props) {
             {name:"Add order", code:"add"}
         ];
 
-        let orderList = [];
+        let sortOrders = [];
         for (const key in orderState.orders) {
-            let order = orderState.orders[key];
+            sortOrders.push(orderState.orders[key]);
+        }
+        function comp(a, b) {
+            if (a.name > b.name) {return -1}
+            else if (a.name < b.name) {return 1}
+            else {return 0}
+        }
+        sortOrders.sort(comp);
+        let orderList = [];
+        for (const order of sortOrders) {
             orderList.push(
                 <OrderDisplay data={order} key={order.userId} updateVal={updateVal}
                               menu={orderState.menu} orderName={selectOrder[orderId].name} />
@@ -128,7 +137,7 @@ export default function See(props) {
                     {orderList}
                     <div className="card" style={{margin: "10px 10px 3px 10px", padding: "0px"}}>
                         <h3>Users who did not place an order</h3>
-                        <p>Confirm with these users to check if they wanted to place a lunch order.</p>
+                        <p>Check with these users to confirm if they want to place a lunch order.</p>
                         <h4>{noOrder.join(', ')}</h4>
                     </div>
                 </div>
