@@ -199,23 +199,36 @@ export default function See(props) {
     }
 
     function updateVal(userId, key, value) {
-        let ask = "";
-        if (key === 'paid') {
-            ask = "setPay"
+        if (key === 'delete') {
+            fetchData("deleteOrder", {orderId: orderId, userId: userId}).then(res => {
+                if (res) {
+                    let data = {...orderState};
+                    delete data.orders[userId];
+                    setOrderState(data);
+                }
+                else {
+                    console.log("error with setting payment stuff.")
+                }
+            })
         }
-        else if (key === 'change') {
-            ask = "setChange"
+        else {
+            let ask = "";
+            if (key === 'paid') {
+                ask = "setPay"
+            } else if (key === 'change') {
+                ask = "setChange"
+            }
+            fetchData(ask, {value: value, orderId: orderId, userId: userId}).then(res => {
+                if (res) {
+                    let data = {...orderState};
+                    data.orders[userId][key] = value;
+                    setOrderState(data);
+                }
+                else {
+                    console.log("error with setting payment stuff.")
+                }
+            })
         }
-        fetchData(ask, {value: value, orderId: orderId, userId: userId}).then(res => {
-            if (res) {
-                let data = {...orderState};
-                data.orders[userId][key] = value;
-                setOrderState(data);
-            }
-            else {
-                console.log("error with setting payment stuff.")
-            }
-        })
     }
 
     const output = (

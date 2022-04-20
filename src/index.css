@@ -272,6 +272,8 @@ b {
   margin: 0;
   border-radius: 10px;
   outline: solid 0;
+  height: fit-content;
+  width: fit-content;
 }
 .button-thin:hover, .button-thin:active {
   outline-width: 1px;
@@ -470,6 +472,7 @@ b {
 
 .card.orderDisplay-box {
   margin: 2px 0;
+  padding: 0;
 }
 
 .orderDisplay-pay-input {
@@ -495,4 +498,26 @@ b {
   width: 25px;
   height: 25px;
   flex: 0 0 25px;
+}
+
+.grid-item {
+  height: fit-content;
+}
+.grid-item-a {
+  grid-area: a;
+}
+.grid-item-b {
+  grid-area: b;
+}
+.grid-item-c {
+  grid-area: c;
+}
+.grid-item-e {
+  grid-area: e;
+}
+.grid-item-f {
+  grid-area: f;
+}
+.grid-item-h {
+  grid-area: h;
 }

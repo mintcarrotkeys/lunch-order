@@ -119,20 +119,20 @@ export default function OrderDisplay(props) {
                     {amount}
                 </div>
                 <div className="orderDisplay-cost top-border">
-                    <div className="orderDisplay-box">Order Cost: {"$" + data.cost.toFixed(2)}</div>
-                    <div>Paid: $</div>
+                    <div className="grid-item orderDisplay-box grid-item-a">Order Cost: {"$" + data.cost.toFixed(2)}</div>
+                    <div className="grid-item grid-item-b">Paid: $</div>
                     <input name="paid" id="paid" onChange={handlePay}
                         type="number" step={"0.01"}
-                        className="input-text orderDisplay-pay-input" defaultValue={paid}
+                        className="grid-item grid-item-c input-text orderDisplay-pay-input" defaultValue={paid}
                     />
                     <ThinButton type={'green'} text={'paid'} action={confirmPay} style={(paid===data.paid ? {} : {visibility: 'hidden'})} />
-                    <div>Change given: $</div>
+                    <div className="grid-item grid-item-e">Change given: $</div>
                     <input name="change" id="change" onChange={handleChange}
                            type="number" step={"0.01"}
-                           className="input-text orderDisplay-pay-input" defaultValue={change}
+                           className="grid-item grid-item-f input-text orderDisplay-pay-input" defaultValue={change}
                     />
                     <ThinButton type={'blue'} text={'changed'} action={confirmChange} style={(change===data.change ? {} : {visibility: 'hidden'})} />
-                    <p>Order placed: {formattedTime}</p>
+                    <p className="grid-item grid-item-h">Order placed: {formattedTime}</p>
                     <ThinButton type={'red'} text={'delete'} action={deleteOrder} />
                 </div>
                 <div className="top-border" onClick={handleClick}>
