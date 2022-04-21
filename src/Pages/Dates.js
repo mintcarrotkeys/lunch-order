@@ -6,11 +6,9 @@ import Notice from "../Components/Notice";
 
 
 export default function Dates() {
-
     const [data, setData] = useState(null);
     const [selectDeleteDate, setSelectDeleteDate] = useState(false);
-    const [addNewDate, setAddNewDate] = useState({name: '', dueDate: 0})
-    const [reload, setReload] = useState(false);
+    const [addNewDate, setAddNewDate] = useState({name: '', dueDate: Date.now()})
     const [bannerNotice, setBannerNotice] = useState("");
 
     React.useEffect(() => {
@@ -75,7 +73,8 @@ export default function Dates() {
                     {orders}
                 </div>
                 <div className="card">
-                    <h4>Add an order date</h4>
+                    <h3>Add an order date</h3>
+                    <h4>Order name or date:</h4>
                     <input type="text"
                            maxLength={30}
                            minLength={1}
@@ -87,17 +86,19 @@ export default function Dates() {
                                setAddNewDate({...addNewDate, name: e.target.value})
                            }}
                     />
+                    <h4>Order cutoff:</h4>
                     <input id="duedate" type="datetime-local" name="duedate" value={dateVal} className="dropdown__selector"
                            onChange={(e) => {
                                setAddNewDate({...addNewDate, dueDate: ((new Date(e.target.value)).getTime())})
                            }}
                     />
+                    <p>This is the latest time that users can place an order for themselves. Admins can continue to add orders for users after this time.</p>
                     <div className="stack">
                         <ThinButton type={'green'} text={'add date'} action={addOrder} visible={true} />
                     </div>
                 </div>
                 <div className="card">
-                    <h4>Delete an order date</h4>
+                    <h3>Delete an order date</h3>
                     <select name="dates" id="dates" onChange={selectDate} defaultValue={"choose"}
                             className="dropdown__selector">
                         <option value={""}>choose</option>
@@ -115,18 +116,18 @@ export default function Dates() {
         console.log(addNewDate)
         if (addNewDate.name !== '' && addNewDate.dueDate !== 0) {
             setBannerNotice(
-                <Notice text={(<h4>Sending request ...</h4>)} noOffButton={true} type={"grey"} button1={null} />
+                <Notice text={(<h3>Sending request ...</h3>)} noOffButton={true} type={"grey"} button1={null} />
             )
             fetchData('addDate', {...addNewDate}).then(res => {
                 if (res) {
                     setBannerNotice(
-                        <Notice text={(<h4>Success</h4>)} close={setBannerNotice('')} type={"green"} button1={null} />
+                        <Notice text={(<h3>Success</h3>)} close={() => {setBannerNotice('')}} type={"green"} button1={null} />
                     )
                 }
                 else {
                     setBannerNotice(
                         setBannerNotice(
-                            <Notice text={(<h4>Error: could not add order date.</h4>)} close={setBannerNotice('')} type={"red"} button1={null} />
+                            <Notice text={(<h3>Error: could not add order date.</h3>)} close={() => {setBannerNotice('')}} type={"red"} button1={null} />
                         )
                     )
                 }
@@ -138,13 +139,16 @@ export default function Dates() {
         if (e.target.value !== "") {
             setSelectDeleteDate(e.target.value);
         }
+        else {
+            setSelectDeleteDate(false);
+        }
     }
 
     function deleteOrder(e) {
         const deleteNotice = (
             <div className="stack">
                 <h2>Confirm delete order</h2>
-                <h4>Are you sure you want to delete this order?</h4>
+                <h3>Are you sure you want to delete this order?</h3>
                 <h3>{data[selectDeleteDate].name}</h3>
                 <h4>Users would lose their order info.</h4>
                 <h4>This action cannot be reversed.</h4>
@@ -160,7 +164,7 @@ export default function Dates() {
     }
     function confirmDelete() {
         setBannerNotice(
-            <Notice text={(<h4>Sending request ...</h4>)} noOffButton={true} type={"grey"} button1={null} />
+            <Notice text={(<h3>Sending request ...</h3>)} noOffButton={true} type={"grey"} button1={null} />
         )
         fetchData("deleteDate", {orderId: selectDeleteDate}).then(res => {
             if (res) {
@@ -172,7 +176,7 @@ export default function Dates() {
             }
             else {
                 setBannerNotice(
-                    <Notice text={(<h4>Error: could not delete order date.</h4>)} close={cancelDelete} type={"red"} button1={null} />
+                    <Notice text={(<h3>Error: could not delete order date.</h3>)} close={cancelDelete} type={"red"} button1={null} />
                 )
             }
         })
