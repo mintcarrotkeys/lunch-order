@@ -128,6 +128,15 @@ export default function Dates() {
     }
 
     function deleteOrder(e) {
+        const deleteNotice = (
+            <div className="stack">
+                <h2>Confirm delete order</h2>
+                <h4>Are you sure you want to delete this order?</h4>
+                <h3>{data[selectDeleteDate].name}</h3>
+                <h4>Users would lose their order info.</h4>
+                <h4>This action cannot be reversed.</h4>
+            </div>
+        )
         setBannerNotice(
             <Notice text={deleteNotice} close={cancelDelete} type={"yellow"}
                     button1={{text: "Delete Order", type: "red"}} button1Action={confirmDelete} />
@@ -155,16 +164,6 @@ export default function Dates() {
             }
         })
     }
-
-    const deleteNotice = (
-        <div className="stack">
-            <h2>Confirm delete order</h2>
-            <h4>Are you sure you want to delete this order?</h4>
-            <h3>{data[selectDeleteDate].name}</h3>
-            <h4>Users would lose their order info.</h4>
-            <h4>This action cannot be reversed.</h4>
-        </div>
-    )
 
     let output = (
         <div className="stack">
