@@ -74,7 +74,8 @@ export default function Dates() {
                 </div>
                 <div className="card">
                     <h3>Add an order date</h3>
-                    <h4>Order name or date:</h4>
+                    <h4>Order name:</h4>
+                    <p>suggested names: 02/03 or wk 4 saturday</p>
                     <input type="text"
                            maxLength={30}
                            minLength={1}
@@ -87,12 +88,12 @@ export default function Dates() {
                            }}
                     />
                     <h4>Order cutoff:</h4>
+                    <p>This is the latest time that users can place an order for themselves. Admins can continue to add orders for users after this time.</p>
                     <input id="duedate" type="datetime-local" name="duedate" value={dateVal} className="dropdown__selector"
                            onChange={(e) => {
                                setAddNewDate({...addNewDate, dueDate: ((new Date(e.target.value)).getTime())})
                            }}
                     />
-                    <p>This is the latest time that users can place an order for themselves. Admins can continue to add orders for users after this time.</p>
                     <div className="stack">
                         <ThinButton type={'green'} text={'add date'} action={addOrder} visible={true} />
                     </div>
@@ -113,7 +114,6 @@ export default function Dates() {
     }
 
     function addOrder() {
-        console.log(addNewDate)
         if (addNewDate.name !== '' && addNewDate.dueDate !== 0) {
             setBannerNotice(
                 <Notice text={(<h3>Sending request ...</h3>)} noOffButton={true} type={"grey"} button1={null} />
@@ -126,9 +126,7 @@ export default function Dates() {
                 }
                 else {
                     setBannerNotice(
-                        setBannerNotice(
-                            <Notice text={(<h3>Error: could not add order date.</h3>)} close={() => {setBannerNotice('')}} type={"red"} button1={null} />
-                        )
+                        <Notice text={(<h3>Error: could not add order date.</h3>)} close={() => {setBannerNotice('')}} type={"red"} button1={null} />
                     )
                 }
             })

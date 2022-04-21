@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {login} from "./auth";
 import App from './App';
-import {saveItem} from "./version";
-
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
+//TODO: PREFLIGHT: serviceworker - turn off dev build first!
+serviceWorkerRegistration.register();

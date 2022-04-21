@@ -106,10 +106,8 @@ export default function Selection(props) {
             return;
         }
         let formatNewItem = {...newItem};
-        //TODO
-        console.log(newItem);
+
         formatNewItem.note = formatNewItem.note.replaceAll("\n", " ");
-        console.log(formatNewItem);
         setCart([...cart, formatNewItem]);
         setNewItem(false);
         setErrorMessage("");
@@ -167,7 +165,6 @@ export default function Selection(props) {
     function placeOrder() {
         setFinaliseOrder("yes");
     }
-    console.log(finaliseOrder);
 
     if (finaliseOrder === "yes") {
         let cartItems = [];
@@ -248,7 +245,6 @@ export default function Selection(props) {
         setFinaliseOrder(false);
     }
     function confirmOrder() {
-        console.log(cart);
         setFinaliseOrder("sending");
         sendOrder().then(res => {
             if (res) {

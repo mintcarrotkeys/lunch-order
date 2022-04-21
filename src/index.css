@@ -363,6 +363,7 @@ b {
   background-color: white;
   padding: 0;
   border-radius: 10px;
+  text-align: center;
 }
 .notice-top {
   height: 20px;
