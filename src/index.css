@@ -531,3 +531,9 @@ b {
 .text-align-right {
   text-align: right;
 }
+
+.orderDates {
+  display: grid;
+  grid-template: auto / auto auto;
+  padding: 5px;
+}

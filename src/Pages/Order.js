@@ -193,12 +193,14 @@ export default function Order(props) {
             if (Date.now() > selectOrder[orderId].dueDate && props.admin === false) {
                 orderDetails = (
                     <div className="stack">
-                        <h4>Sorry, you cannot place an order as the order deadline has passed.</h4>
-                        <h4>Orders had to be submitted by {formattedTime}.</h4>
-                        <h4>
-                            Contact directly a person managing lunch orders.
-                            They will place an order for you and ensure it is not missed.
-                        </h4>
+                        <div className="card">
+                            <h4>Sorry, you cannot place an order as it is overdue.</h4>
+                            <h4>Orders had to be submitted by {formattedTime}.</h4>
+                            <h4>
+                                Directly contact a person managing lunch orders.
+                                They will place an order for you and ensure it is not missed.
+                            </h4>
+                        </div>
                     </div>
                 );
             }
