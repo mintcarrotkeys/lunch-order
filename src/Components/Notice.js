@@ -73,7 +73,9 @@ export default function Notice(props) {
                 <div className="notice-top" style={{backgroundColor: col}}>
                     {closeCross}
                 </div>
-                {props.text}
+                <div className="stack">
+                    {props.text}
+                </div>
                 {button1}
             </div>
         </div>

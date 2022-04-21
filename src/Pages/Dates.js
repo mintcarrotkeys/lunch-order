@@ -60,6 +60,14 @@ export default function Dates() {
             orders.push(<h4 className="grid-item">{formattedTime}</h4>)
             options.push(<option key={item.orderId} value={item.orderId}>{item.name}</option>)
         }
+        const time = new Date(addNewDate.dueDate);
+        let dateVal = (
+            time.getFullYear().toString() + '-'
+            + (time.getMonth() < 9 ? "0" : "") + (1 + time.getMonth()).toString() + "-"
+            + (time.getDate() < 10 ? "0" : "") + time.getDate().toString() + "T"
+            +  (time.getHours() < 10 ? "0" : "") + time.getHours().toString() + ":"
+            +  (time.getMinutes() < 10 ? "0" : "") + time.getMinutes().toString()
+        );
 
         page = (
             <div className="stack">
@@ -79,12 +87,14 @@ export default function Dates() {
                                setAddNewDate({...addNewDate, name: e.target.value})
                            }}
                     />
-                    <input id="duedate" type="datetime-local" name="duedate" value="2022-01-01T09:30" className="dropdown__selector"
+                    <input id="duedate" type="datetime-local" name="duedate" value={dateVal} className="dropdown__selector"
                            onChange={(e) => {
                                setAddNewDate({...addNewDate, dueDate: ((new Date(e.target.value)).getTime())})
                            }}
                     />
-                    <ThinButton type={'green'} text={'add date'} action={addOrder} visible={true} />
+                    <div className="stack">
+                        <ThinButton type={'green'} text={'add date'} action={addOrder} visible={true} />
+                    </div>
                 </div>
                 <div className="card">
                     <h4>Delete an order date</h4>
@@ -93,18 +103,21 @@ export default function Dates() {
                         <option value={""}>choose</option>
                         {options}
                     </select>
-                    <ThinButton type={'red'} text={'delete date'} action={deleteOrder} visible={selectDeleteDate!==false} />
+                    <div className="stack">
+                        <ThinButton type={'red'} text={'delete date'} action={deleteOrder} visible={selectDeleteDate!==false} />
+                    </div>
                 </div>
             </div>
         )
     }
 
     function addOrder() {
+        console.log(addNewDate)
         if (addNewDate.name !== '' && addNewDate.dueDate !== 0) {
+            setBannerNotice(
+                <Notice text={(<h4>Sending request ...</h4>)} noOffButton={true} type={"grey"} button1={null} />
+            )
             fetchData('addDate', {...addNewDate}).then(res => {
-                setBannerNotice(
-                    <Notice text={(<h4>Sending request ...</h4>)} noOffButton={true} type={"grey"} button1={null} />
-                )
                 if (res) {
                     setBannerNotice(
                         <Notice text={(<h4>Success</h4>)} close={setBannerNotice('')} type={"green"} button1={null} />

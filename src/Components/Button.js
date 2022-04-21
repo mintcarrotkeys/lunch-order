@@ -55,7 +55,7 @@ export default function Button(props) {
     }
 
     const output = (
-        <div className="button" onClick={handleClick} style={boxStyle}>
+        <div className="button" onClick={handleClick} style={{...boxStyle, textAlign: "center"}}>
             {props.text}
         </div>
     )
