@@ -95,7 +95,7 @@ function App() {
                 {pageBox}
                 <div className="stack">
                     <div className="card" style={{marginTop: '65px'}}>
-                        <p>Copyright (c) 2022 mintcarrotkeys <a href="https://github.com/mintcarrotkeys/lunch-order/blob/main/LICENSE">License</a></p>
+                        <p><a href="https://github.com/mintcarrotkeys/lunch-order/blob/main/LICENSE">License</a></p>
                     </div>
                 </div>
             </div>
