@@ -9,7 +9,7 @@ import Order from "./Order";
 
 export default function See(props) {
 
-    const [orderState, setOrderState] = useState(null);
+    const [orderInfo, setOrderInfo] = useState(null);
     const [selectOrder, setSelectOrder] = useState(null);
     const [orderId, setOrderId] = useState(false);
     const [page, setPage] = useState(null);
@@ -21,9 +21,17 @@ export default function See(props) {
     }, []);
 
     async function getDates() {
-        let getList = await fetchData("listOrders");
-        if (getList !== false) {
+        let getList = false;
+        let getMenu = false;
+        let seeOrder = false;
+        Promise.all([
+            fetchData('listOrders').then(res => getList=res),
+            fetchData('menu').then(res => getMenu=res),
+            fetchData('seeOrder').then(res => seeOrder=res),
+        ])
+        if (getList !== false && getMenu !== false && seeOrder !== false) {
             setSelectOrder(getList);
+            setOrderInfo({orderGroup:{...seeOrder}, menu:{...getMenu}})
         }
         else {
             setSelectOrder(false);
@@ -65,37 +73,16 @@ export default function See(props) {
     function selectDate(e) {
         let orderId = e.target.value;
         if (orderId === "") {
-            setOrderState(null);
+            setOrderId(false);
         }
         else {
-            getOrder(orderId);
             setOrderId(orderId);
         }
     }
 
-    async function getOrder(name) {
-        setOrderState("loading");
-        const res = await fetchData("seeOrder", {orderId: name});
-        if (res !== false) {
-            const menu = await fetchData("menu");
-            if (menu !== false) {
-                setOrderState({...res, 'menu': menu});
-                return true;
-            }
-        }
-        setOrderState(false);
-        return false;
-    }
-
     let orderDetails = "";
-    if (orderState === null) {
+    if (orderId === false) {
         orderDetails = "";
-    }
-    else if (orderState === false) {
-        orderDetails = (<div className="card"><p>Error, couldn't fetch data, reload to try again.</p></div>);
-    }
-    else if (orderState === "loading") {
-        orderDetails = (<div className="card"><h4>Loading ...</h4></div>);
     }
     else {
         let allowedPages = [
@@ -105,8 +92,9 @@ export default function See(props) {
         ];
 
         let sortOrders = [];
-        for (const key in orderState.orders) {
-            sortOrders.push(orderState.orders[key]);
+        let currentOrder = orderInfo.orderGroup[orderId];
+        for (const key in currentOrder.orders) {
+            sortOrders.push(currentOrder.orders[key]);
         }
         function comp(a, b) {
             if (a.name < b.name) {return -1}
@@ -118,12 +106,12 @@ export default function See(props) {
         for (const order of sortOrders) {
             orderList.push(
                 <OrderDisplay data={order} key={order.userId} updateVal={updateVal}
-                              menu={orderState.menu} orderName={selectOrder[orderId].name} />
+                              menu={orderInfo.menu} orderName={selectOrder[orderId].name} />
             )
         }
 
         let noOrder = [];
-        for (const user of orderState.noOrder) {
+        for (const user of currentOrder.noOrder) {
             noOrder.push(user.name);
         }
 
@@ -147,10 +135,10 @@ export default function See(props) {
             let itemCount = 0;
             let totalCost = 0;
             let comboCount = 0;
-            let menu = orderState.menu;
+            let menu = orderInfo.menu;
             let itemTree = {};
-            for (const key in orderState.orders) {
-                let order = orderState.orders[key];
+            for (const key in currentOrder.orders) {
+                let order = currentOrder.orders[key];
                 let user = order.name;
                 for (const item of order.items) {
                     let uniqueTag = item.itemId + ":" + item.side + ":" + item.note;
@@ -199,7 +187,7 @@ export default function See(props) {
         }
         else if (page === 'add') {
             let noOrderUsers = [];
-            for (const user of orderState.noOrder) {
+            for (const user of currentOrder.noOrder) {
                 noOrderUsers.push(
                     <option value={user.userId}>{user.name}</option>
                 )
