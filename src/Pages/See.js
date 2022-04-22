@@ -49,7 +49,7 @@ export default function See(props) {
         let orderList = [];
 
         for (const key in selectOrder) {
-            orderList.push({orderId: key, name: selectOrder[key].name});
+            orderList.push({'orderId': key, name: selectOrder[key].name});
         }
         let options = [];
         let i = 0;
@@ -93,6 +93,7 @@ export default function See(props) {
 
         let sortOrders = [];
         console.log(orderInfo);
+        console.log(orderId)
         let currentOrder = orderInfo.orderGroup[orderId];
         console.log(currentOrder);
         for (const key in currentOrder.orders) {
