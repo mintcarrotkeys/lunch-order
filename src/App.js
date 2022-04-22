@@ -87,19 +87,18 @@ function App() {
     }
 
     return (
-        <div>
             <div className="container">
                 <div className="card title">
                     <h1>e Lunch Order System</h1>
                     <h2><span style={{fontWeight: 300}}>Welcome:</span> {userName}</h2>
                 </div>
                 {pageBox}
+                <div className="stack">
+                    <div className="card" style={{marginTop: '65px'}}>
+                        <p>Copyright (c) 2022 mintcarrotkeys <a href="https://github.com/mintcarrotkeys/lunch-order/blob/main/LICENSE">License</a></p>
+                    </div>
+                </div>
             </div>
-            <div className="card">
-                <p>Copyright (c) 2022 mintcarrotkeys <a href="https://github.com/mintcarrotkeys/lunch-order/blob/main/LICENSE">License</a></p>
-            </div>
-        </div>
-
     );
 }
 
