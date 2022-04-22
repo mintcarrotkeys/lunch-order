@@ -24,11 +24,11 @@ export default function See(props) {
         let getList = false;
         let getMenu = false;
         let seeOrder = false;
-        Promise.all([
+        await Promise.all([
             fetchData('listOrders').then(res => getList=res),
             fetchData('menu').then(res => getMenu=res),
             fetchData('seeOrder').then(res => seeOrder=res),
-        ])
+        ]).catch(e => console.log(e));
         if (getList !== false && getMenu !== false && seeOrder !== false) {
             setSelectOrder(getList);
             setOrderInfo({orderGroup:{...seeOrder}, menu:{...getMenu}})
