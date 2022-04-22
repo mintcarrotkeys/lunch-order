@@ -229,9 +229,9 @@ export default function See(props) {
         if (key === 'delete') {
             fetchData("deleteOrder", {orderId: orderId, userId: userId}).then(res => {
                 if (res) {
-                    let data = {...orderState};
-                    delete data.orders[userId];
-                    setOrderState(data);
+                    let data = {...orderInfo};
+                    delete data[orderId].orders[userId];
+                    setOrderInfo(data);
                 }
                 else {
                     console.log("error with setting payment stuff.")
@@ -247,9 +247,9 @@ export default function See(props) {
             }
             fetchData(ask, {value: value, orderId: orderId, userId: userId}).then(res => {
                 if (res) {
-                    let data = {...orderState};
-                    data.orders[userId][key] = value;
-                    setOrderState(data);
+                    let data = {...orderInfo};
+                    data[orderId].orders[userId][key] = value;
+                    setOrderInfo(data);
                 }
                 else {
                     console.log("error with setting payment stuff.")
