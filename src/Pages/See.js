@@ -71,12 +71,12 @@ export default function See(props) {
     }
 
     function selectDate(e) {
-        let orderId = e.target.value;
-        if (orderId === "") {
+        let input = e.target.value;
+        if (input === "") {
             setOrderId(false);
         }
         else {
-            setOrderId(orderId);
+            setOrderId(input);
         }
     }
 
