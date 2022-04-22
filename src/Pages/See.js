@@ -92,10 +92,10 @@ export default function See(props) {
         ];
 
         let sortOrders = [];
-        console.log(orderInfo);
-        console.log(orderId)
+        // console.log(orderInfo);
+        // console.log(orderId)
         let currentOrder = orderInfo.orderGroup[orderId];
-        console.log(currentOrder);
+        // console.log(currentOrder);
         for (const key in currentOrder.orders) {
             sortOrders.push(currentOrder.orders[key]);
         }
