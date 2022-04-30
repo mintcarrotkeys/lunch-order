@@ -233,7 +233,7 @@ export default function See(props) {
             fetchData("deleteOrder", {orderId: orderId, userId: userId}).then(res => {
                 if (res) {
                     let data = {...orderInfo};
-                    delete data[orderId].orders[userId];
+                    delete data.orderGroup[orderId].orders[userId];
                     setOrderInfo(data);
                 }
                 else {
@@ -251,7 +251,7 @@ export default function See(props) {
             fetchData(ask, {value: value, orderId: orderId, userId: userId}).then(res => {
                 if (res) {
                     let data = {...orderInfo};
-                    data[orderId].orders[userId][key] = value;
+                    data.orderGroup[orderId].orders[userId][key] = value;
                     setOrderInfo(data);
                 }
                 else {
