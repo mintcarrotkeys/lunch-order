@@ -41,14 +41,14 @@ export default function Selection(props) {
         let sidesBox = "";
         let sides = [];
         console.log(newItem);
-        if (newItem.itemId !== "" && menu[newItem.itemId].sides.length > 0) {
+        if (newItem.itemId !== "" && (menu[newItem.itemId].sides.length > 0)) {
             console.log(menu[newItem.itemId].sides)
             console.log(menu[newItem.itemId].sides.length)
             for (const side of menu[newItem.itemId].sides) {
                 sides.push(<option key={newItem.itemId + side} value={side}>{side}</option>);
             }
             sidesBox = (
-                <select name="item-sides" id="item-sides" key={newItem.itemId} onChange={setItemSide} defaultValue={"choose side"}
+                <select name="item-sides" onChange={setItemSide} defaultValue={"choose side"}
                         className="dropdown__selector item-sides">
                     <option key={newItem.itemId + "===="} value={""}>choose side</option>
                     {sides}
@@ -72,7 +72,9 @@ export default function Selection(props) {
                     {(newItem.itemId !== "" ? ("$" + menu[newItem.itemId].price.toFixed(2)) : " ")}
                 </div>
                 </div>
-                {sidesBox}
+                <div className="stack">
+                    {sidesBox}
+                </div>
                 <textarea type="text" id="item-notes" name="item-notes" key={newItem.itemId}
                        className="input-text item-notes" maxLength={150}
                        placeholder="add special requirements here" spellCheck={true} autoCorrect={"on"}
