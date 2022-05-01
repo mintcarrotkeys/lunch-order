@@ -40,6 +40,7 @@ export default function Selection(props) {
     else {
         let sidesBox = "";
         let sides = [];
+        console.log(newItem);
         if (newItem.itemId !== "" && menu[newItem.itemId].sides.length > 0) {
             for (const side of menu[newItem.itemId].sides) {
                 sides.push(<option key={side} value={side}>{side}</option>);
@@ -80,11 +81,12 @@ export default function Selection(props) {
     }
 
     function setItemName(e) {
+        console.log(newItem);
         if (e.target.value !== newItem.itemId) {
             setNewItem({itemId: e.target.value, note: "", side: ""});
         }
         setErrorMessage("");
-
+        console.log(newItem);
     }
     function setItemNotes(e) {
         setNewItem({...newItem, ...{note: e.target.value}});
