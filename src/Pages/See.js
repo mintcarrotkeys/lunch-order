@@ -9,9 +9,9 @@ import Order from "./Order";
 
 export default function See(props) {
 
-    const [orderInfo, setOrderInfo] = useState(null);
     const [selectOrder, setSelectOrder] = useState(null);
     const [orderId, setOrderId] = useState(false);
+    const [orderInfo, setOrderInfo] = useState(null);
     const [page, setPage] = useState(null);
     const [addOrderUser, setAddOrderUser] = useState(null);
 
@@ -21,17 +21,9 @@ export default function See(props) {
     }, []);
 
     async function getDates() {
-        let getList = false;
-        let getMenu = false;
-        let seeOrder = false;
-        await Promise.all([
-            fetchData('listOrders').then(res => getList=res),
-            fetchData('menu').then(res => getMenu=res),
-            fetchData('seeOrder').then(res => seeOrder=res),
-        ]).catch(e => console.log(e));
-        if (getList !== false && getMenu !== false && seeOrder !== false) {
+        let getList = await fetchData("listOrders");
+        if (getList !== false) {
             setSelectOrder(getList);
-            setOrderInfo({orderGroup:{...seeOrder}, menu:{...getMenu}})
         }
         else {
             setSelectOrder(false);
@@ -74,9 +66,34 @@ export default function See(props) {
         let input = e.target.value;
         if (input === "") {
             setOrderId(false);
+            setOrderInfo(null);
         }
         else {
-            setOrderId(input);
+            getOrder(input).then((e) => {
+                if (e) {
+                    setOrderId(input);
+                }
+                else {
+                    setOrderId(false);
+                }
+            });
+        }
+    }
+
+    async function getOrder(orderId) {
+        let getMenu = false;
+        let seeOrder = false;
+        await Promise.all([
+            fetchData('menu').then(res => getMenu=res),
+            fetchData('seeOrder', {orderId: orderId}).then(res => seeOrder=res),
+        ]).catch(e => console.log(e));
+        if (getMenu !== false && seeOrder !== false) {
+            setOrderInfo({orderGroup:{...seeOrder}, menu:{...getMenu}})
+            return true;
+        }
+        else {
+            setOrderInfo(false);
+            return false;
         }
     }
 
