@@ -45,9 +45,9 @@ export default function Selection(props) {
                 sides.push(<option key={newItem.itemId + side} value={side}>{side}</option>);
             }
             sidesBox = (
-                <select name="item-sides" onChange={setItemSide} defaultValue={"choose side"}
+                <select name="item-sides" onChange={setItemSide} defaultValue={""}
                         className="dropdown__selector item-sides">
-                    <option key={newItem.itemId + "===="} value={""}>choose side</option>
+                    <option key={newItem.itemId + "===="} value={""}>choose option</option>
                     {sides}
                 </select>
             );
