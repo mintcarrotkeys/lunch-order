@@ -69,14 +69,9 @@ export default function See(props) {
             setOrderInfo(null);
         }
         else {
-            getOrder(input).then((e) => {
-                if (e) {
-                    setOrderId(input);
-                }
-                else {
-                    setOrderId(false);
-                }
-            });
+            setOrderId(input);
+            setOrderInfo('loading');
+            getOrder(input);
         }
     }
 
@@ -98,10 +93,16 @@ export default function See(props) {
     }
 
     let orderDetails = "";
-    if (orderId === false) {
+    if (orderInfo === null) {
         orderDetails = "";
     }
-    else {
+    else if (orderInfo === 'loading') {
+        orderDetails = (<div className="card"><h4>Loading ...</h4></div>);
+    }
+    else if (orderInfo === false) {
+        orderDetails = (<div className="card"><p>Error - couldn't fetch data</p></div>);
+    }
+    else if (orderInfo.hasOwnProperty('menu')) {
         let allowedPages = [
             {name:"Collect Money", code:"orders"},
             {name:"Items", code:"items"},
