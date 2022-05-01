@@ -55,6 +55,10 @@ export default function Selection(props) {
                 </select>
             );
         }
+        else {
+            console.log(sidesBox);
+            sidesBox = "";
+        }
         addItem = (
             <div className="ticket-row add-item-config">
                 <div className="item-topBox">
