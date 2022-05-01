@@ -45,17 +45,18 @@ export default function Selection(props) {
             console.log(menu[newItem.itemId].sides)
             console.log(menu[newItem.itemId].sides.length)
             for (const side of menu[newItem.itemId].sides) {
-                sides.push(<option key={side} value={side}>{side}</option>);
+                sides.push(<option key={newItem.itemId + side} value={side}>{side}</option>);
             }
             sidesBox = (
                 <select name="item-sides" id="item-sides" key={newItem.itemId} onChange={setItemSide} defaultValue={"choose side"}
                         className="dropdown__selector item-sides">
-                    <option value={""}>choose side</option>
+                    <option key={newItem.itemId + "===="} value={""}>choose side</option>
                     {sides}
                 </select>
             );
         }
         else {
+            console.log("Hi")
             console.log(sidesBox);
             sidesBox = "";
         }
