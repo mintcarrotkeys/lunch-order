@@ -102,7 +102,7 @@ export default function See(props) {
     else if (orderInfo === false) {
         orderDetails = (<div className="card"><p>Error - couldn't fetch data</p></div>);
     }
-    else if (orderInfo.hasOwnProperty('menu')) {
+    else if (orderInfo.hasOwnProperty('orderGroup')) {
         let allowedPages = [
             {name:"Collect Money", code:"orders"},
             {name:"Items", code:"items"},
@@ -110,10 +110,8 @@ export default function See(props) {
         ];
 
         let sortOrders = [];
-        // console.log(orderInfo);
-        // console.log(orderId)
-        let currentOrder = orderInfo.orderGroup[orderId];
-        // console.log(currentOrder);
+        let currentOrder = orderInfo.orderGroup;
+
         for (const key in currentOrder.orders) {
             sortOrders.push(currentOrder.orders[key]);
         }
@@ -251,7 +249,7 @@ export default function See(props) {
             fetchData("deleteOrder", {orderId: orderId, userId: userId}).then(res => {
                 if (res) {
                     let data = {...orderInfo};
-                    delete data.orderGroup[orderId].orders[userId];
+                    delete data.orderGroup.orders[userId];
                     setOrderInfo(data);
                 }
                 else {
@@ -269,7 +267,7 @@ export default function See(props) {
             fetchData(ask, {value: value, orderId: orderId, userId: userId}).then(res => {
                 if (res) {
                     let data = {...orderInfo};
-                    data.orderGroup[orderId].orders[userId][key] = value;
+                    data.orderGroup.orders[userId][key] = value;
                     setOrderInfo(data);
                 }
                 else {
