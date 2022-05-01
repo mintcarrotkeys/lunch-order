@@ -49,10 +49,10 @@ export default function Order(props) {
         selectOrderBar = "";
     }
     else if (selectOrder === null) {
-        selectOrderBar = (<h4>Loading ...</h4>);
+        selectOrderBar = (<div className="card"><h4>Loading ...</h4></div>);
     }
     else if (selectOrder === false) {
-        selectOrderBar = (<p>Error - couldn't fetch data</p>);
+        selectOrderBar = (<div className="card"><p>Error - couldn't fetch data</p></div>);
     }
     else {
         let orderList = [];
@@ -73,13 +73,15 @@ export default function Order(props) {
         }
 
         selectOrderBar = (
-            <div className="bar">
-                <div className="dropdown_label">Select Date:</div>
-                <select name="dates" id="dates" onChange={selectDate} defaultValue={"choose"}
-                        className="dropdown__selector">
-                    <option value={""}>choose</option>
-                    {options}
-                </select>
+            <div className="card">
+                <div className="bar">
+                    <div className="dropdown_label">Select Date:</div>
+                    <select name="dates" id="dates" onChange={selectDate} defaultValue={"choose"}
+                            className="dropdown__selector">
+                        <option value={""}>choose</option>
+                        {options}
+                    </select>
+                </div>
             </div>
         )
     }
@@ -233,9 +235,7 @@ export default function Order(props) {
 
     return (
         <div className="page">
-            <div className="card">
-                {selectOrderBar}
-            </div>
+            {selectOrderBar}
             {orderDetails}
         </div>
     );

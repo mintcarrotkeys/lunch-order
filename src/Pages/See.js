@@ -71,6 +71,8 @@ export default function See(props) {
         else {
             setOrderId(input);
             setOrderInfo('loading');
+            setPage(null);
+            setAddOrderUser(null);
             getOrder(input);
         }
     }
