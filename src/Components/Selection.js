@@ -42,6 +42,8 @@ export default function Selection(props) {
         let sides = [];
         console.log(newItem);
         if (newItem.itemId !== "" && menu[newItem.itemId].sides.length > 0) {
+            console.log(menu[newItem.itemId].sides)
+            console.log(menu[newItem.itemId].sides.length)
             for (const side of menu[newItem.itemId].sides) {
                 sides.push(<option key={side} value={side}>{side}</option>);
             }
