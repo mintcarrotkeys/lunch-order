@@ -227,7 +227,7 @@ export default function See(props) {
                         </div>
                     </div>
 
-                    {(addOrderUser!==null ? <Order admin={true} userId={addOrderUser} /> : "")}
+                    {(addOrderUser!==null ? <Order admin={true} userId={addOrderUser} orderId={orderId} /> : "")}
                 </div>
             )
         }
