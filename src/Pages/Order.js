@@ -15,13 +15,12 @@ export default function Order(props) {
     const [adminOrderUserId, setAdminOrderUserId] = useState(false);
 
     React.useEffect(() => {
-        if (props.admin === true) {
-            setOrderId(props.orderId);
-            getOrder(props.orderId);
-        }
-        else {
-            getDates().catch((e) => console.log(e));
-        }
+        getDates().then(() => {
+            if (props.admin === true) {
+                setOrderId(props.orderId);
+                getOrder(props.orderId);
+            }
+        }).catch((e) => console.log(e));
         }, []);
 
     function selectDate(e) {
@@ -30,8 +29,8 @@ export default function Order(props) {
             setOrderState(null);
         }
         else {
-            getOrder(input);
             setOrderId(input);
+            getOrder(input);
         }
     }
 
