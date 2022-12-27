@@ -239,7 +239,7 @@ export default function Selection(props) {
     }
 
     function orderFinished() {
-        window.location.reload();
+        props.actionAfterOrder();
     }
 
     function cancelConfirm() {

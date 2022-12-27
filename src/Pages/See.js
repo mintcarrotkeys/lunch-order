@@ -229,7 +229,8 @@ export default function See(props) {
                         </div>
                     </div>
 
-                    {(addOrderUser!==null ? <Order admin={true} userId={addOrderUser} orderId={orderId} /> : "")}
+                    {(addOrderUser!==null ? <Order admin={true} userId={addOrderUser} orderId={orderId}
+                                                   actionAfterOrder={resetAfterOrder} /> : "")}
                 </div>
             )
         }
@@ -240,6 +241,10 @@ export default function See(props) {
                 {pageContent}
             </div>
         );
+    }
+
+    function resetAfterOrder() {
+        setAddOrderUser(null);
     }
 
     function changePage(selected) {
@@ -280,7 +285,6 @@ export default function See(props) {
     }
 
     function selectUser(e) {
-
         if (e.target.value === "") {
             setAddOrderUser(null);
         }

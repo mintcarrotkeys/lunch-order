@@ -66,7 +66,7 @@ function App() {
         let showPage = "";
         if (page === "order") {
             showPage = (
-                <Order admin={false} />
+                <Order admin={false} actionAfterOrder={(() => {window.location.reload()})} />
             );
         }
         else if (page === "users") {

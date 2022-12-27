@@ -225,6 +225,7 @@ export default function Order(props) {
                         </div>
                         <Selection orderName={selectOrder[orderId].name} orderId={orderId}
                                    menu={orderState.menu} admin={props.admin} userId={adminOrderUserId}
+                                   actionAfterOrder={props.actionAfterOrder}
                         />
                     </div>
                 );
