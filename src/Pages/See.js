@@ -244,9 +244,7 @@ export default function See(props) {
     }
 
     function resetAfterOrder() {
-        const currentUser = addOrderUser;
         setAddOrderUser(null);
-        setAddOrderUser(currentUser);
     }
 
     function changePage(selected) {
