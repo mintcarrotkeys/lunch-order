@@ -15,6 +15,7 @@ export default function Order(props) {
     const [adminOrderUserId, setAdminOrderUserId] = useState(false);
 
     React.useEffect(() => {
+        console.log(props.userId);
         getDates().then(() => {
             if (props.admin === true) {
                 setOrderId(props.orderId);
