@@ -88,6 +88,35 @@ b {
 
 .title {
   text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: none;
+}
+
+.title__username {
+  margin-right: 10px;
+}
+
+.logo__icon {
+  width: 35px;
+  height: 35px;
+  margin: 5px;
+}
+
+.logo__box {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  text-align: center;
+  margin: 3px;
+}
+
+.logo__text {
+  margin: 0;
+  font-weight: 300;
 }
 
 .bar {
@@ -116,7 +145,7 @@ b {
   text-align: center;
   margin: 5px;
   font-size: 15px;
-  padding: 3px;
+  padding: 3px 3px 3px 6px;
   color: black;
 }
 

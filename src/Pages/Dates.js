@@ -43,8 +43,10 @@ export default function Dates() {
             else {return 0}
         }
         sortOrders.sort(comp);
-        orders.push(<h6 className="grid-item">order name/date</h6>)
-        orders.push(<h6 className="grid-item">order due</h6>)
+        orders.push(<h6 className="grid-item" key={"0a"}>order name/date</h6>);
+        orders.push(<h6 className="grid-item" key={"0b"}>order due</h6>);
+
+        let i = 1;
         for (const item of sortOrders) {
             const time = new Date(item.dueDate);
             let formattedTime = (
@@ -54,9 +56,10 @@ export default function Dates() {
                 +  (time.getHours() < 10 ? "0" : "") + time.getHours().toString() + ":"
                 +  (time.getMinutes() < 10 ? "0" : "") + time.getMinutes().toString()
             );
-            orders.push(<h5 className="grid-item">{item.name}</h5>)
-            orders.push(<h4 className="grid-item">{formattedTime}</h4>)
+            orders.push(<h5 className="grid-item" key={i + "a"}>{item.name}</h5>)
+            orders.push(<h4 className="grid-item" key={i + "b"}>{formattedTime}</h4>)
             options.push(<option key={item.orderId} value={item.orderId}>{item.name}</option>)
+            i++;
         }
         const time = new Date(addNewDate.dueDate);
         let dateVal = (

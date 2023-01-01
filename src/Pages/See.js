@@ -3,8 +3,7 @@ import {fetchData} from "../auth";
 import Nav from "../Components/Nav";
 import OrderDisplay from "../Components/OrderDisplay";
 import ItemDisplay from "../Components/ItemDisplay";
-import Order from "./Order";
-
+import AdminOrder from "./AdminOrder";
 
 
 export default function See(props) {
@@ -55,7 +54,7 @@ export default function See(props) {
                 <div className="dropdown_label">Select Date:</div>
                 <select name="dates" id="dates" onChange={selectDate} defaultValue={"choose"}
                         className="dropdown__selector">
-                    <option value={""}>choose</option>
+                    <option key={"Nothing"} value={""}>choose</option>
                     {options}
                 </select>
             </div>
@@ -182,7 +181,7 @@ export default function See(props) {
             for (const key in itemTree) {
                 let item = itemTree[key];
                 itemList.push(
-                    <ItemDisplay data={item} />
+                    <ItemDisplay data={item} key={key} />
                 )
             }
 
@@ -210,7 +209,7 @@ export default function See(props) {
             let noOrderUsers = [];
             for (const user of currentOrder.noOrder) {
                 noOrderUsers.push(
-                    <option value={user.userId}>{user.name}</option>
+                    <option value={user.userId} key={user.userId}>{user.name}</option>
                 )
             }
 
@@ -229,7 +228,7 @@ export default function See(props) {
                         </div>
                     </div>
 
-                    {(addOrderUser!==null ? <Order admin={true} userId={addOrderUser} orderId={orderId}
+                    {(addOrderUser!==null ? <AdminOrder admin={true} userId={addOrderUser} orderId={orderId}
                                                    actionAfterOrder={resetAfterOrder} /> : "")}
                 </div>
             )

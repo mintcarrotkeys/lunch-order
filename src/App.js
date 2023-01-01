@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {passItem} from "./version";
 import {fetchData, login} from "./auth";
 import Nav from "./Components/Nav";
-import Order from "./Pages/Order";
+import MyOrder from "./Pages/MyOrder";
 import Users from "./Pages/Users";
 import See from "./Pages/See";
 import Dates from "./Pages/Dates";
@@ -66,7 +66,7 @@ function App() {
         let showPage = "";
         if (page === "order") {
             showPage = (
-                <Order admin={false} actionAfterOrder={(() => {window.location.reload()})} />
+                <MyOrder actionAfterOrder={(() => {window.location.reload()})} />
             );
         }
         else if (page === "users") {
@@ -89,13 +89,21 @@ function App() {
     return (
             <div className="container">
                 <div className="card title">
-                    <h1>e Lunch Order System</h1>
-                    <h2><span style={{fontWeight: 300}}>Welcome:</span> {userName}</h2>
+                    <div className="logo__box">
+                        <img src="favicon-elos.svg" alt="logo" className="logo__icon"/>
+                        <h1 className="logo__text">elos</h1>
+                    </div>
+                    <h1 className="title__username">{userName}</h1>
                 </div>
                 {pageBox}
                 <div className="stack">
                     <div className="card" style={{marginTop: '65px'}}>
-                        <p><a href="https://github.com/mintcarrotkeys/lunch-order/blob/main/LICENSE">License</a></p>
+                        <p>
+                            <a href="https://github.com/mintcarrotkeys/lunch-order/blob/main/LICENSE"
+                               style={{color: "black"}}>
+                                License
+                            </a>
+                        </p>
                     </div>
                 </div>
             </div>
