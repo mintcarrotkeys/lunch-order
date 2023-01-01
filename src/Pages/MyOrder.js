@@ -181,7 +181,7 @@ export default function MyOrder(props) {
                 +  (time.getHours() < 10 ? "0" : "") + time.getHours().toString() + ":"
                 +  (time.getMinutes() < 10 ? "0" : "") + time.getMinutes().toString()
             );
-            if (Date.now() > selectOrder[orderId].dueDate && props.admin === false) {
+            if (Date.now() > selectOrder[orderId].dueDate) {
                 orderDetails = (
                     <div className="stack">
                         <div className="card">
