@@ -55,7 +55,7 @@ export async function requestCode() {
 
 }
 
-export async function requestToken() {
+export async function requestToken(service = 'SBHS') {
     const params = new URLSearchParams(window.location.href.toString().split("?")[1]);
     const code = params.get('code');
     const returnedState = params.get('state');
@@ -73,49 +73,17 @@ export async function requestToken() {
     if (returnedState !== state) {
         return false;
     }
-    const requestBody = (
-        "grant_type=authorization_code" +
-        "&redirect_uri=" + redirect +
-        "&client_id=" + appId +
-        "&code=" + code +
-        "&code_verifier=" + codeVerifier
-    );
-    const requestURL = (
-        "https://student.sbhs.net.au/api/token"
-    );
 
-    let response = await fetch(requestURL, {
-        method: "POST",
-        headers: {"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"},
-        body: requestBody}).catch(e => console.log(e));
-    if (!response.ok) {
-        console.log("Error fetching tokens. -1");
-        response = await fetch(requestURL, {
-            method: "POST",
-            headers: {"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"},
-            body: requestBody}).catch(e => console.log(e));
-        if (!response.ok) {
-            console.log('Error fetching tokens. -2');
-            return false;
-        }
-    }
-    let tokens = await response.json();
-    // console.log(tokens);
-    if (!tokens) {
-        return false;
-    }
+    let requestBody = {'service': service, 'code': code, 'verifier': codeVerifier}
 
-    const elosGetToken = serverURL + "?ask=token";
-    let elosRequest = {'token': tokens['access_token']}
-
-    let elosResponse = await fetch(elosGetToken, {
+    let fetchToken = await fetch((serverURL + "?ask=token"), {
         method: "POST",
         headers: {"Content-type": "application/json; charset=UTF-8"},
-        body: JSON.stringify(elosRequest)}).catch(e => console.log(e));
-    if (!response.ok) {
+        body: JSON.stringify(requestBody)}).catch(e => console.log(e));
+    if (!fetchToken.ok) {
         return false;
     }
-    const elosToken = await elosResponse.json();
+    const elosToken = await fetchToken.json();
 
     if (elosToken['status'] === 'success') {
         saveItem('token', elosToken);
@@ -129,7 +97,6 @@ export async function requestToken() {
 
     return true;
 }
-
 
 export async function login() {
     const params = new URLSearchParams(window.location.href.toString().split("?")[1]);
@@ -148,9 +115,9 @@ export async function login() {
         }
     }
 
-    requestCode();
+    // requestCode();
 
-    return "redirect";
+    return "login_page";
 }
 
 export async function fetchData(ask, params=null) {

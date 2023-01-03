@@ -6,6 +6,7 @@ import MyOrder from "./Pages/MyOrder";
 import Users from "./Pages/Users";
 import See from "./Pages/See";
 import Dates from "./Pages/Dates";
+import Login from "./Pages/Login";
 
 
 function App() {
@@ -21,6 +22,10 @@ function App() {
 
     function changePage(selected) {
         setPage(selected);
+    }
+
+    function setRedirect() {
+        setDataState("redirect");
     }
 
     React.useEffect(() => {
@@ -54,9 +59,14 @@ function App() {
             <div className="card"><p>Error - could not login, reload to try again.</p></div>
         );
     }
+    else if (dataState === "login_page") {
+        pageBox = (<Login action={setRedirect} />);
+    }
     else if (dataState === "redirect") {
         pageBox = (
-            <div className="card"><h4>Redirecting to login ...</h4></div>
+            <div className="login__page">
+                <h1 className="login__title">Redirecting to login ...</h1>
+            </div>
         );
     }
     else if (page === null) {
