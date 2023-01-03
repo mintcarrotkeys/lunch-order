@@ -14,6 +14,7 @@ export default function Login(props) {
         <div className="stack login__page">
             <h1 className="login__title">Login</h1>
             <LoginButton action={handleClick} serviceName={"SBHS"} />
+            <LoginButton action={handleClick} serviceName={"Discord"} />
         </div>
     );
 

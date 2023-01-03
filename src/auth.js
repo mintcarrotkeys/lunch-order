@@ -3,6 +3,7 @@ import {passItem, saveItem} from "./version";
 const siteURL = encodeURIComponent('https://shsrc.pages.dev');
 const useAppId = "elos";
 const serverURL = "https://elos.genericbells.workers.dev/";
+const discordAppId = "1059400423817097216";
 
 export async function requestCode(service) {
     const redirect = siteURL;
@@ -54,6 +55,18 @@ export async function requestCode(service) {
             "redirect_uri=" + redirect
         );
     }
+    else if (service === "Discord") {
+        requestURL = (
+            "https://discord.com/api/oauth2/authorize?" +
+            "client_id=" + discordAppId + "&" +
+            "response_type=code&" +
+            "state=" + state + "&" +
+            "code_challenge=" + codeChallenge + "&" +
+            "code_challenge_method=S256&" +
+            "scope=identify&" +
+            "redirect_uri=" + redirect
+        );
+    }
 
     window.location.assign(requestURL);
 
@@ -97,6 +110,7 @@ export async function requestToken() {
 
     localStorage.removeItem('handle_state');
     localStorage.removeItem('handle_verifier');
+    localStorage.removeItem('handle_service');
 
     return true;
 }
