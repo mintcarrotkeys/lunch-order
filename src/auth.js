@@ -4,7 +4,7 @@ const siteURL = encodeURIComponent('https://shsrc.pages.dev');
 const useAppId = "elos";
 const serverURL = "https://elos.genericbells.workers.dev/";
 
-export async function requestCode() {
+export async function requestCode(service) {
     const redirect = siteURL;
     const appId = useAppId;
     //generate code verifier 43-128 characters long
@@ -39,31 +39,34 @@ export async function requestCode() {
     const state = randomString(32);
     localStorage.setItem('handle_verifier', codeVerifier);
     localStorage.setItem('handle_state', state);
+    localStorage.setItem('handle_service', service);
 
-    const requestURL = (
-        "https://student.sbhs.net.au/api/authorize?" +
-        "client_id=" + appId + "&" +
-        "response_type=code&" +
-        "state=" + state + "&" +
-        "code_challenge=" + codeChallenge + "&" +
-        "code_challenge_method=S256&" +
-        "scope=all-ro&" +
-        "redirect_uri=" + redirect
-    );
+    let requestURL = "";
+    if (service === "SBHS") {
+        requestURL = (
+            "https://student.sbhs.net.au/api/authorize?" +
+            "client_id=" + appId + "&" +
+            "response_type=code&" +
+            "state=" + state + "&" +
+            "code_challenge=" + codeChallenge + "&" +
+            "code_challenge_method=S256&" +
+            "scope=all-ro&" +
+            "redirect_uri=" + redirect
+        );
+    }
 
     window.location.assign(requestURL);
 
 }
 
-export async function requestToken(service = 'SBHS') {
+export async function requestToken() {
     const params = new URLSearchParams(window.location.href.toString().split("?")[1]);
     const code = params.get('code');
     const returnedState = params.get('state');
     window.history.replaceState({}, "", "/");
-    const redirect = siteURL;
-    const appId = useAppId;
     const codeVerifier = localStorage.getItem('handle_verifier');
     const state = localStorage.getItem('handle_state');
+    const service = localStorage.getItem('handle_service');
     if (codeVerifier == null) {
         return false;
     }
@@ -115,8 +118,6 @@ export async function login() {
         }
     }
 
-    // requestCode();
-
     return "login_page";
 }
 
@@ -127,7 +128,7 @@ export async function fetchData(ask, params=null) {
         return false;
     }
     else if (elosTokens.validity < (Date.now() + 60*1000)) {
-        requestCode().then(() => {return false}).catch(e => console.log(e));
+        window.reload();
     }
 
     let token = elosTokens.token;

@@ -7,7 +7,7 @@ export default function Login(props) {
 
     function handleClick(serviceName) {
         props.action();
-        requestCode();
+        requestCode(serviceName);
     }
 
     const page = (
