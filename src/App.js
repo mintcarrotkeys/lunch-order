@@ -64,7 +64,7 @@ function App() {
     }
     else if (dataState === "redirect") {
         pageBox = (
-            <div className="login__page">
+            <div className="main__page">
                 <h1 className="login__title">Redirecting to login ...</h1>
             </div>
         );
@@ -89,7 +89,7 @@ function App() {
             showPage = <Dates />
         }
         pageBox = (
-            <div className="stack">
+            <div className="stack main__page">
                 <Nav setPage={changePage} allowed={allowedPages} currentPage={page} />
                 {showPage}
             </div>
@@ -107,7 +107,7 @@ function App() {
                 </div>
                 {pageBox}
                 <div className="stack">
-                    <div className="card" style={{marginTop: '65px'}}>
+                    <div className="card" style={{marginTop: '65px', boxShadow: 'none'}}>
                         <p>
                             <a href="https://github.com/mintcarrotkeys/lunch-order/blob/main/LICENSE"
                                style={{color: "black"}}>

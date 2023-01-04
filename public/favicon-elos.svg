@@ -2,14 +2,14 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 240 240" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
     <g transform="matrix(6.12323e-17,-1,1,6.12323e-17,0,240)">
-        <path d="M240,48C240,21.508 218.492,0 192,0L48,0C21.508,0 0,21.508 0,48L0,192C0,218.492 21.508,240 48,240L192,240C218.492,240 240,218.492 240,192L240,48Z" style="fill:url(#_Linear1);"/>
+        <path d="M240,120C240,53.77 186.23,0 120,0C53.77,0 0,53.77 0,120C0,186.23 53.77,240 120,240C186.23,240 240,186.23 240,120Z" style="fill:url(#_Linear1);"/>
     </g>
-    <g transform="matrix(1.16667,0,0,1.16667,-20,-22.5)">
+    <g transform="matrix(0.944444,0,0,0.944444,6.66667,9.02778)">
         <g transform="matrix(1.8,0,0,0.625,-42,38.75)">
-            <path d="M140,66L40,66L65,50L115,50L140,66Z" style="fill:white;stroke:white;stroke-width:2.65px;"/>
+            <path d="M140,66L40,66L65,50L115,50L140,66Z" style="fill:white;stroke:white;stroke-width:3.27px;"/>
         </g>
         <g transform="matrix(2,0,0,1,-80,0)">
-            <rect x="60" y="90" width="10" height="60" style="fill:white;stroke:white;stroke-width:2.26px;"/>
+            <rect x="60" y="90" width="10" height="60" style="fill:white;stroke:white;stroke-width:2.79px;"/>
         </g>
         <g>
             <g transform="matrix(0.500001,0,0,1,50.0001,2.84217e-14)">
@@ -26,10 +26,10 @@
             </g>
         </g>
         <g transform="matrix(2,0,0,1,60,0)">
-            <rect x="60" y="90" width="10" height="60" style="fill:white;stroke:white;stroke-width:2.26px;"/>
+            <rect x="60" y="90" width="10" height="60" style="fill:white;stroke:white;stroke-width:2.79px;"/>
         </g>
         <g transform="matrix(1,0,0,0.5,0,80)">
-            <rect x="30" y="160" width="180" height="10" style="fill:white;stroke:white;stroke-width:4.52px;"/>
+            <rect x="30" y="160" width="180" height="10" style="fill:white;stroke:white;stroke-width:5.58px;"/>
         </g>
     </g>
     <defs>
