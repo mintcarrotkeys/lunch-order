@@ -461,6 +461,7 @@ b {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -590,4 +591,10 @@ b {
 
 .register__button {
   margin: 50px 5px 10px 5px;
+}
+
+.icon-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

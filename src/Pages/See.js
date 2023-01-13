@@ -139,11 +139,11 @@ export default function See(props) {
         if (page === "orders") {
             pageContent = (
                 <div className="stack">
-                    <div className="card" style={{margin: "10px 10px 3px 10px", padding: "0px"}}>
+                    <div className="card" style={{margin: "10px 10px 3px 10px", padding: "0px", boxShadow: "none"}}>
                         <h3>Users who placed orders</h3>
                     </div>
                     {orderList}
-                    <div className="card" style={{margin: "10px 10px 3px 10px", padding: "0px"}}>
+                    <div className="card" style={{margin: "10px 10px 3px 10px", padding: "0px", boxShadow: "none"}}>
                         <h3>Users who did not place an order</h3>
                         <p>Check with these users to confirm if they want to place a lunch order.</p>
                         <h4>{noOrder.join(', ')}</h4>
@@ -222,7 +222,7 @@ export default function See(props) {
                             <h4 className="dropdown_label">Select user: </h4>
                             <select name="user" id="user" onChange={selectUser} defaultValue={"choose"}
                                     className="dropdown__selector">
-                                <option value={""}>choose</option>
+                                <option value={""} key={"Nothing"}>choose</option>
                                 {noOrderUsers}
                             </select>
                         </div>

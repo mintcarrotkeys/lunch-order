@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Banner from "../Components/Banner";
 
 export default function Register(props) {
     const [state, setState] = useState(0);
@@ -6,8 +7,9 @@ export default function Register(props) {
     let page = "";
     if (state === 0) {
         page = (
-            <h1 className="login__title">Register</h1>
-
+            <div className="stack">
+                <h1 className="login__title">Register</h1>
+            </div>
         )
     }
 
