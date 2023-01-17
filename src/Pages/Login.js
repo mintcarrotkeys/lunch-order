@@ -16,7 +16,7 @@ export default function Login(props) {
     if (register) {
         page = (
             <div className="stack main__page">
-                <Register />
+                <Register currentState={"start"} />
             </div>
         )
     }
@@ -24,8 +24,8 @@ export default function Login(props) {
         page = (
             <div className="stack main__page">
                 <h1 className="login__title">Login</h1>
-                <LoginButton action={handleClick} serviceName={"SBHS"} />
-                <LoginButton action={handleClick} serviceName={"Discord"} />
+                <LoginButton action={handleClick} serviceName={"SBHS"} authType={'login'} />
+                <LoginButton action={handleClick} serviceName={"Discord"} authType={'login'} />
                 <div className="login__button register__button" onClick={() => setRegister(true)}>
                     <h4>Register new login</h4>
                 </div>

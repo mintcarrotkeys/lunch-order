@@ -4,6 +4,7 @@ const siteURL = encodeURIComponent('https://shsrc.pages.dev');
 const useAppId = "elos";
 const serverURL = "https://elos.genericbells.workers.dev/";
 const discordAppId = "1059400423817097216";
+const timeAllowedForLinkService = 2*60*60*1000 - 5*1000;
 
 export async function requestCode(service) {
     const redirect = siteURL;
@@ -91,28 +92,55 @@ export async function requestToken() {
     }
 
     let requestBody = {'service': service, 'code': code, 'verifier': codeVerifier}
-
-    let fetchToken = await fetch((serverURL + "?ask=token"), {
-        method: "POST",
-        headers: {"Content-type": "application/json; charset=UTF-8"},
-        body: JSON.stringify(requestBody)}).catch(e => console.log(e));
-    if (!fetchToken.ok) {
-        return false;
-    }
-    const elosToken = await fetchToken.json();
-
-    if (elosToken['status'] === 'success') {
-        saveItem('token', elosToken);
-    }
-    else {
-        return false;
-    }
+    let requestHeaders = {"Content-type": "application/json; charset=UTF-8"};
+    let requestType = "token";
 
     localStorage.removeItem('handle_state');
     localStorage.removeItem('handle_verifier');
     localStorage.removeItem('handle_service');
 
-    return true;
+    //this bit deals with registering a new login service
+    let linkService = passItem('linkService');
+    let linkingLogin = linkService !== null;
+    if (linkingLogin) {
+        if (linkService.timestamp + timeAllowedForLinkService > Date.now()) {
+            requestHeaders['Authorization'] = linkService.linkingCode;
+            requestType = "linkService";
+        }
+        else {
+            return "link_login_fail";
+        }
+    }
+
+    let fetchToken = await fetch((serverURL + "?ask=" + requestType), {
+        method: "POST",
+        headers: requestHeaders,
+        body: JSON.stringify(requestBody)}).catch(e => console.log(e));
+
+    if (linkingLogin) {
+        localStorage.removeItem('linkService');
+        if (!fetchToken.ok) {
+            return "link_login_fail";
+        }
+        else {
+            return "link_login_success";
+        }
+    }
+    else {
+        if (!fetchToken.ok) {
+            return false;
+        }
+        const elosToken = await fetchToken.json();
+
+        if (elosToken['status'] === 'success') {
+            saveItem('token', elosToken);
+        }
+        else {
+            return false;
+        }
+
+        return true;
+    }
 }
 
 export async function login() {
@@ -120,10 +148,8 @@ export async function login() {
     if (params.has('code')) {
         let response = false;
         await requestToken().then(res => response=res).catch(e => console.log(e));
-        return response === true;
+        return response;
     }
-
-
 
     const token = passItem('token');
     if (token !== null) {

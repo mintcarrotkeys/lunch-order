@@ -7,6 +7,7 @@ import Users from "./Pages/Users";
 import See from "./Pages/See";
 import Dates from "./Pages/Dates";
 import Login from "./Pages/Login";
+import Register from "./Pages/Register";
 
 
 function App() {
@@ -68,6 +69,9 @@ function App() {
                 <h1 className="login__title">Redirecting to login ...</h1>
             </div>
         );
+    }
+    else if (dataState === "link_login_fail" || dataState === "link_login_success") {
+        pageBox = <Register currentState={dataState} login={setDataState("login_page")} />
     }
     else if (page === null) {
         setPage('order');

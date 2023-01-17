@@ -6,11 +6,20 @@ export default function LoginButton(props) {
         props.action(props.serviceName);
     }
 
-    return (
-        <div className="login__button" onClick={handleClick}>
-            <h4>Login with {props.serviceName}</h4>
-        </div>
-    )
+    if (props.authType === "login") {
+        return (
+            <div className="login__button" onClick={handleClick}>
+                <h4>Login with {props.serviceName}</h4>
+            </div>
+        )
+    }
+    else if (props.authType === "register") {
+        return (
+            <div className="login__button" onClick={handleClick}>
+                <h4>Register with {props.serviceName} account</h4>
+            </div>
+        )
+    }
 
 
 }

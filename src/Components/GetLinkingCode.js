@@ -30,21 +30,35 @@ export default function GetLinkingCode(props) {
         )
     }
 
-    const form = (
-        <div className="card">
-            <h2>get linking code</h2>
-            <p>Give this code to users when they need to add a login service.</p>
-            <p>This code is single-use and valid for 2 hours.</p>
-            <div className="user-add-top">
-                <h4 className="dropdown_label">Select user: </h4>
-                <select name="user" id="user" onChange={selectUser} defaultValue={"choose"}
-                        className="dropdown__selector">
-                    <option value={""} key={"Nothing"}>choose user</option>
-                    {selectUserOptions}
-                </select>
+    let linkingCodeBox = "";
+    if (linkingCode !== null) {
+        // console.log(linkingCode);
+        linkingCodeBox = (
+            <div className="card">
+                <h1 className="linking-code-input">{linkingCode.code}</h1>
+                <h3>{linkingCode.user}</h3>
             </div>
-            {banner}
-            <Button text={"get code"} type={'green'} action={getCode} />
+        );
+    }
+
+    const form = (
+        <div className="stack">
+            <div className="card">
+                <h2>generate linking code</h2>
+                <p>Give this code to users when they need to add a login service.</p>
+                <p>This code is single-use and valid for 2 hours.</p>
+                <div className="user-add-top">
+                    <h4 className="dropdown_label">Select user: </h4>
+                    <select name="user" id="user" onChange={selectUser} defaultValue={"choose"}
+                            className="dropdown__selector">
+                        <option value={""} key={"Nothing"}>choose user</option>
+                        {selectUserOptions}
+                    </select>
+                </div>
+                {banner}
+                <Button text={"get code"} type={'green'} action={getCode} />
+            </div>
+            {linkingCodeBox}
         </div>
     )
 
@@ -55,16 +69,16 @@ export default function GetLinkingCode(props) {
         }
         else {
             setSelectedUser(e.target.value);
-            console.log(e.target.innerHTML);
         }
     }
 
     function getCode(e) {
         setLinkingCode(null);
         if (selectedUser !== null) {
-            setBanner(<Banner message={'fetching linking code ... '} type={'yellow'} />);
+            setBanner(<Banner message={'waiting for server ... '} type={'yellow'} />);
 
-            fetchCode(selectedUser, );
+            fetchCode(selectedUser, props.users.users[selectedUser].name);
+            console.log(props.users.users[selectedUser].name);
         }
         else {
             setBanner(<Banner message={'Please select a user.'} type={'red'} />);
@@ -75,10 +89,10 @@ export default function GetLinkingCode(props) {
         let res = await fetchData('getLinkingCode', {"userId": userId});
         if (res) {
             setBanner(<Banner message={'Success.'} type={'green'} />);
-            setLinkingCode({user: userName, code: res.code})
+            setLinkingCode({user: res.name, code: res.token, expire: res.validity})
         }
         else {
-            setBanner(<Banner message={'Error: could not add user.'} type={'red'} />);
+            setBanner(<Banner message={'Error: could not get a linking code.'} type={'red'} />);
         }
     }
 
