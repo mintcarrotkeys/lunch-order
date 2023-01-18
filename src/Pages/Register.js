@@ -89,7 +89,7 @@ export default function Register(props) {
             <div className="stack">
                 <h1 className="login__title">Register</h1>
                 <div className="card">
-                    Success!
+                    <h2>Success!</h2>
                     <Banner type={'green'} message={'Your login service was linked.'} />
                 </div>
                 <br />
@@ -105,7 +105,7 @@ export default function Register(props) {
             <div className="stack">
                 <h1 className="login__title">Register</h1>
                 <div className="card">
-                    Error :(
+                    <h2>Error :( </h2>
                     <Banner type={'red'} message={'Your login service could not be linked.'} />
                 </div>
                 <br />
