@@ -94,7 +94,7 @@ export default function Register(props) {
                 </div>
                 <br />
                 <br />
-                <div className="login__button" onClick={props.login}>
+                <div className="login__button" onClick={() => props.login()}>
                     <h4>Proceed to login</h4>
                 </div>
             </div>
@@ -113,7 +113,7 @@ export default function Register(props) {
                 <p>Or there could be a problem with our server right now.</p>
                 <br />
                 <br />
-                <div className="login__button" onClick={props.login}>
+                <div className="login__button" onClick={() => props.login()}>
                     <h4>Try again.</h4>
                 </div>
             </div>

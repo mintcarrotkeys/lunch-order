@@ -71,7 +71,7 @@ function App() {
         );
     }
     else if (dataState === "link_login_fail" || dataState === "link_login_success") {
-        pageBox = <Register currentState={dataState} login={setDataState("login_page")} />
+        pageBox = <Register currentState={dataState} login={() => {setDataState("login_page")}} />
     }
     else if (page === null) {
         setPage('order');
