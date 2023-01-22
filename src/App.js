@@ -103,7 +103,7 @@ function App() {
     return (
             <div className="container">
                 <div className="card title">
-                    <div className="logo__box">
+                    <div className="logo__box" onClick={() => {window.location.assign("https://shsrc.pages.dev")}}>
                         <img src="favicon-elos.svg" alt="logo" className="logo__icon"/>
                         <h1 className="logo__text">elos</h1>
                     </div>
@@ -112,9 +112,12 @@ function App() {
                 {pageBox}
                 <div className="stack">
                     <div className="card" style={{marginTop: '65px', boxShadow: 'none'}}>
-                        <p>
+                        <p className="footer-bar">
+                            <a className="links" onClick={logout}>
+                                Logout
+                            </a>
                             <a href="https://github.com/mintcarrotkeys/lunch-order/blob/main/LICENSE"
-                               style={{color: "black"}}>
+                               className="links">
                                 License
                             </a>
                         </p>
@@ -122,6 +125,12 @@ function App() {
                 </div>
             </div>
     );
+
+    function logout() {
+        localStorage.clear();
+        sessionStorage.clear();
+        window.location.reload();
+    }
 }
 
 export default App;

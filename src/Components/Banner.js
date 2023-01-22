@@ -4,7 +4,7 @@ import React from 'react';
 export default function Banner(props) {
     /**
      * message=""
-     * type= red,yellow,green
+     * type= red,yellow,green,grey
      *
      * **/
     let icon = "";
@@ -35,6 +35,11 @@ export default function Banner(props) {
             </svg>
         )
         colour = "#ffc107";
+        textCol = "black";
+    }
+    else if (props.type === "grey") {
+        icon = "";
+        colour = "#eeeeee";
         textCol = "black";
     }
 

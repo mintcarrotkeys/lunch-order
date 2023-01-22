@@ -112,6 +112,7 @@ b {
   align-items: center;
   text-align: center;
   margin: 3px;
+  padding-right: 5px;
 }
 
 .logo__text {
@@ -608,4 +609,30 @@ b {
 
 .flat {
   box-shadow: none;
+}
+
+.footer-bar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+}
+
+.links {
+  color: black;
+  text-decoration: underline;
+  margin: 0;
+  padding: 0;
+
+}
+
+.linking-code-copy-box {
+  background-color: #eeeeee;
+  border-radius: 5px;
+  padding: 0 5px;
+}
+
+.linking-code-copy-box:active {
+  background-color: #00a5cf;
+  color: white;
 }

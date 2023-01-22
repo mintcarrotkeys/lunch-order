@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {fetchData} from "../auth";
 import Button from "./Button";
 import Banner from "./Banner";
+import LinkingCodeBox from "./LinkingCodeBox";
 
 
 
@@ -34,10 +35,7 @@ export default function GetLinkingCode(props) {
     if (linkingCode !== null) {
         // console.log(linkingCode);
         linkingCodeBox = (
-            <div className="card">
-                <h1 className="linking-code-input">{linkingCode.code}</h1>
-                <h3>{linkingCode.user}</h3>
-            </div>
+            <LinkingCodeBox linkingCode={linkingCode} />
         );
     }
 
@@ -64,6 +62,7 @@ export default function GetLinkingCode(props) {
 
     function selectUser(e) {
         setBanner("");
+        setLinkingCode(null);
         if (e.target.value === "") {
             setSelectedUser(null);
         }
