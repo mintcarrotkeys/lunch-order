@@ -26,6 +26,7 @@ export default function Login(props) {
                 <h1 className="login__title">Login</h1>
                 <LoginButton action={handleClick} serviceName={"SBHS"} authType={'login'} />
                 <LoginButton action={handleClick} serviceName={"Discord"} authType={'login'} />
+                <LoginButton action={handleClick} serviceName={"Google"} authType={'login'} />
                 <div className="login__button register__button" onClick={() => setRegister(true)}>
                     <h4>Register new login</h4>
                 </div>

@@ -4,6 +4,7 @@ const siteURL = encodeURIComponent('https://shsrc.pages.dev');
 const useAppId = "elos";
 const serverURL = "https://elos.genericbells.workers.dev/";
 const discordAppId = "1059400423817097216";
+const googleAppId = encodeURIComponent("443830682269-vhgecpmtpqk43glhdcnubk5llj7eomab.apps.googleusercontent.com");
 const timeAllowedForLinkService = 2*60*60*1000 - 5*1000;
 
 export async function requestCode(service) {
@@ -65,6 +66,18 @@ export async function requestCode(service) {
             "code_challenge=" + codeChallenge + "&" +
             "code_challenge_method=S256&" +
             "scope=identify&" +
+            "redirect_uri=" + redirect
+        );
+    }
+    else if (service === "Google") {
+        requestURL = (
+            "https://accounts.google.com/o/oauth2/auth?" +
+            "client_id=" + googleAppId + "&" +
+            "response_type=code&" +
+            "state=" + state + "&" +
+            "code_challenge=" + codeChallenge + "&" +
+            "code_challenge_method=S256&" +
+            "scope=" + encodeURIComponent("https://www.googleapis.com/auth/userinfo.email") + "&" +
             "redirect_uri=" + redirect
         );
     }
@@ -168,7 +181,7 @@ export async function fetchData(ask, params=null) {
         return false;
     }
     else if (elosTokens.validity < (Date.now() + 60*1000)) {
-        window.reload();
+        window.location.reload();
     }
 
     let token = elosTokens.token;

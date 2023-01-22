@@ -32,6 +32,7 @@ export default function Register(props) {
                 </div>
                 <LoginButton action={handleClick} serviceName={"SBHS"} authType={'register'} />
                 <LoginButton action={handleClick} serviceName={"Discord"} authType={'register'} />
+                <LoginButton action={handleClick} serviceName={"Google"} authType={'register'} />
             </div>
         )
     }
