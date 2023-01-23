@@ -36,8 +36,14 @@ export default function Badge(props) {
             color: "white"
         }
     }
+    else if (type === 'purple') {
+        css = {
+            backgroundColor: "#592C85",
+            color: "white"
+        }
+    }
 
-    css.padding = "1px 5px 3px 5px";
+    css.padding = "2px 6px 3px 6px";
 
     const output = (
         <div className="badge-box" style={css}>

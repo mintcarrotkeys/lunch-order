@@ -46,6 +46,9 @@ export default function Users(props) {
                     <Badge type={(user.scope==="admin" ? 'yellow' : 'grey')}
                            text={(user.scope==="admin" ? 'admin' : 'user')}
                     />
+                    {user.hasOwnProperty("SBHS") ? <Badge type={'blue'} text={'SBHS'} /> : ""}
+                    {user.hasOwnProperty("Discord") ? <Badge type={'purple'} text={'discord'} /> : ""}
+                    {user.hasOwnProperty("Google") ? <Badge type={'red'} text={'google'} /> : ""}
                 </div>
             );
         }
