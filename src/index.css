@@ -636,3 +636,17 @@ b {
   background-color: #00a5cf;
   color: white;
 }
+
+.block-of-text {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 500px;
+}
+
+.subheading {
+  margin: 20px 5px 0px 5px;
+}

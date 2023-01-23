@@ -4,6 +4,7 @@ import Button from "../Components/Button";
 import LoginButton from "../Components/LoginButton";
 import {requestCode} from "../auth";
 import {saveItem} from "../version";
+import {ToS} from "../Components/ToS";
 
 export default function Register(props) {
     const [state, setState] = useState(setInitialState(props.currentState));
@@ -58,7 +59,7 @@ export default function Register(props) {
         page = (
             <div className="stack">
                 <h1 className="login__title">Register</h1>
-                <p>[Insert terms of service here]</p>
+                {ToS}
                 <Button text={"agree"} type={"green"} action={agreeToTerms} />
             </div>
         )
