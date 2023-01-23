@@ -70,6 +70,13 @@ function App() {
             </div>
         );
     }
+    else if (dataState === "log_out") {
+        pageBox = (
+            <div className="main__page">
+                <h1 className="login__title">Logging out ...</h1>
+            </div>
+        );
+    }
     else if (dataState === "link_login_fail" || dataState === "link_login_success") {
         pageBox = <Register currentState={dataState} login={() => {setDataState("login_page")}} />
     }
@@ -126,9 +133,18 @@ function App() {
             </div>
     );
 
-    function logout() {
+    async function logout() {
+        setDataState("log_out");
+        const token = passItem('token');
+        if (token !== null) {
+            if (token.validity > Date.now()) {
+                await fetchData("deleteToken");
+            }
+        }
+
         localStorage.clear();
         sessionStorage.clear();
+
         window.location.assign("https://shsrc.pages.dev");
     }
 }
