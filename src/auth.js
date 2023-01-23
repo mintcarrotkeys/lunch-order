@@ -77,7 +77,7 @@ export async function requestCode(service) {
             "state=" + state + "&" +
             "code_challenge=" + codeChallenge + "&" +
             "code_challenge_method=S256&" +
-            "scope=" + encodeURIComponent("https://www.googleapis.com/auth/userinfo.email") + "&" +
+            "scope=" + encodeURIComponent("openid email") + "&" +
             "redirect_uri=" + redirect
         );
     }

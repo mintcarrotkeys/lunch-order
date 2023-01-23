@@ -129,7 +129,7 @@ function App() {
     function logout() {
         localStorage.clear();
         sessionStorage.clear();
-        window.location.reload();
+        window.location.assign("https://shsrc.pages.dev");
     }
 }
 
