@@ -6,6 +6,7 @@ const serverURL = "https://elos.genericbells.workers.dev/";
 const discordAppId = "1059400423817097216";
 const googleAppId = encodeURIComponent("443830682269-vhgecpmtpqk43glhdcnubk5llj7eomab.apps.googleusercontent.com");
 const timeAllowedForLinkService = 2*60*60*1000 - 5*1000;
+const selfCacheAllowedValidity = 2*60*60*1000;
 
 export async function requestCode(service) {
     const redirect = siteURL;
@@ -175,6 +176,14 @@ export async function login() {
 }
 
 export async function fetchData(ask, params=null) {
+    if (ask === 'menu') {
+        let cache = passItem('menu');
+        if (cache !== null) {
+            if (cache.timestamp + selfCacheAllowedValidity > Date.now()) {
+                return cache.data;
+            }
+        }
+    }
 
     let elosTokens = passItem('token');
     if (elosTokens === null) {
@@ -197,7 +206,11 @@ export async function fetchData(ask, params=null) {
         }
     }
     else {
-        return res.json();
+        let data = await res.json();
+        if (ask === 'menu') {
+            saveItem('menu', {data: data, timestamp: Date.now()});
+        }
+        return data;
     }
 }
 

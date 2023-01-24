@@ -4,6 +4,7 @@ import Nav from "../Components/Nav";
 import OrderDisplay from "../Components/OrderDisplay";
 import ItemDisplay from "../Components/ItemDisplay";
 import AdminOrder from "./AdminOrder";
+import ReloadButton from "../Components/ReloadButton";
 
 
 export default function See(props) {
@@ -236,10 +237,17 @@ export default function See(props) {
 
         orderDetails = (
             <div className="stack">
-                <Nav setPage={changePage} currentPage={page} allowed={allowedPages} />
+                <div className="nav">
+                    <Nav setPage={changePage} currentPage={page} allowed={allowedPages} />
+                    <ReloadButton action={() => refreshData()} />
+                </div>
                 {pageContent}
             </div>
         );
+    }
+
+    async function refreshData() {
+        return await getOrder(orderId);
     }
 
     function resetAfterOrder() {

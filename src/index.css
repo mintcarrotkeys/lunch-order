@@ -113,6 +113,7 @@ b {
   text-align: center;
   margin: 3px;
   padding-right: 5px;
+  cursor: pointer;
 }
 
 .logo__text {
@@ -196,7 +197,7 @@ b {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .nav-item {
@@ -625,7 +626,7 @@ b {
   text-decoration: underline;
   margin: 0;
   padding: 0;
-
+  cursor: pointer;
 }
 
 .linking-code-copy-box {
@@ -651,4 +652,20 @@ b {
 
 .subheading {
   margin: 20px 5px 0px 5px;
+}
+
+.reload-button {
+  background-color: white;
+  height: 20px;
+  width: 20px;
+  font-size: 18px;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 10px;
+  margin: 0 0 0 5px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.reload-button:active {
+  background-color: #00a5cf;
 }
