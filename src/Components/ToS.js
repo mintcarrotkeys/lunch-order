@@ -43,7 +43,7 @@ export const ToS = (
         <p>
             When you link a login service, you allow us to access information from the
             login service provider ('SSO') that uniquely identifies you to our backend.
-            This information is stored and used to authenticate you when logging in.
+            This information is used to authenticate you when logging in.
         </p>
         <p>
             When linking login services, please use SSO accounts that only you control and have access to.
