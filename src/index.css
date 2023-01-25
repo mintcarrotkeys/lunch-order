@@ -608,6 +608,7 @@ b {
   font-size: 25px;
   letter-spacing: 3px;
   font-weight: 400;
+  max-width: calc(100% - 20px);
 }
 
 .flat {
